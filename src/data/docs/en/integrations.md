@@ -1,19 +1,49 @@
 # Integrations
 
-Connect Notifyy to your stack using the **REST API**, **webhooks**, and export/import where available.
+Glue between Notifyy and everything else: CRMs, data warehouses, custom backends. There’s no universal recipe — this page is how teams usually wire things without drama.
 
-## Common patterns
+> RECOMMENDATION: Prefer **one source of truth** for phone numbers. If both Salesforce and Notifyy “own” mobile, you’ll merge forever.
 
-- **CRM / data warehouse** — sync contacts via API or scheduled CSV; push events to your bus from webhooks.
-- **Support tools** — open conversation URLs from webhook payloads; attach `conversation_id` to tickets.
-- **Custom flows** — trigger template sends from your backend after business events (orders, appointments).
+---
 
-## Website and offline entry points
+## Patterns that work
 
-Use Meta-supported entry points (for example **click-to-chat links**, **QR codes**) that point to your WABA number. Configure deep links and tracking parameters per your marketing guidelines.
+- **CRM → Notifyy**: scheduled or event-driven contact sync; segments in Notifyy for sends.
+- **Notifyy → CRM**: webhooks on inbound / tags; update lead status with human rules.
+- **Warehouse**: nightly CSV or ELT job; analytics stay in BI, ops stay in Notifyy.
 
-## Third-party apps
+---
 
-When a connector is listed in the product, follow the in-app authorization flow. Otherwise use **API overview** and **Webhooks** to build a custom integration.
+## When to build custom
 
-**See also:** [API overview](/docs/api-overview) · [Webhooks](/docs/webhooks)
+- You need **tight SLAs** or **complex branching** across systems.
+- Off-the-shelf connectors don’t exist for your stack.
+
+When an official connector exists in-product, use it unless you enjoy maintaining OAuth.
+
+---
+
+## Website entry points
+
+Click-to-chat links and QR codes are mostly **Meta-side** patterns — generate them consistently, track UTM params if marketing cares.
+
+> TIP: You can skip deep integration on day one. Plenty of teams run **CSV export → spreadsheet → import** longer than they admit publicly.
+
+---
+
+## Common mistakes
+
+- **Bi-directional sync** on day one — start one direction.
+- **Secret sprawl** — API keys in five repos; rotate pain later.
+
+---
+
+## Example
+
+Every night at **02:00 IST**, a script pulls **Salesforce** leads with **`WhatsApp_Opt_In__c = true`** into a CSV, uploads to Notifyy, and tags them **`sf_sync`**. When someone replies **STOP**, your webhook calls Salesforce and flips the same field to **false** so the next nightly doesn’t resurrect them. Crude, but it’s been running **14 months** without a spreadsheet war.
+
+---
+
+## What’s next
+
+**Next:** [Webhooks](/docs/webhooks) if events are your main bus — or [Set up WhatsApp API](/docs/setup-whatsapp-api) if you jumped here too early.

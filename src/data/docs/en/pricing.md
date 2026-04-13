@@ -1,44 +1,57 @@
 # Pricing
 
-![Overview still from the official Notifyy product video](/docs/images/notifyy-video-cover.jpg "Still from the official Notifyy walkthrough on YouTube — open notifyy.io for live pricing.")
+Numbers here are **indicative** — your workspace invoice and Meta’s billing are what actually matter. We keep this page so you’re not hunting through PDFs at midnight.
 
-## Subscription plans
-
-Notifyy offers a **free 11-day trial**, **free setup**, and **cancel anytime** on the live product. Starter workspace pricing on [notifyy.io](https://www.notifyy.io/pricing):
-
-| Plan | Price |
-| --- | --- |
-| **Monthly** | **₹999 / month** |
-| **Yearly** | **₹10,999 / year** |
-
-Included limits (indicative starter snapshot): **1** project, team, and role; **5,000** contacts; **5** active segments; **50** static segments; **10,000** WhatsApp campaigns per month; **50** custom properties. Additional users **₹750/user/month**. Codeless chatbots: **5 bots** at **₹2,000** one-time.
-
-Features such as **campaign auto-retry** and **recurring campaigns** vary by plan — confirm current entitlements in the product or on [notifyy.io/pricing](https://www.notifyy.io/pricing).
+> IMPORTANT: **Conversation charges** depend on category and Meta’s rules. If your finance team needs certainty, export usage from **Billing → Usage** (wording may vary) and attach that to the email fight.
 
 ---
 
-## WhatsApp conversation charges
+## Workspace plans (indicative)
 
-Notifyy bills on a **pay per conversation** model aligned with WhatsApp's **24-hour customer service window**.
+Starter-style pricing often looks like this on the live product — **confirm on** [notifyy.io/pricing](https://www.notifyy.io/pricing):
 
-## Conversation types & rates
+| Plan | Price |
+| --- | --- |
+| **Monthly** | **INR 999 / month** |
+| **Yearly** | **INR 10,999 / year** |
 
-| Category | INR / conversation (indicative) | When it applies |
+Included limits (snapshot, not a contract): **1** project / team / role baseline; **5,000** contacts; **5** active segments; **50** static segments; **10,000** campaign messages/month class sends; **50** custom properties. Extra agents commonly billed **INR 750/user/month**. Chatbot blocks sometimes have a **one-time** component — check the product.
+
+Features like **auto-retry** or **recurring campaigns** vary by tier; don’t assume starter includes them.
+
+---
+
+## WhatsApp conversation charges (indicative)
+
+Pay-per-conversation model tied to the **24-hour customer service window**:
+
+| Category | INR / conversation (indicative) | Roughly when |
 | --- | ---: | --- |
-| **Marketing** | **₹0.8631** | Promotions, offers, announcements (template-initiated). |
-| **Utility / Authentication** | **₹0.115** | Order updates, OTPs, account alerts (template-initiated). |
+| **Marketing** | **INR 0.8631** | Promo / outbound template stuff. |
+| **Utility / Authentication** | **INR 0.115** | Updates, OTP-style flows. |
 
-Rates reflect Meta's conversation categories; Notifyy surfaces them transparently in **Billing → Usage**.
+---
 
 ## What counts as a conversation
 
-A **conversation** opens when your business sends an eligible template message and lasts **24 hours** from the first template delivery in that category. Session messages inside the window are included — plan broadcasts accordingly.
+A conversation opens when you send an eligible **template** in a category and lasts **24 hours** from that template delivery in that category. Stuff inside the window is bundled — plan accordingly.
 
-## Volume & commitments
+> TIP: If your CFO asks “why did this spike?”, the answer is almost always **more marketing templates** or **more countries**, not a Notifyy bug.
 
-- **No seat tax** for read-only viewers; agents are priced for concurrency you activate.
-- **Enterprise** plans add SSO, audit logs, and dedicated support — contact sales from your dashboard.
+---
 
 ## Billing questions
 
-For invoices, tax, and account-specific limits, use **Help** in the product or contact support from your workspace.
+Use **Help** in the product or email support from the workspace. We can’t resolve tax IDs or invoice disputes from this static doc.
+
+---
+
+## Example
+
+Rough napkin math: **8,000** marketing conversations × **INR 0.8631** each is about **INR 6,905** in conversation fees, *before* workspace subscription and taxes — your **Billing → Usage** export is still the number you hand to finance. We’ve all presented a wrong slide once; don’t let it be this one.
+
+---
+
+## What’s next
+
+**Next:** [Send first campaign](/docs/send-first-campaign) if you’re trying to estimate **volume** — or [Introduction](/docs/introduction) if you landed here before connecting WhatsApp.

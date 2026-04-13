@@ -1,14 +1,31 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { PaperAirplaneIcon, ChatBubbleLeftRightIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { useLocation } from 'react-router-dom'
 import { cn } from '../lib/utils'
 
-function pickReply(text, t) {
+function contextHintKey(pathname) {
+  const p = pathname.replace(/^\/docs\/?/, '') || ''
+  if (p === 'pricing') return 'pricing'
+  if (p.includes('bulk-campaigns') || p.includes('send-first-campaign')) return 'campaigns'
+  if (p.includes('setup-whatsapp') || p === 'introduction') return 'setup'
+  if (p.includes('chatbot')) return 'chatbots'
+  if (p.includes('api-overview') || p.includes('webhooks') || p.includes('integrations')) return 'api'
+  return null
+}
+
+function pickReply(text, t, pathname) {
   const lower = text.toLowerCase()
+  const docPath = pathname.replace(/^\/docs\/?/, '') || ''
+  const onCampaign = /bulk-campaigns|send-first-campaign/.test(docPath)
+
   if (/price|pricing|rupee|rs\.?|inr|cost|bill|plan/.test(lower)) return t('chatbot.replies.pricing')
   if (/campaign|broadcast|send|template|message/.test(lower)) return t('chatbot.replies.campaign')
   if (/start|begin|onboard|setup|how do i/.test(lower)) return t('chatbot.replies.start')
+
+  if (onCampaign && /^(how|what|why|help|stuck|error)/.test(lower)) return t('chatbot.replies.campaign')
+
   return t('chatbot.replies.default')
 }
 
@@ -28,14 +45,33 @@ function formatReply(md) {
 
 const OPEN_DELAY_MS = 5000
 
+function TypingDots() {
+  return (
+    <div className="flex items-center gap-1 px-1 py-2" aria-hidden>
+      {[0, 1, 2].map((i) => (
+        <motion.span
+          key={i}
+          className="h-1.5 w-1.5 rounded-full bg-slate-400 dark:bg-slate-500"
+          animate={{ opacity: [0.35, 1, 0.35] }}
+          transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.14, ease: 'easeInOut' }}
+        />
+      ))}
+    </div>
+  )
+}
+
 export function Chatbot({ className }) {
   const { t } = useTranslation()
+  const location = useLocation()
   const [visible, setVisible] = useState(false)
   const [open, setOpen] = useState(false)
   const [input, setInput] = useState('')
   const [messages, setMessages] = useState(() => [{ id: 'welcome', role: 'bot', text: t('chatbot.welcome') }])
   const [typing, setTyping] = useState(false)
   const bottomRef = useRef(null)
+
+  const hintKey = useMemo(() => contextHintKey(location.pathname), [location.pathname])
+  const contextLine = hintKey ? t(`chatbot.contextHint.${hintKey}`) : null
 
   useEffect(() => {
     const id = window.setTimeout(() => setVisible(true), OPEN_DELAY_MS)
@@ -54,10 +90,10 @@ export function Chatbot({ className }) {
     setInput('')
     setTyping(true)
     window.setTimeout(() => {
-      const reply = pickReply(trimmed, t)
+      const reply = pickReply(trimmed, t, location.pathname)
       setTyping(false)
       setMessages((m) => [...m, { id: `b-${Date.now()}`, role: 'bot', text: reply }])
-    }, 500)
+    }, 650)
   }
 
   if (!visible) return null
@@ -82,13 +118,19 @@ export function Chatbot({ className }) {
               </div>
               <button
                 type="button"
-                className="rounded-md p-1 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="rounded-md p-1 text-slate-500 transition hover:bg-slate-100 dark:hover:bg-slate-800"
                 onClick={() => setOpen(false)}
                 aria-label={t('chatbot.close')}
               >
                 <XMarkIcon className="h-5 w-5" />
               </button>
             </div>
+
+            {contextLine ? (
+              <p className="border-b border-slate-50 px-3 py-2 text-[11px] leading-relaxed text-slate-500 dark:border-slate-800/80 dark:text-slate-400">
+                {contextLine}
+              </p>
+            ) : null}
 
             <div className="max-h-60 space-y-2 overflow-y-auto px-3 py-2.5">
               {messages.map((m) => (
@@ -105,9 +147,7 @@ export function Chatbot({ className }) {
                   </div>
                 </div>
               ))}
-              {typing ? (
-                <div className="text-[11px] text-slate-400">{t('chatbot.typing')}</div>
-              ) : null}
+              {typing ? <TypingDots /> : null}
               <div ref={bottomRef} />
             </div>
 
@@ -116,7 +156,7 @@ export function Chatbot({ className }) {
                 <button
                   key={label}
                   type="button"
-                  className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[11px] font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[11px] font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                   onClick={() => pushUser(label)}
                 >
                   {label}
@@ -132,14 +172,14 @@ export function Chatbot({ className }) {
               }}
             >
               <input
-                className="flex-1 rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-900 focus:border-slate-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                className="flex-1 rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-900 transition focus:border-slate-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                 placeholder={t('chatbot.placeholder')}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               />
               <button
                 type="submit"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-slate-900 text-white dark:bg-white dark:text-slate-900"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-slate-900 text-white transition hover:opacity-90 dark:bg-white dark:text-slate-900"
                 aria-label={t('chatbot.send')}
               >
                 <PaperAirplaneIcon className="h-4 w-4 -rotate-45" />
@@ -152,7 +192,7 @@ export function Chatbot({ className }) {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white shadow-md dark:bg-white dark:text-slate-900"
+        className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white shadow-sm transition hover:opacity-90 dark:bg-white dark:text-slate-900"
         aria-expanded={open}
         aria-label={open ? t('chatbot.close') : t('chatbot.open')}
       >

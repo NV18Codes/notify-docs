@@ -16,37 +16,40 @@ export function DocPager({ currentSlug, className }) {
   return (
     <nav
       className={cn(
-        'mt-16 flex flex-col gap-3 border-t border-slate-200/80 pt-10 sm:flex-row sm:justify-between dark:border-slate-800',
+        'not-prose mt-20 border-t border-slate-200/90 pt-12 dark:border-slate-800',
         className,
       )}
       aria-label={t('docs.pagerLabel')}
     >
-      {prevItem ? (
-        <Link
-          to={`/docs/${prevItem.slug}`}
-          className="group flex max-w-[48%] items-center gap-2 rounded-lg py-2 text-sm text-slate-600 transition hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-        >
-          <ArrowLeftIcon className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100" aria-hidden />
-          <span className="min-w-0">
-            <span className="block text-xs text-slate-400 dark:text-slate-500">{t('docs.previous')}</span>
-            <span className="font-medium">{t(prevItem.titleKey)}</span>
-          </span>
-        </Link>
-      ) : (
-        <span />
-      )}
-      {nextItem ? (
-        <Link
-          to={`/docs/${nextItem.slug}`}
-          className="group ml-auto flex max-w-[48%] items-center justify-end gap-2 rounded-lg py-2 text-right text-sm text-slate-600 transition hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-        >
-          <span className="min-w-0">
-            <span className="block text-xs text-slate-400 dark:text-slate-500">{t('docs.next')}</span>
-            <span className="font-medium">{t(nextItem.titleKey)}</span>
-          </span>
-          <ArrowRightIcon className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100" aria-hidden />
-        </Link>
-      ) : null}
+      <p className="mb-8 text-[15px] leading-relaxed text-slate-500 dark:text-slate-400">{t('docs.pagerMicrocopy')}</p>
+      <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:gap-6">
+        {prevItem ? (
+          <Link
+            to={`/docs/${prevItem.slug}`}
+            className="group flex max-w-full flex-1 items-start gap-3 rounded-lg py-2 text-slate-600 transition hover:text-slate-900 sm:max-w-[48%] dark:text-slate-400 dark:hover:text-white"
+          >
+            <ArrowLeftIcon className="mt-0.5 h-4 w-4 shrink-0 opacity-60 transition group-hover:opacity-100" aria-hidden />
+            <span className="min-w-0">
+              <span className="block text-xs font-medium text-slate-400 dark:text-slate-500">{t('docs.previous')}</span>
+              <span className="text-[15px] font-medium leading-snug">{t(prevItem.titleKey)}</span>
+            </span>
+          </Link>
+        ) : (
+          <span className="flex-1" />
+        )}
+        {nextItem ? (
+          <Link
+            to={`/docs/${nextItem.slug}`}
+            className="group flex max-w-full flex-1 items-start justify-end gap-3 rounded-lg py-2 text-right text-slate-600 transition hover:text-slate-900 sm:max-w-[48%] dark:text-slate-400 dark:hover:text-white"
+          >
+            <span className="min-w-0 text-right">
+              <span className="block text-xs font-medium text-slate-400 dark:text-slate-500">{t('docs.next')}</span>
+              <span className="text-[15px] font-medium leading-snug">{t(nextItem.titleKey)}</span>
+            </span>
+            <ArrowRightIcon className="mt-0.5 h-4 w-4 shrink-0 opacity-60 transition group-hover:opacity-100" aria-hidden />
+          </Link>
+        ) : null}
+      </div>
     </nav>
   )
 }

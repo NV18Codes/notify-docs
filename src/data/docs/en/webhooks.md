@@ -1,23 +1,56 @@
 # Webhooks
 
-Register HTTPS endpoints in your workspace to receive **inbound messages**, **delivery status**, and **errors**.
+Your server gets POSTed when messages arrive, statuses change, or things break. The integration is “easy” until signature verification disagrees with your framework’s body parsing.
 
-## Registration
+> IMPORTANT: Verify **signatures** on every request before doing work. Test with a fake payload once — it should fail closed.
 
-1. Open **Developer → Webhooks**.
-2. Set your **URL** (HTTPS, publicly reachable).
-3. Store the **signing secret** Notifyy provides.
+---
 
-## Verification
+## What this is
 
-Verify the `X-Notifyy-Signature` header (or equivalent documented header) using your workspace secret before trusting the body. Reject requests that fail verification.
+An HTTPS endpoint you register in Notifyy. We call it on events; you return **2xx** quickly and process async if you can.
 
-## Payloads
+---
 
-Payload shape depends on `event` type. Typical fields include `event`, `conversation_id`, timestamps, and channel-specific payloads. Log raw bodies during integration and map fields in your application.
+## When to use webhooks
+
+- Driving **internal workflows** off inbound WhatsApp (tickets, CRM updates).
+- **Reconciling delivery** with your own ledger.
+
+If you only send outbound blasts and don’t care about replies, you might postpone this — that’s a valid choice.
+
+---
+
+## Setup sketch
+
+1. **Developer → Webhooks** → add URL.
+2. Store the **signing secret** somewhere real (not `.env` on your laptop only).
+3. In your app: raw body → verify signature → parse JSON.
+4. Return **200** fast; queue heavy work.
+
+> TIP: If verification fails, log **raw body length** and headers (redact secrets). Nine times out of ten it’s middleware mutating the body.
+
+---
 
 ## Retries
 
-Notifyy retries failed deliveries with backoff when your endpoint returns **5xx** or times out. Return **2xx** quickly and process asynchronously when possible.
+We retry on **5xx** and timeouts with backoff. **4xx** is usually your bug — fix forward.
 
-**See also:** [API overview](/docs/api-overview) · [Integrations](/docs/integrations)
+---
+
+## Common mistakes
+
+- Parsing JSON before verifying — breaks HMAC style checks.
+- **Idempotency** ignored — you’ll duplicate tickets on retries.
+
+---
+
+## Example
+
+A **`message.inbound`** hits your **`https://api.yourco.com/notifyy/hook`**. You verify **`X-Notifyy-Signature`**, enqueue a job, return **200** in **80ms**. The worker creates a **Zendesk** ticket titled **`WA- conv_01ABC — refund ask`** and attaches the raw text. When delivery webhooks duplicate because of a retry, your idempotency key **`event_id`** drops the duplicate ticket — otherwise you get twin tickets and angry agents.
+
+---
+
+## What’s next
+
+**Next:** [Integrations](/docs/integrations) for higher-level patterns — or back to [API overview](/docs/api-overview) if you’re still on auth basics.

@@ -4,7 +4,7 @@ import Fuse from 'fuse.js'
 import { flattenNavItems, REFERENCE_SLUGS, slugSearchPriority } from '../data/docsManifest'
 import { getEntriesForLocale, extractTitle, getFirstParagraph } from '../utils/docsLoader'
 
-const MAX_RESULTS = 8
+const MAX_RESULTS = 5
 
 export function useDocSearch() {
   const { i18n, t } = useTranslation()

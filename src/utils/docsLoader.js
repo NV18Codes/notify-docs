@@ -41,6 +41,18 @@ export function getFirstParagraph(markdown) {
   return buf.join(' ').slice(0, 220)
 }
 
+/** Rough reading time from markdown (excludes fenced code). ~200 wpm, min 1. */
+export function estimateReadMinutes(markdown) {
+  if (!markdown) return 1
+  let text = markdown
+  text = text.replace(/```[\s\S]*?```/g, ' ')
+  text = text.replace(/`[^`]+`/g, ' ')
+  text = text.replace(/[#>*_[\]()]/g, ' ')
+  const words = text.trim().split(/\s+/).filter(Boolean).length
+  const minutes = Math.ceil(words / 200)
+  return Math.min(Math.max(minutes, 1), 45)
+}
+
 /** @param {string} locale */
 export function getEntriesForLocale(locale) {
   const loc = SUPPORTED_LOCALES.includes(locale) ? locale : 'en'

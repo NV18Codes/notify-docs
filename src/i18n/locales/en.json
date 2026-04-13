@@ -52,8 +52,12 @@
     "fallback": "Showing English — translation for this page is not available yet.",
     "backToIntro": "Back to Introduction",
     "pagerLabel": "Page navigation",
+    "pagerMicrocopy": "Most people read these in order. The sidebar is always there if you want to skip around.",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "lastUpdated": "Last updated: Recently",
+    "estimatedRead": "{{count}} min read",
+    "youAreHere": "You are here"
   },
   "search": {
     "placeholder": "Search…",
@@ -75,7 +79,14 @@
   "chatbot": {
     "title": "Docs help",
     "subtitle": "Short answers from this site",
-    "welcome": "Ask about setup, campaigns, or pricing.",
+    "welcome": "Ask about setup, campaigns, or pricing — nothing fancy.",
+    "contextHint": {
+      "campaigns": "You're on a campaigns page. Common gotcha: unapproved templates look fine until the actual send.",
+      "setup": "You're in setup territory. Connecting Meta usually takes a few minutes; verification can take longer.",
+      "chatbots": "Chatbot page — triggers are picky. Test with your own number first.",
+      "api": "API / webhooks — if signatures fail, it's almost always the wrong secret or body encoding.",
+      "pricing": "Pricing is indicative here; your invoice is the source of truth."
+    },
     "placeholder": "Message…",
     "send": "Send",
     "open": "Open",

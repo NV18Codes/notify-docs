@@ -1,22 +1,54 @@
 # Campaigns
 
-Send **approved templates** to saved audiences. Use the UI at **Campaigns → Create** or the HTTP API for programmatic sends.
+The campaign builder is where bulk template sends happen: audience, template, variables, schedule. It’s not magic — it’s WhatsApp’s rules with a spreadsheet-shaped hat on.
 
-![Campaign delivery concept](/docs/images/whatsapp-mobile-messaging.jpg "Illustrative: template messages on a mobile device.")
+> IMPORTANT: **Unapproved templates don’t send.** The UI may still let you build the campaign. The failure is at send or queue time.
 
-## Audience
+---
 
-- Filter contacts by tags, CRM fields, or activity.
-- Exclusions (for example opt-outs) apply per workspace rules.
-- Preview **variable mapping** before you send.
+## What this feature does
 
-## Sending
+- Targets **segments** or lists with a **template** message.
+- Applies **send pacing** so you don’t spike traffic (helps quality rating).
+- Surfaces **delivery / read / errors** per campaign.
 
-- Large sends are **throttled** to reduce spikes that can affect quality rating.
-- Review errors (invalid numbers, template mismatch) in the campaign report after launch.
+---
 
-## Reporting
+## When to use it
 
-Track **sent**, **delivered**, **read**, and **clicked** (where buttons apply) in **Analytics** or the campaign detail view.
+- Scheduled promos, announcements, or utility blasts.
+- When you want **one place** to see how a send performed.
 
-**See also:** [Send your first campaign](/docs/send-first-campaign) · [Templates](/docs/features/whatsapp-templates)
+If you’re sending from your backend only, you might barely touch this screen — that’s fine.
+
+---
+
+## Step-by-step (in-product)
+
+1. **Campaigns → Create**.
+2. Pick **template** + language; map **variables**.
+3. Choose **audience** (segment / list).
+4. Set **schedule** or send now.
+5. After send: open **report**; fix obvious errors (bad numbers, template mismatch) before repeating.
+
+> TIP: Sort errors by type once — usually it’s 2–3 root causes, not 500 unique bugs.
+
+---
+
+## Common mistakes
+
+- **Huge first send** on a cold number quality rating — ramp up.
+- **Ignoring “invalid user” buckets** — they’re often formatting or opt-out, not “WhatsApp is down.”
+- **A/B everything at once** — if your plan supports variants, change one thing per test or you won’t know what moved.
+
+---
+
+## Example
+
+**Glow Skincare** sends **`weekend_flash_sale`** to **12,000** people in segment **“Engaged — last 90d”** on **Saturday 11am**. They throttled to **2k/hour** because last month a flat blast dinged quality rating. Halfway through they paused, fixed **400** bad numbers from the error export, resumed — boring, but that’s the job.
+
+---
+
+## What’s next
+
+**Next:** [Templates](/docs/features/whatsapp-templates) — variable naming and categories are where campaigns quietly die.

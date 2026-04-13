@@ -11,7 +11,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs'
 import { ScrollProgress } from '../components/ScrollProgress'
 import { DocPager } from '../components/DocPager'
 import { DEFAULT_DOC_SLUG, flattenNavItems, isNavSlug, isValidSlug } from '../data/docsManifest'
-import { getMarkdownRaw, extractTitle, getFirstParagraph } from '../utils/docsLoader'
+import { getMarkdownRaw, extractTitle, getFirstParagraph, estimateReadMinutes } from '../utils/docsLoader'
 
 const pageMotion = {
   initial: { opacity: 0, y: 6 },
@@ -42,6 +42,8 @@ export default function Docs() {
 
   const description = useMemo(() => (content ? getFirstParagraph(content) : t('seo.homeDesc')), [content, t])
 
+  const readMinutes = useMemo(() => (content ? estimateReadMinutes(content) : 1), [content])
+
   const breadcrumbs = useMemo(() => {
     return [
       { label: t('docs.breadcrumb'), href: `/docs/${DEFAULT_DOC_SLUG}` },
@@ -68,14 +70,14 @@ export default function Docs() {
 
         <main className="min-w-0 flex-1 px-4 py-10 lg:px-16 lg:py-14">
           {!valid || !content ? (
-            <div className="mx-auto max-w-2xl">
+            <div className="mx-auto w-full max-w-[1100px]">
               <p className="text-base font-medium text-slate-800 dark:text-slate-100">{t('docs.notFound')}</p>
               <Link className="mt-4 inline-flex text-sm text-slate-700 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-600 dark:text-slate-300" to={`/docs/${DEFAULT_DOC_SLUG}`}>
                 {t('docs.backToIntro')} →
               </Link>
             </div>
           ) : (
-            <motion.div key={docPath} className="mx-auto max-w-2xl" {...pageMotion}>
+            <motion.div key={docPath} className="mx-auto w-full max-w-[1100px]" {...pageMotion}>
               <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
                 <Breadcrumbs items={breadcrumbs} />
                 <a
@@ -92,6 +94,14 @@ export default function Docs() {
                   {t('docs.fallback')}
                 </p>
               ) : null}
+
+              <div className="not-prose mb-10 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-slate-100 pb-8 text-[13px] leading-relaxed text-slate-500 dark:border-slate-800 dark:text-slate-400">
+                <span className="font-medium text-slate-600 dark:text-slate-300">{t('docs.lastUpdated')}</span>
+                <span className="text-slate-300 dark:text-slate-600" aria-hidden>
+                  ·
+                </span>
+                <span>{t('docs.estimatedRead', { count: readMinutes })}</span>
+              </div>
 
               <MarkdownRenderer content={content} />
 
