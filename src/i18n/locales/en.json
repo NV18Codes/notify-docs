@@ -1,0 +1,150 @@
+{
+  "brand": "Notifyy",
+  "tagline": "All-in-One WhatsApp Business & CRM Platform",
+  "nav": {
+    "home": "Home",
+    "docs": "Documentation",
+    "search": "Search documentation",
+    "openMenu": "Open navigation",
+    "closeMenu": "Close navigation",
+    "section": {
+      "intro": "Introduction",
+      "features": "Product features",
+      "guides": "Guides",
+      "resources": "Resources"
+    },
+    "whatIs": "What is Notifyy?",
+    "gettingStarted": "Getting started",
+    "whatsappApi": "WhatsApp Business API",
+    "bulkCampaigns": "Bulk campaigns",
+    "chatbotBuilder": "Chatbot builder",
+    "liveChat": "Multi-agent live chat",
+    "contacts": "Contact management",
+    "leadTracking": "Lead tracking",
+    "analytics": "Analytics dashboard",
+    "templates": "WhatsApp templates",
+    "qrInteractive": "QR & interactive messaging",
+    "apiIntegration": "API integration",
+    "whatsappCampaignGuide": "WhatsApp campaign guide",
+    "chatbotSetup": "Chatbot setup",
+    "pricing": "Pricing",
+    "faq": "FAQs",
+    "website": "notifyy.io",
+    "watchVideo": "Watch video"
+  },
+  "home": {
+    "metaBadge": "Meta Tech Provider",
+    "heroTitle": "Grow Your Business Faster with Smart Messaging & CRM Automation",
+    "heroSubtitle": "All-in-one WhatsApp Business API platform with built-in CRM, bulk messaging, campaign automation, and team inbox — designed for sales, support, and marketing teams.",
+    "heroTrial": "11-day free trial · Cancel anytime",
+    "heroPlanFrom": "Starter from ₹999/mo · confirm on notifyy.io",
+    "ctaDocs": "Documentation",
+    "ctaPricing": "Pricing details",
+    "ctaWebsite": "Start for free",
+    "ctaVideo": "Product tour",
+    "featuresTitle": "One platform. Every tool you need.",
+    "featuresSubtitle": "Replace scattered tools with one WhatsApp-first workspace: unified inbox, CRM, campaigns, templates, workflows, and business tools — so your team moves faster together.",
+    "featInboxMulti": "Multi-Channel Team Inbox",
+    "featCrmBuiltIn": "Built-In CRM Software",
+    "featCampaignMgr": "WhatsApp Campaign Manager",
+    "featTemplateBuilder": "WhatsApp Template Builder",
+    "featNoCodeFlow": "No-Code Workflow Automation",
+    "featBizTools": "WhatsApp Business Tools",
+    "pricingTitle": "Simple, transparent pricing",
+    "pricingSubtitle": "Starter workspace from ₹999/mo or ₹10,999/yr (indicative). Full tiers and trials on the live product.",
+    "planMonthly": "Monthly",
+    "planYearly": "Yearly",
+    "planPopular": "Best value",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "planMonthlyHint": "Indicative starter limits below. 11-day free trial, free setup, and cancel anytime on notifyy.io.",
+    "planYearlyHint": "Save vs. paying monthly — same indicative limits; confirm current offers on notifyy.io.",
+    "pricingTrialNote": "Free 11-day trial · Free setup · Cancel anytime. Live pricing: notifyy.io/pricing",
+    "pricingIncludes": "Starter snapshot (confirm in product)",
+    "stats": {
+      "uptime": "Platform uptime",
+      "autoreply": "Auto-reply & workflows active",
+      "open": "WhatsApp open rate vs ~20% on email",
+      "extratools": "Extra tools needed — inbox, CRM & campaigns built in"
+    },
+    "pillarsTitle": "Why teams choose Notifyy",
+    "pillars": {
+      "api": "Fragmented inbox, CRM, and campaign tools slow teams down. Notifyy unifies WhatsApp messaging, lead tracking, and automation in one dashboard.",
+      "growth": "Send bulk personalized campaigns, automate follow-ups, and manage Meta-approved templates — without juggling spreadsheets and separate apps.",
+      "ops": "Built for reliability: scalable cloud infra, delivery and read visibility, and analytics so support and sales leaders see what’s working."
+    },
+    "quickLinks": "Popular guides",
+    "footerTag": "WhatsApp CRM & automation docs",
+    "rowAgents": "Agents",
+    "rowAgentsVal": "1 included · + ₹750/user/mo",
+    "rowProjects": "Projects",
+    "rowTeams": "Teams",
+    "rowRoles": "Roles",
+    "rowContacts": "Contacts",
+    "rowActiveSeg": "Active segments",
+    "rowStaticSeg": "Static segments",
+    "rowCampaigns": "WhatsApp campaigns",
+    "rowRetry": "Campaign auto-retry",
+    "rowRecurring": "Recurring campaigns",
+    "rowChatbots": "Codeless chatbots",
+    "rowChatbotsVal": "5 bots · ₹2,000 one-time",
+    "rowProps": "Custom properties",
+    "valIncluded": "1 each",
+    "val5000": "5,000",
+    "val5": "5",
+    "val50": "50",
+    "val10k": "10,000 / month",
+    "valPlanVaries": "Varies by plan — see notifyy.io/pricing",
+    "videoTitle": "See Notifyy in action",
+    "videoSubtitle": "Walkthrough of inbox, CRM, campaigns, and automation — same flows you’ll configure from our guides."
+  },
+  "docs": {
+    "breadcrumb": "Docs",
+    "editPage": "Edit this page",
+    "notFound": "This page could not be found.",
+    "fallback": "Showing English version — translation coming soon."
+  },
+  "search": {
+    "placeholder": "Search docs…",
+    "empty": "No results. Try another keyword.",
+    "open": "Open",
+    "hint": "Navigate with ↑ ↓ · Enter to open · Esc to close"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle color theme"
+  },
+  "lang": {
+    "label": "Language",
+    "en": "English",
+    "hi": "हिंदी",
+    "kn": "ಕನ್ನಡ"
+  },
+  "chatbot": {
+    "title": "Notifyy Assistant",
+    "subtitle": "Quick answers from docs",
+    "placeholder": "Ask something…",
+    "send": "Send",
+    "open": "Open chat",
+    "close": "Close chat",
+    "typing": "Notifyy is typing…",
+    "suggestions": {
+      "start": "How do I start?",
+      "pricing": "What is pricing?",
+      "features": "What features are included?"
+    },
+    "replies": {
+      "start": "Create a Notifyy workspace, connect your WhatsApp Business Account, verify your display name, and submit templates for marketing or utility. Then import contacts and launch your first campaign from Campaigns → New campaign. See **Getting started** for the full checklist.",
+      "pricing": "The live product offers a free 11-day trial (cancel anytime) and starter workspace plans from ₹999/mo or ₹10,999/yr — confirm on notifyy.io/pricing. WhatsApp also bills per conversation: marketing ₹0.8631; utility/authentication ₹0.115. See Pricing for tables and FAQs.",
+      "features": "Notifyy combines a multi-channel team inbox, built-in CRM, WhatsApp campaign manager, template builder, no-code workflows, and business tools (widget, QR, opt-in). Open **Product features** in the sidebar for deep dives.",
+      "default": "I can help with getting started, pricing, and feature overviews. Try a suggestion chip or browse the sidebar — all answers are from the Notifyy documentation."
+    }
+  },
+  "seo": {
+    "homeTitle": "Notifyy Docs — WhatsApp Business & CRM Platform",
+    "homeDesc": "Official Meta Tech Provider. WhatsApp API, CRM, campaigns, templates, workflows, and team inbox. Free 11-day trial on notifyy.io. Docs and guides.",
+    "docsTitle": "{{title}} — Notifyy Docs",
+    "docsDesc": "{{description}}"
+  }
+}
