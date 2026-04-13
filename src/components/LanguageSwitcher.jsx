@@ -25,7 +25,7 @@ export function LanguageSwitcher({ className }) {
         }}
       >
         <div className="relative">
-          <ListboxButton className="relative inline-flex h-10 min-w-[8.5rem] cursor-pointer items-center gap-2 rounded-lg border border-slate-200 bg-white py-2 pl-3 pr-8 text-left text-sm text-slate-800 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
+          <ListboxButton className="relative inline-flex h-9 min-w-[7.5rem] cursor-pointer items-center gap-2 rounded-md border border-slate-200 bg-white py-1.5 pl-2.5 pr-7 text-left text-sm text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/30 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100">
             <LanguageIcon className="h-4 w-4 text-slate-500 dark:text-slate-400" aria-hidden />
             <span className="block truncate font-medium">{t(current.labelKey)}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -58,7 +58,7 @@ export function LanguageSwitcher({ className }) {
                       {selected ? (
                         <motion.span
                           layout
-                          className="absolute inset-y-0 left-0 flex items-center pl-2 text-primary"
+                          className="absolute inset-y-0 left-0 flex items-center pl-2 text-slate-900 dark:text-white"
                           initial={{ scale: 0.8, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                         >

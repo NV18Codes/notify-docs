@@ -14,7 +14,7 @@ Templates are required for business-initiated messages outside the 24-hour sessi
 3. Attach media and quick-reply buttons where supported.
 4. Use in campaigns or chatbot steps once **approved**.
 
-## Best practices
+## Copy and localization
 
-- Keep body text under recommended length; test on multiple devices.
-- Localize templates per region — Hindi, Kannada, and English variants are common for Indian audiences.
+- Keep body text within Meta length guidance; preview on multiple devices.
+- Add language variants in Meta when you support multiple locales.

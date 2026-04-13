@@ -39,6 +39,6 @@ A **conversation** opens when your business sends an eligible template message a
 - **No seat tax** for read-only viewers; agents are priced for concurrency you activate.
 - **Enterprise** plans add SSO, audit logs, and dedicated support — contact sales from your dashboard.
 
-## FAQs
+## Billing questions
 
-See [FAQs](/docs/faq) for opt-in requirements, refunds, and tax invoices.
+For invoices, tax, and account-specific limits, use **Help** in the product or contact support from your workspace.

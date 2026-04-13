@@ -15,6 +15,6 @@ Notifyy **ಪ್ರತಿ ಸಂಭಾಷಣೆ** ಮಾದರಿಯಲ್ಲಿ
 
 ಟೆಂಪ್ಲೇಟ್ ವಿತರಣೆಯಿಂದ **24 ಗಂಟೆ** ವಿಂಡೋ; ಅದೇ ವರ್ಗದ ಸೆಷನ್ ಸಂದೇಶಗಳು ಒಳಗೊಂಡಿವೆ.
 
-## FAQ
 
-ಹೆಚ್ಚಿನ ವಿವರಗಳಿಗೆ [FAQ](/docs/faq).
+For billing questions, use **Help** in the product or contact support.
+

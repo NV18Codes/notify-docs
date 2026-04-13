@@ -12,4 +12,4 @@
 
 ---
 
-**ಮಾರ್ಗದರ್ಶಿ:** [WhatsApp ಪ್ರಚಾರ](/docs/guides/whatsapp-campaigns)
+**ಮುಂದೆ:** [ಮೊದಲ ಪ್ರಚಾರ](/docs/send-first-campaign)

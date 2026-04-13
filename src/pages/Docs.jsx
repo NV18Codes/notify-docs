@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Seo } from '../components/Seo'
 import { useTranslation } from 'react-i18next'
 import { PencilSquareIcon } from '@heroicons/react/24/outline'
@@ -8,8 +9,15 @@ import { Sidebar } from '../components/Sidebar'
 import { MarkdownRenderer } from '../components/MarkdownRenderer'
 import { Breadcrumbs } from '../components/Breadcrumbs'
 import { ScrollProgress } from '../components/ScrollProgress'
-import { DEFAULT_DOC_SLUG, flattenNavItems, isValidSlug } from '../data/docsManifest'
+import { DocPager } from '../components/DocPager'
+import { DEFAULT_DOC_SLUG, flattenNavItems, isNavSlug, isValidSlug } from '../data/docsManifest'
 import { getMarkdownRaw, extractTitle, getFirstParagraph } from '../utils/docsLoader'
+
+const pageMotion = {
+  initial: { opacity: 0, y: 6 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
+}
 
 export default function Docs() {
   const location = useLocation()
@@ -35,16 +43,11 @@ export default function Docs() {
   const description = useMemo(() => (content ? getFirstParagraph(content) : t('seo.homeDesc')), [content, t])
 
   const breadcrumbs = useMemo(() => {
-    const items = [{ label: t('docs.breadcrumb'), href: '/docs/getting-started' }]
-    const segments = docPath.split('/').filter(Boolean)
-    if (segments.length >= 2) {
-      const parent = segments[0]
-      if (parent === 'features') items.push({ label: t('nav.section.features') })
-      else if (parent === 'guides') items.push({ label: t('nav.section.guides') })
-    }
-    items.push({ label: title })
-    return items
-  }, [docPath, title, t])
+    return [
+      { label: t('docs.breadcrumb'), href: `/docs/${DEFAULT_DOC_SLUG}` },
+      { label: title },
+    ]
+  }, [title, t])
 
   const editHref = useMemo(() => {
     const subject = encodeURIComponent(`Docs feedback: ${title}`)
@@ -53,48 +56,47 @@ export default function Docs() {
   }, [docPath, title])
 
   return (
-    <div className="min-h-screen bg-surface-muted dark:bg-surface-dark">
-      <Seo
-        title={t('seo.docsTitle', { title })}
-        description={t('seo.docsDesc', { description })}
-      />
+    <div className="min-h-screen bg-white dark:bg-slate-950">
+      <Seo title={t('seo.docsTitle', { title })} description={t('seo.docsDesc', { description })} />
       <ScrollProgress />
       <Navbar docsSidebarCollapsed={sidebarCollapsed} onToggleDocsSidebar={() => setSidebarCollapsed((c) => !c)} />
 
       <div className="mx-auto flex max-w-[1600px]">
-        <div className="sticky top-[57px] hidden h-[calc(100vh-57px)] shrink-0 lg:block">
+        <div className="sticky top-[52px] hidden h-[calc(100vh-52px)] shrink-0 lg:block">
           <Sidebar collapsed={sidebarCollapsed} />
         </div>
 
-        <main className="min-w-0 flex-1 px-4 py-8 lg:px-12 lg:py-12">
+        <main className="min-w-0 flex-1 px-4 py-10 lg:px-16 lg:py-14">
           {!valid || !content ? (
-            <div className="mx-auto max-w-3xl">
-              <p className="text-lg font-medium text-slate-800 dark:text-slate-100">{t('docs.notFound')}</p>
-              <Link className="mt-4 inline-flex text-primary hover:underline" to={`/docs/${DEFAULT_DOC_SLUG}`}>
-                {t('nav.gettingStarted')} →
+            <div className="mx-auto max-w-2xl">
+              <p className="text-base font-medium text-slate-800 dark:text-slate-100">{t('docs.notFound')}</p>
+              <Link className="mt-4 inline-flex text-sm text-slate-700 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-600 dark:text-slate-300" to={`/docs/${DEFAULT_DOC_SLUG}`}>
+                {t('docs.backToIntro')} →
               </Link>
             </div>
           ) : (
-            <div className="mx-auto max-w-3xl">
-              <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
+            <motion.div key={docPath} className="mx-auto max-w-2xl" {...pageMotion}>
+              <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
                 <Breadcrumbs items={breadcrumbs} />
                 <a
                   href={editHref}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm hover:border-primary/40 hover:text-primary dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                  className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-500 hover:border-slate-300 hover:text-slate-800 dark:border-slate-800 dark:text-slate-400 dark:hover:border-slate-600 dark:hover:text-slate-200"
                 >
-                  <PencilSquareIcon className="h-4 w-4" />
+                  <PencilSquareIcon className="h-3.5 w-3.5" />
                   {t('docs.editPage')}
                 </a>
               </div>
 
               {usedFallback ? (
-                <p className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-amber-950/40 dark:text-amber-100">
+                <p className="mb-8 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
                   {t('docs.fallback')}
                 </p>
               ) : null}
 
               <MarkdownRenderer content={content} />
-            </div>
+
+              {isNavSlug(docPath) ? <DocPager currentSlug={docPath} /> : null}
+            </motion.div>
           )}
         </main>
       </div>

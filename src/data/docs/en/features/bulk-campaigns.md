@@ -1,24 +1,22 @@
-# Bulk campaign messaging
+# Campaigns
 
-Send approved **template messages** to segmented audiences with throttling, retries, and analytics.
+Send **approved templates** to saved audiences. Use the UI at **Campaigns → Create** or the HTTP API for programmatic sends.
 
-![High-intent mobile notifications mirror how WhatsApp broadcasts appear to customers](/docs/images/whatsapp-mobile-messaging.jpg "Illustrative: reaching customers on the devices they use every day.")
+![Campaign delivery concept](/docs/images/whatsapp-mobile-messaging.jpg "Illustrative: template messages on a mobile device.")
 
-## Audience selection
+## Audience
 
-- Filter by tags, CRM fields, or last interaction time.
-- Exclude unsubscribed users automatically.
-- Preview **variable mapping** before launch.
+- Filter contacts by tags, CRM fields, or activity.
+- Exclusions (for example opt-outs) apply per workspace rules.
+- Preview **variable mapping** before you send.
 
-## Sending strategy
+## Sending
 
-- **Adaptive throughput** respects carrier limits and avoids spikes that trigger quality downgrades.
-- **A/B variants** (subject lines, CTA buttons) roll out gradually and auto-winner selection can be enabled on Enterprise.
+- Large sends are **throttled** to reduce spikes that can affect quality rating.
+- Review errors (invalid numbers, template mismatch) in the campaign report after launch.
 
-## Metrics that matter
+## Reporting
 
-Track **sent → delivered → read → clicked** with cohort breakdowns. Compare against email/SMS benchmarks — WhatsApp typically delivers **98% opens** and **50–70% clicks** for well-targeted campaigns.
+Track **sent**, **delivered**, **read**, and **clicked** (where buttons apply) in **Analytics** or the campaign detail view.
 
----
-
-**Guide:** [WhatsApp campaign guide](/docs/guides/whatsapp-campaigns)
+**See also:** [Send your first campaign](/docs/send-first-campaign) · [Templates](/docs/features/whatsapp-templates)

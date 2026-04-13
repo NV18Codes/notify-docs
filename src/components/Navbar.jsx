@@ -3,18 +3,16 @@ import { Bars3Icon, BookOpenIcon, XMarkIcon, Squares2X2Icon, ArrowTopRightOnSqua
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { motion } from 'framer-motion'
 import { SearchBar } from './SearchBar'
 import { ThemeToggle } from './ThemeToggle'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { Sidebar } from './Sidebar'
 import { cn } from '../lib/utils'
+import { DEFAULT_DOC_SLUG } from '../data/docsManifest'
 
-export function Navbar({
-  className,
-  docsSidebarCollapsed,
-  onToggleDocsSidebar,
-}) {
+const PRODUCT_URL = 'https://www.notifyy.io/'
+
+export function Navbar({ className, docsSidebarCollapsed, onToggleDocsSidebar }) {
   const { t } = useTranslation()
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -25,31 +23,26 @@ export function Navbar({
     <>
       <header
         className={cn(
-          'sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/80',
+          'sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90',
           className,
         )}
       >
-        <div className="mx-auto flex max-w-[1600px] items-center gap-4 px-4 py-3 lg:px-8">
-          <div className="flex min-w-0 flex-1 items-center gap-3">
+        <div className="mx-auto flex max-w-[1600px] items-center gap-3 px-4 py-2.5 lg:px-8">
+          <div className="flex min-w-0 flex-1 items-center gap-2">
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm lg:hidden dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 lg:hidden dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
               onClick={() => setMobileOpen(true)}
               aria-label={t('nav.openMenu')}
             >
               <Bars3Icon className="h-5 w-5" />
             </button>
 
-            <Link to="/" className="group flex shrink-0 items-center gap-2">
-              <motion.span
-                className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-white shadow-sm ring-2 ring-notifyy-teal/45 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
-                whileHover={{ scale: 1.03 }}
-              >
-                N
-              </motion.span>
+            <Link to="/" className="flex shrink-0 items-center gap-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-xs font-bold text-white">N</span>
               <div className="hidden min-w-0 sm:block">
                 <div className="truncate text-sm font-semibold text-slate-900 dark:text-white">{t('brand')}</div>
-                <div className="truncate text-xs text-slate-500 dark:text-slate-400">{t('tagline')}</div>
+                <div className="truncate text-[11px] text-slate-500 dark:text-slate-400">{t('tagline')}</div>
               </div>
             </Link>
 
@@ -57,11 +50,11 @@ export function Navbar({
               <button
                 type="button"
                 onClick={onToggleDocsSidebar}
-                className="hidden h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 shadow-sm lg:inline-flex dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                className="hidden h-9 w-9 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-600 lg:inline-flex dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
                 aria-pressed={docsSidebarCollapsed}
-                title="Toggle sidebar width"
+                title="Toggle sidebar"
               >
-                <Squares2X2Icon className="h-5 w-5" />
+                <Squares2X2Icon className="h-4 w-4" />
               </button>
             ) : null}
           </div>
@@ -70,19 +63,19 @@ export function Navbar({
             <SearchBar />
           </div>
 
-          <div className="flex items-center gap-1 sm:gap-2">
+          <div className="flex items-center gap-0.5 sm:gap-1">
             <a
-              href="https://www.notifyy.io/"
+              href={PRODUCT_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden items-center gap-1 rounded-lg px-2.5 py-2 text-sm font-medium text-slate-700 hover:bg-notifyy-teal/10 hover:text-notifyy-teal-dark dark:text-slate-200 dark:hover:bg-notifyy-teal/10 dark:hover:text-notifyy-teal-muted md:inline-flex"
+              className="hidden items-center gap-1 rounded-md px-2 py-1.5 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white md:inline-flex"
             >
               {t('nav.website')}
-              <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5 opacity-70" />
+              <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5 opacity-60" />
             </a>
             <Link
-              to="/docs/getting-started"
-              className="hidden items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800 sm:inline-flex"
+              to={`/docs/${DEFAULT_DOC_SLUG}`}
+              className="hidden items-center gap-1 rounded-md px-2 py-1.5 text-sm text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 sm:inline-flex"
             >
               <BookOpenIcon className="h-4 w-4" />
               {t('nav.docs')}
@@ -121,12 +114,12 @@ export function Navbar({
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-[min(100%,20rem)] flex-col bg-white shadow-xl dark:bg-slate-950">
-                <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-800">
-                  <span className="text-sm font-semibold text-slate-900 dark:text-white">{t('nav.docs')}</span>
+              <Dialog.Panel className="relative flex w-[min(100%,18rem)] flex-col bg-white shadow-xl dark:bg-slate-950">
+                <div className="flex items-center justify-between border-b border-slate-200 px-3 py-2.5 dark:border-slate-800">
+                  <span className="text-sm font-medium text-slate-900 dark:text-white">{t('nav.docs')}</span>
                   <button
                     type="button"
-                    className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+                    className="rounded-md p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
                     onClick={() => setMobileOpen(false)}
                     aria-label={t('nav.closeMenu')}
                   >

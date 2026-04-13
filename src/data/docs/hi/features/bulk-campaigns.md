@@ -16,4 +16,4 @@
 
 ---
 
-**गाइड:** [WhatsApp अभियान](/docs/guides/whatsapp-campaigns)
+**आगे:** [पहला अभियान](/docs/send-first-campaign)

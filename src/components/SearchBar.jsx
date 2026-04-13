@@ -14,7 +14,7 @@ function highlightText(text, indices = []) {
   sorted.forEach(([start, end], i) => {
     if (start > last) out.push(text.slice(last, start))
     out.push(
-      <mark key={`${start}-${end}-${i}`} className="rounded bg-primary/20 px-0.5 text-inherit dark:bg-primary/30">
+      <mark key={`${start}-${end}-${i}`} className="rounded bg-amber-100 px-0.5 text-inherit dark:bg-amber-900/40">
         {text.slice(start, end + 1)}
       </mark>,
     )
@@ -66,7 +66,7 @@ export function SearchBar({ className }) {
       />
       <input
         ref={inputRef}
-        className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-24 text-sm text-slate-900 shadow-inner shadow-slate-900/5 placeholder:text-slate-400 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/25 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+        className="w-full rounded-lg border border-slate-200 bg-white py-2 pl-10 pr-20 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-400 focus:outline-none dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
         placeholder={t('search.placeholder')}
         value={query}
         onChange={(e) => {
@@ -90,7 +90,7 @@ export function SearchBar({ className }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 6 }}
             transition={{ duration: 0.15 }}
-            className="absolute z-[80] mt-2 max-h-80 w-full overflow-auto rounded-xl border border-slate-200 bg-white py-1 text-sm shadow-soft ring-1 ring-black/5 dark:border-slate-700 dark:bg-slate-900 dark:shadow-soft-dark"
+            className="absolute z-[80] mt-1.5 max-h-72 w-full overflow-auto rounded-lg border border-slate-200 bg-white py-1 text-sm shadow-sm dark:border-slate-800 dark:bg-slate-950"
             role="listbox"
           >
             {results.length === 0 ? (

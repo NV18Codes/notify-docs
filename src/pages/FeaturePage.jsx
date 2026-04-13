@@ -5,6 +5,6 @@ import { Navigate, useParams } from 'react-router-dom'
  */
 export default function FeaturePage() {
   const { slug } = useParams()
-  if (!slug) return <Navigate to="/docs/getting-started" replace />
+  if (!slug) return <Navigate to="/docs/introduction" replace />
   return <Navigate to={`/docs/features/${slug}`} replace />
 }

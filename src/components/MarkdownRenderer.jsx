@@ -18,8 +18,8 @@ export function MarkdownRenderer({ content }) {
         components={{
           img({ src, alt, title, node: _imgNode, ...props }) {
             return (
-              <figure className="not-prose my-10 mx-auto max-w-4xl">
-                <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-100/40 shadow-xl shadow-slate-900/10 ring-1 ring-slate-900/[0.04] dark:border-slate-700 dark:bg-slate-900/50 dark:shadow-black/40 dark:ring-white/[0.06]">
+              <figure className="not-prose my-8 mx-auto max-w-3xl">
+                <div className="overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900/50">
                   <img
                     src={src}
                     alt={alt ?? ''}
@@ -64,7 +64,7 @@ export function MarkdownRenderer({ content }) {
             if (!inline) {
               if (match) {
                 return (
-                  <div className="relative my-4 overflow-hidden rounded-xl border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="relative my-4 overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950">
                     <CopyCodeButton code={codeString} />
                     <SyntaxHighlighter
                       style={codeStyle}
@@ -86,7 +86,7 @@ export function MarkdownRenderer({ content }) {
                 )
               }
               return (
-                <div className="relative my-4 overflow-x-auto rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950">
+                <div className="relative my-4 overflow-x-auto rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
                   <CopyCodeButton code={codeString} />
                   <pre className="text-sm text-slate-800 dark:text-slate-100">
                     <code>{codeString}</code>

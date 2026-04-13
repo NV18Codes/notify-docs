@@ -6,9 +6,9 @@ import { cn } from '../lib/utils'
 
 function pickReply(text, t) {
   const lower = text.toLowerCase()
-  if (/price|pricing|₹|rupee|cost|bill/.test(lower)) return t('chatbot.replies.pricing')
+  if (/price|pricing|rupee|rs\.?|inr|cost|bill|plan/.test(lower)) return t('chatbot.replies.pricing')
+  if (/campaign|broadcast|send|template|message/.test(lower)) return t('chatbot.replies.campaign')
   if (/start|begin|onboard|setup|how do i/.test(lower)) return t('chatbot.replies.start')
-  if (/feature|capabilit|what can|include/.test(lower)) return t('chatbot.replies.features')
   return t('chatbot.replies.default')
 }
 
@@ -17,7 +17,7 @@ function formatReply(md) {
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
       return (
-        <strong key={i} className="font-semibold text-slate-900 dark:text-white">
+        <strong key={i} className="font-medium text-slate-900 dark:text-white">
           {part.slice(2, -2)}
         </strong>
       )
@@ -26,15 +26,21 @@ function formatReply(md) {
   })
 }
 
+const OPEN_DELAY_MS = 5000
+
 export function Chatbot({ className }) {
   const { t } = useTranslation()
+  const [visible, setVisible] = useState(false)
   const [open, setOpen] = useState(false)
   const [input, setInput] = useState('')
-  const [messages, setMessages] = useState(() => [
-    { id: 'welcome', role: 'bot', text: t('chatbot.replies.default') },
-  ])
+  const [messages, setMessages] = useState(() => [{ id: 'welcome', role: 'bot', text: t('chatbot.welcome') }])
   const [typing, setTyping] = useState(false)
   const bottomRef = useRef(null)
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setVisible(true), OPEN_DELAY_MS)
+    return () => window.clearTimeout(id)
+  }, [])
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -51,30 +57,32 @@ export function Chatbot({ className }) {
       const reply = pickReply(trimmed, t)
       setTyping(false)
       setMessages((m) => [...m, { id: `b-${Date.now()}`, role: 'bot', text: reply }])
-    }, 700)
+    }, 500)
   }
 
+  if (!visible) return null
+
   return (
-    <div className={cn('fixed bottom-6 right-6 z-[90] flex flex-col items-end gap-3', className)}>
+    <div className={cn('fixed bottom-5 right-5 z-[90] flex flex-col items-end gap-2', className)}>
       <AnimatePresence>
         {open ? (
           <motion.div
-            initial={{ opacity: 0, y: 16, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 16, scale: 0.96 }}
-            transition={{ duration: 0.2 }}
-            className="flex w-[min(100vw-3rem,22rem)] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 12 }}
+            transition={{ duration: 0.18 }}
+            className="flex w-[min(100vw-2.5rem,20rem)] flex-col overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950"
             role="dialog"
             aria-label={t('chatbot.title')}
           >
-            <div className="flex items-center justify-between border-b border-slate-100 bg-gradient-to-r from-primary/10 to-accent/10 px-4 py-3 dark:border-slate-800">
+            <div className="flex items-center justify-between border-b border-slate-100 px-3 py-2.5 dark:border-slate-800">
               <div>
-                <div className="text-sm font-semibold text-slate-900 dark:text-white">{t('chatbot.title')}</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">{t('chatbot.subtitle')}</div>
+                <div className="text-sm font-medium text-slate-900 dark:text-white">{t('chatbot.title')}</div>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400">{t('chatbot.subtitle')}</div>
               </div>
               <button
                 type="button"
-                className="rounded-lg p-1.5 text-slate-500 hover:bg-white/60 dark:hover:bg-slate-800"
+                className="rounded-md p-1 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
                 onClick={() => setOpen(false)}
                 aria-label={t('chatbot.close')}
               >
@@ -82,21 +90,15 @@ export function Chatbot({ className }) {
               </button>
             </div>
 
-            <div className="max-h-72 space-y-3 overflow-y-auto px-4 py-3">
+            <div className="max-h-60 space-y-2 overflow-y-auto px-3 py-2.5">
               {messages.map((m) => (
-                <div
-                  key={m.id}
-                  className={cn(
-                    'flex',
-                    m.role === 'user' ? 'justify-end' : 'justify-start',
-                  )}
-                >
+                <div key={m.id} className={cn('flex', m.role === 'user' ? 'justify-end' : 'justify-start')}>
                   <div
                     className={cn(
-                      'max-w-[92%] rounded-2xl px-3 py-2 text-sm leading-relaxed',
+                      'max-w-[92%] rounded-lg px-2.5 py-1.5 text-[13px] leading-relaxed',
                       m.role === 'user'
-                        ? 'bg-primary text-white'
-                        : 'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-100',
+                        ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
+                        : 'bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-100',
                     )}
                   >
                     {m.role === 'bot' ? formatReply(m.text) : m.text}
@@ -104,85 +106,58 @@ export function Chatbot({ className }) {
                 </div>
               ))}
               {typing ? (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400"
-                >
-                  <span className="inline-flex gap-1">
-                    <motion.span
-                      className="h-1.5 w-1.5 rounded-full bg-primary"
-                      animate={{ opacity: [0.3, 1, 0.3] }}
-                      transition={{ repeat: Infinity, duration: 1.1 }}
-                    />
-                    <motion.span
-                      className="h-1.5 w-1.5 rounded-full bg-primary"
-                      animate={{ opacity: [0.3, 1, 0.3] }}
-                      transition={{ repeat: Infinity, duration: 1.1, delay: 0.15 }}
-                    />
-                    <motion.span
-                      className="h-1.5 w-1.5 rounded-full bg-primary"
-                      animate={{ opacity: [0.3, 1, 0.3] }}
-                      transition={{ repeat: Infinity, duration: 1.1, delay: 0.3 }}
-                    />
-                  </span>
-                  {t('chatbot.typing')}
-                </motion.div>
+                <div className="text-[11px] text-slate-400">{t('chatbot.typing')}</div>
               ) : null}
               <div ref={bottomRef} />
             </div>
 
-            <div className="flex flex-wrap gap-2 border-t border-slate-100 px-3 py-2 dark:border-slate-800">
-              {[t('chatbot.suggestions.start'), t('chatbot.suggestions.pricing'), t('chatbot.suggestions.features')].map(
-                (label) => (
-                  <button
-                    key={label}
-                    type="button"
-                    className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700 hover:border-primary/40 hover:bg-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
-                    onClick={() => pushUser(label)}
-                  >
-                    {label}
-                  </button>
-                ),
-              )}
+            <div className="flex flex-wrap gap-1.5 border-t border-slate-100 px-2.5 py-2 dark:border-slate-800">
+              {[t('chatbot.suggestions.start'), t('chatbot.suggestions.campaign'), t('chatbot.suggestions.pricing')].map((label) => (
+                <button
+                  key={label}
+                  type="button"
+                  className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[11px] font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  onClick={() => pushUser(label)}
+                >
+                  {label}
+                </button>
+              ))}
             </div>
 
             <form
-              className="flex items-center gap-2 border-t border-slate-100 p-3 dark:border-slate-800"
+              className="flex items-center gap-2 border-t border-slate-100 p-2.5 dark:border-slate-800"
               onSubmit={(e) => {
                 e.preventDefault()
                 pushUser(input)
               }}
             >
               <input
-                className="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-inner focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                className="flex-1 rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-900 focus:border-slate-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                 placeholder={t('chatbot.placeholder')}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               />
               <button
                 type="submit"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-sm hover:bg-primary/90"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-slate-900 text-white dark:bg-white dark:text-slate-900"
                 aria-label={t('chatbot.send')}
               >
-                <PaperAirplaneIcon className="h-5 w-5 -rotate-45" />
+                <PaperAirplaneIcon className="h-4 w-4 -rotate-45" />
               </button>
             </form>
           </motion.div>
         ) : null}
       </AnimatePresence>
 
-      <motion.button
+      <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/30 ring-4 ring-white dark:ring-slate-900"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.97 }}
+        className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white shadow-md dark:bg-white dark:text-slate-900"
         aria-expanded={open}
         aria-label={open ? t('chatbot.close') : t('chatbot.open')}
       >
-        {open ? <XMarkIcon className="h-7 w-7" /> : <ChatBubbleLeftRightIcon className="h-7 w-7" />}
-      </motion.button>
+        {open ? <XMarkIcon className="h-6 w-6" /> : <ChatBubbleLeftRightIcon className="h-6 w-6" />}
+      </button>
     </div>
   )
 }

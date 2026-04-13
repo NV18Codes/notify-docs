@@ -1,11 +1,11 @@
-# Multi-agent live chat
+# Team inbox
 
-Route WhatsApp conversations to the right teammate with full customer context.
+Route WhatsApp conversations to agents with conversation and CRM context.
 
-## Queues & assignment
+## Queues and assignment
 
 - Create **queues** by topic, language, or region.
-- Use **round-robin**, **skill-based**, or **VIP** routing.
+- Use **round-robin**, **skill-based**, or **priority** routing (as configured in the product).
 - Agents see **CRM cards** with orders, tickets, and notes.
 
 ## Collaboration

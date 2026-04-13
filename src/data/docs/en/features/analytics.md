@@ -1,20 +1,18 @@
-# Real-time analytics dashboard
+# Analytics
 
-Monitor channel health and campaign ROI from a single pane of glass.
+Review delivery, conversation mix, and agent metrics from the workspace dashboards.
 
-![Dashboard-style analytics and reporting](/docs/images/analytics-dashboard.jpg "Illustrative: use Notifyy’s live dashboards for delivery, mix, and agent KPIs.")
+![Reporting overview](/docs/images/analytics-dashboard.jpg "Illustrative: delivery and activity charts.")
 
 ## Dashboards
 
-- **Delivery & quality score** trends.
-- **Conversation mix** by category (marketing vs utility).
-- **Agent performance** leaderboard.
+- **Delivery and errors** over time.
+- **Conversation mix** by category (for example marketing vs utility).
+- **Agent metrics** such as assigned volume and response time (as exposed in your plan).
 
-## Exports & APIs
+## Exports
 
-- Schedule **email reports** weekly or monthly.
-- Pull aggregates via the **Analytics API** for executive slides.
+- Schedule **email reports** if available in your workspace.
+- Use the **HTTP API** where documented to pull aggregates into your own tools.
 
-## Benchmarks
-
-Compare your CTR against channel medians — WhatsApp campaigns on Notifyy often reach **12× higher CTR** than email/SMS equivalents when creative and targeting align.
+**See also:** [Campaigns](/docs/features/bulk-campaigns) · [API overview](/docs/api-overview)

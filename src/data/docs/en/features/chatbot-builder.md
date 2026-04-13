@@ -1,22 +1,19 @@
-# Codeless chatbot builder
+# Chatbots
 
-Design conversational flows without writing backend code — then hand off to humans when needed.
+Build **rule-based flows** in the product: triggers, branches, and actions. Hand off to agents when a conversation needs a human.
 
-## Building blocks
+## Blocks
 
-- **Triggers:** keyword, template reply, QR scan, or time-based rules.
-- **Branches:** conditions on CRM attributes or user input.
-- **Actions:** send template, update field, create ticket, route to queue.
+- **Triggers:** keyword, inbound message pattern, template reply, or scheduled rules (as supported in your workspace).
+- **Branches:** conditions on contact fields or collected input.
+- **Actions:** send a template, set a field, assign to a queue, or open a ticket.
 
-## Testing & versioning
+## Testing
 
-- **Sandbox conversations** mirror production policies.
-- **Version history** lets you roll back a published flow instantly.
+Use the workspace **test** or **sandbox** mode (if enabled) before publishing. Keep changes small and verify each path end-to-end.
 
-## Analytics
+## Metrics
 
-See drop-off per step, average time to resolution, and human takeover rate.
+Review step drop-off, time to resolution, and agent takeover rate under **Analytics** for automation.
 
----
-
-**Setup walkthrough:** [Chatbot setup](/docs/guides/chatbot-setup)
+**See also:** [Team inbox](/docs/features/live-chat) · [API overview](/docs/api-overview)

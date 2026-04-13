@@ -14,4 +14,4 @@
 
 ---
 
-**सेटअप:** [चैटबॉट सेटअप](/docs/guides/chatbot-setup)
+**आगे:** [टीम इनबॉक्स](/docs/features/live-chat)

@@ -10,4 +10,4 @@
 
 ---
 
-**ಸೆಟಪ್:** [ಚಾಟ್‌ಬಾಟ್ ಸೆಟಪ್](/docs/guides/chatbot-setup)
+**Next:** [Team inbox](/docs/features/live-chat)
