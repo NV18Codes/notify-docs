@@ -15,11 +15,11 @@ function isActivePath(pathStr: string, href: string) {
 
 function linkClasses(active: boolean, nested?: boolean) {
   return cn(
-    "block rounded-md px-3 py-2 text-sm transition-colors",
+    "block rounded-md px-3 py-2 text-sm transition-all duration-150",
     nested && "ml-2 border-l-2 border-notifyy-border pl-3 dark:border-notifyy-borderDark",
     active
-      ? "bg-primary/10 font-medium text-primary dark:bg-primary/15"
-      : "text-notifyy-inkMuted hover:bg-notifyy-tint dark:text-zinc-300 dark:hover:bg-zinc-800/80",
+      ? "bg-primary/10 font-medium text-primary"
+      : "text-notifyy-inkMuted hover:bg-gray-100 dark:text-zinc-300 dark:hover:bg-zinc-800/80",
   );
 }
 
@@ -40,14 +40,14 @@ function renderLeaf(pathStr: string, item: SidebarLeafItem) {
 function renderSubgroup(pathStr: string, sub: SidebarSubgroup) {
   const hubActive = isActivePath(pathStr, sub.href);
   return (
-    <div key={sub.href} className="space-y-1">
+    <div key={sub.href} className="space-y-1.5">
       <Link
         href={sub.href}
         className={cn(
-          "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
+          "block rounded-md px-3 py-2 text-sm transition-all duration-150",
           hubActive
-            ? "bg-primary/10 text-primary dark:bg-primary/15"
-            : "text-notifyy-ink hover:bg-notifyy-tint dark:text-zinc-200 dark:hover:bg-zinc-800/80",
+            ? "bg-primary/10 font-medium text-primary"
+            : "font-medium text-notifyy-ink hover:bg-gray-100 dark:text-zinc-200 dark:hover:bg-zinc-800/80",
         )}
         aria-current={hubActive ? "page" : undefined}
       >
@@ -71,11 +71,11 @@ function renderEntry(pathStr: string, entry: SidebarMenuEntry) {
 
 function renderBlock(block: SidebarBlock, pathStr: string) {
   return (
-    <div key={block.titleKey} className="mb-6">
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-notifyy-muted dark:text-zinc-500">
+    <div key={block.titleKey} className="mb-8">
+      <p className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-notifyy-muted dark:text-zinc-500">
         {copy.sidebar[block.titleKey]}
       </p>
-      <div className="space-y-3">{block.items.map((entry) => renderEntry(pathStr, entry))}</div>
+      <div className="space-y-2">{block.items.map((entry) => renderEntry(pathStr, entry))}</div>
     </div>
   );
 }

@@ -6,6 +6,9 @@ import rehypeSlug from "rehype-slug";
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx", "js", "jsx"],
   outputFileTracingRoot: path.join(process.cwd()),
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },

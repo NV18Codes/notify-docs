@@ -13,14 +13,19 @@ export function Navbar() {
         Notifyy <span className="font-normal text-primary">Docs</span>
       </Link>
       <div className="flex flex-wrap items-center justify-end gap-2 sm:gap-3">
-        <a
-          href="https://www.notifyy.io/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium text-primary underline-offset-2 hover:underline"
-        >
-          Visit Notifyy →
-        </a>
+        <div className="flex flex-col items-end gap-0.5 sm:flex-row sm:items-baseline sm:gap-2">
+          <a
+            href="https://www.notifyy.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-primary underline-offset-2 hover:underline"
+          >
+            Visit Notifyy →
+          </a>
+          <span className="max-w-[14rem] truncate text-[11px] text-notifyy-muted dark:text-zinc-500 sm:max-w-none">
+            https://www.notifyy.io/
+          </span>
+        </div>
         <ThemeToggle />
       </div>
     </div>

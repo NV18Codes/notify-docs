@@ -50,7 +50,7 @@ export function DocsChrome({ children }: { children: ReactNode }) {
         </header>
 
         <div className="mx-auto flex w-full max-w-6xl flex-1 gap-10 px-4 py-8 lg:max-w-none lg:px-8">
-          <main className="doc-content prose prose-slate min-w-0 w-full max-w-3xl flex-1 space-y-8 text-[15px] leading-relaxed dark:prose-invert prose-headings:scroll-mt-28 prose-headings:text-notifyy-ink dark:prose-headings:text-zinc-50 prose-p:leading-relaxed prose-li:leading-relaxed prose-hr:my-8 prose-hr:border-notifyy-border dark:prose-hr:border-notifyy-borderDark prose-a:font-medium prose-a:text-primary prose-a:no-underline [&_h2]:mt-12 [&_h2]:scroll-mt-28 [&_h2]:first:mt-0 [&_h3]:mt-8">
+          <main className="doc-content prose prose-slate min-w-0 w-full max-w-3xl flex-1 space-y-8 text-[15px] leading-relaxed dark:prose-invert prose-headings:scroll-mt-28 prose-p:leading-relaxed prose-li:leading-relaxed prose-hr:my-8 prose-hr:border-0 prose-hr:border-t prose-hr:border-gray-200 dark:prose-hr:border-zinc-700 prose-a:font-medium prose-a:text-primary prose-a:no-underline prose-a:hover:underline">
             {children}
           </main>
           {articleSlug ? (

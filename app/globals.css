@@ -36,11 +36,16 @@
 }
 
 @layer utilities {
+  .doc-content h1 {
+    scroll-margin-top: 6rem;
+    @apply mb-4 text-3xl font-semibold text-notifyy-ink dark:text-zinc-50;
+  }
   .doc-content h2 {
     scroll-margin-top: 6rem;
-    @apply text-notifyy-ink dark:text-zinc-50;
+    @apply mb-3 mt-10 text-xl font-semibold text-notifyy-ink dark:text-zinc-50;
   }
   .doc-content h3 {
     scroll-margin-top: 5rem;
+    @apply mb-2 mt-6 text-lg font-medium text-notifyy-ink dark:text-zinc-50;
   }
 }
