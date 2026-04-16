@@ -11,7 +11,7 @@ export function MdxLink({
   children?: ReactNode;
 }) {
   const merged = cn(
-    "text-primary underline-offset-2 transition-colors hover:text-primaryDark hover:underline",
+    "text-primary underline-offset-2 transition-colors hover:underline",
     className,
   );
 

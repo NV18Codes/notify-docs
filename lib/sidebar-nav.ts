@@ -1,4 +1,4 @@
-/** Premium sidebar: grouped nav + flat `/docs/*` hrefs (`labelKey` → `nav.*`). */
+/** Sidebar: grouped nav + flat `/docs/*` hrefs (`labelKey` → `nav.*`). */
 
 export type NavDocLabelKey =
   | "onboarding"
@@ -17,30 +17,46 @@ export type NavDocLabelKey =
   | "propertyManagement"
   | "teamInbox";
 
-export type SidebarItem = {
+export type SidebarLeafItem = {
   href: string;
   labelKey: NavDocLabelKey;
-  /** Indented under “Customer onboarding” */
   nested?: boolean;
 };
 
-export type SidebarBlock =
-  | { type: "group"; titleKey: string; items: SidebarItem[] }
-  | { type: "divider"; titleKey: string };
+/** Nested block under “Customer Onboarding”. */
+export type SidebarSubgroup = {
+  type: "subgroup";
+  titleKey: "onboarding";
+  href: string;
+  items: SidebarLeafItem[];
+};
+
+export type SidebarMenuEntry = SidebarLeafItem | SidebarSubgroup;
+
+export type SidebarBlock = {
+  type: "group";
+  titleKey: "gettingStarted" | "messaging" | "automation" | "crm" | "support";
+  items: SidebarMenuEntry[];
+};
 
 export const SIDEBAR_BLOCKS: SidebarBlock[] = [
   {
     type: "group",
     titleKey: "gettingStarted",
     items: [
-      { href: "/docs/onboarding", labelKey: "onboarding" },
-      { href: "/docs/connect-whatsapp", labelKey: "connectWhatsapp", nested: true },
-      { href: "/docs/verify-business", labelKey: "verifyBusiness", nested: true },
-      { href: "/docs/first-campaign", labelKey: "firstCampaign", nested: true },
+      {
+        type: "subgroup",
+        titleKey: "onboarding",
+        href: "/docs/onboarding",
+        items: [
+          { href: "/docs/connect-whatsapp", labelKey: "connectWhatsapp", nested: true },
+          { href: "/docs/verify-business", labelKey: "verifyBusiness", nested: true },
+          { href: "/docs/first-campaign", labelKey: "firstCampaign", nested: true },
+        ],
+      },
       { href: "/docs/user-invite", labelKey: "userInvite" },
     ],
   },
-  { type: "divider", titleKey: "coreFeatures" },
   {
     type: "group",
     titleKey: "messaging",
@@ -73,7 +89,7 @@ export const SIDEBAR_BLOCKS: SidebarBlock[] = [
   },
 ];
 
-/** Mobile chip strip — first items for small screens */
+/** Mobile chip strip */
 export const SIDEBAR_MOBILE_HREFS: { labelKey: NavDocLabelKey; href: string }[] = [
   { labelKey: "onboarding", href: "/docs/onboarding" },
   { labelKey: "connectWhatsapp", href: "/docs/connect-whatsapp" },

@@ -1,6 +1,6 @@
 "use client";
 
-import { SIDEBAR_BLOCKS, type SidebarBlock } from "@/lib/sidebar-nav";
+import { SIDEBAR_BLOCKS, type SidebarBlock, type SidebarLeafItem, type SidebarMenuEntry, type SidebarSubgroup } from "@/lib/sidebar-nav";
 import { normalizePathSegments } from "@/lib/breadcrumbs";
 import { copy } from "@/lib/copy";
 import { cn } from "@/lib/utils";
@@ -13,43 +13,69 @@ function isActivePath(pathStr: string, href: string) {
   return p === h;
 }
 
-function renderBlock(block: SidebarBlock, pathStr: string) {
-  if (block.type === "divider") {
-    return (
-      <div key={block.titleKey} className="mb-2 mt-8">
-        <p className="text-xs font-semibold uppercase tracking-wide text-notifyy-muted dark:text-zinc-500">
-          {copy.sidebar[block.titleKey as keyof typeof copy.sidebar]}
-        </p>
-      </div>
-    );
-  }
+function linkClasses(active: boolean, nested?: boolean) {
+  return cn(
+    "block rounded-md px-3 py-2 text-sm transition-colors",
+    nested && "ml-2 border-l-2 border-notifyy-border pl-3 dark:border-notifyy-borderDark",
+    active
+      ? "bg-primary/10 font-medium text-primary dark:bg-primary/15"
+      : "text-notifyy-inkMuted hover:bg-notifyy-tint dark:text-zinc-300 dark:hover:bg-zinc-800/80",
+  );
+}
 
+function renderLeaf(pathStr: string, item: SidebarLeafItem) {
+  const active = isActivePath(pathStr, item.href);
+  return (
+    <Link
+      key={item.href}
+      href={item.href}
+      className={linkClasses(active, item.nested)}
+      aria-current={active ? "page" : undefined}
+    >
+      {copy.nav[item.labelKey]}
+    </Link>
+  );
+}
+
+function renderSubgroup(pathStr: string, sub: SidebarSubgroup) {
+  const hubActive = isActivePath(pathStr, sub.href);
+  return (
+    <div key={sub.href} className="space-y-1">
+      <Link
+        href={sub.href}
+        className={cn(
+          "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
+          hubActive
+            ? "bg-primary/10 text-primary dark:bg-primary/15"
+            : "text-notifyy-ink hover:bg-notifyy-tint dark:text-zinc-200 dark:hover:bg-zinc-800/80",
+        )}
+        aria-current={hubActive ? "page" : undefined}
+      >
+        {copy.nav[sub.titleKey]}
+      </Link>
+      <div className="space-y-1">{sub.items.map((item) => renderLeaf(pathStr, item))}</div>
+    </div>
+  );
+}
+
+function isSubgroup(entry: SidebarMenuEntry): entry is SidebarSubgroup {
+  return "type" in entry && entry.type === "subgroup";
+}
+
+function renderEntry(pathStr: string, entry: SidebarMenuEntry) {
+  if (isSubgroup(entry)) {
+    return renderSubgroup(pathStr, entry);
+  }
+  return renderLeaf(pathStr, entry);
+}
+
+function renderBlock(block: SidebarBlock, pathStr: string) {
   return (
     <div key={block.titleKey} className="mb-6">
       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-notifyy-muted dark:text-zinc-500">
-        {copy.sidebar[block.titleKey as keyof typeof copy.sidebar]}
+        {copy.sidebar[block.titleKey]}
       </p>
-      <div className="space-y-1">
-        {block.items.map((item) => {
-          const active = isActivePath(pathStr, item.href);
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "block rounded-md px-3 py-2 text-sm transition-colors",
-                item.nested && "ml-2 border-l-2 border-notifyy-border pl-3 dark:border-notifyy-borderDark",
-                active
-                  ? "bg-primary/10 font-medium text-primary dark:bg-primary/15"
-                  : "text-notifyy-inkMuted hover:bg-notifyy-tint dark:text-zinc-300 dark:hover:bg-zinc-800/80",
-              )}
-              aria-current={active ? "page" : undefined}
-            >
-              {copy.nav[item.labelKey]}
-            </Link>
-          );
-        })}
-      </div>
+      <div className="space-y-3">{block.items.map((entry) => renderEntry(pathStr, entry))}</div>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { ThemeToggle } from "@/components/docs/ThemeToggle";
-import { copy } from "@/lib/copy";
 import Link from "next/link";
 
 export function Navbar() {
@@ -18,9 +17,9 @@ export function Navbar() {
           href="https://www.notifyy.io/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium text-primary underline-offset-2 hover:text-primaryDark hover:underline"
+          className="text-sm font-medium text-primary underline-offset-2 hover:underline"
         >
-          {copy.docs.visitNotifyy}
+          Visit Notifyy →
         </a>
         <ThemeToggle />
       </div>
