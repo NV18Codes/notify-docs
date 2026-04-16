@@ -1,0 +1,45 @@
+# Connect WhatsApp Business API
+
+Connect your WhatsApp account so Notifyy can register webhooks, sync templates, and send on your behalf.
+
+![Connect — Meta portfolio and WABA](/docs/onboarding/step-3.png)
+
+![Connect — workspace connected](/docs/onboarding/step-4.png)
+
+## When to use
+
+Use this when you are setting Notifyy up for the first time or reconnecting after Meta changed portfolio access.
+
+## Steps
+
+<StepBlock>
+
+1. Sign in to Notifyy and open **Settings → WhatsApp** (wording may vary slightly by release).
+2. Start **Connect** and sign in to the **Meta Business Portfolio** that owns the WhatsApp asset.
+3. Select or create a **WhatsApp Business Account (WABA)** and assign a **phone number** you control.
+4. Wait until the workspace shows **Connected**. This usually takes a few minutes; queued jobs on Meta side can stretch longer.
+5. Sync **message templates** and confirm they appear as **approved** or **pending** — not an empty list.
+
+</StepBlock>
+
+## Notes
+
+<WarningBox>
+  Your number must not already be tied to another WhatsApp Business API integration you still rely on. Moving numbers is possible but slow; pick the line you intend to keep.
+</WarningBox>
+
+<TipBox>
+  Use a dedicated operations or support number instead of a founder personal line — fewer surprises when volume spikes.
+</TipBox>
+
+If the OAuth screen fails or shows the wrong portfolio, log out of Meta in another tab and retry. If verification fails, wait about **5 minutes** before trying again — rapid retries often get throttled.
+
+## Example
+
+A business connects **+91 98xx xxxxxx**, syncs template **`order_shipped_en`**, and only then grants marketing access to audiences.
+
+## Next step
+
+→ [Verify business account](/docs/verify-business)
+
+<DocFooter slug="connect-whatsapp" />

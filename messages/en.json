@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "Notifyy Docs",
+    "description": "WhatsApp CRM and automation — documentation"
+  },
+  "sidebar": {
+    "gettingStarted": "Getting started",
+    "coreFeatures": "Core features",
+    "messaging": "Messaging",
+    "automation": "Automation",
+    "crm": "CRM",
+    "support": "Support"
+  },
+  "nav": {
+    "docs": "Docs",
+    "home": "Home",
+    "onboarding": "Customer onboarding",
+    "connectWhatsapp": "Connect WhatsApp",
+    "verifyBusiness": "Verify business",
+    "firstCampaign": "First campaign",
+    "userInvite": "User invitation flow",
+    "campaigns": "Campaigns",
+    "chatbots": "Chatbot flows",
+    "whatsappTemplates": "WhatsApp templates",
+    "carouselTemplates": "Carousel templates",
+    "whatsappCatalog": "WhatsApp catalog",
+    "contactManagement": "Contact management",
+    "contacts": "Contacts",
+    "importObject": "Import object",
+    "segments": "Segments",
+    "propertyManagement": "Property management",
+    "teamInbox": "Team inbox",
+    "crm": "CRM",
+    "templates": "Templates"
+  },
+  "docs": {
+    "breadcrumbHome": "Home",
+    "onThisPage": "On this page",
+    "next": "Next",
+    "previous": "Previous",
+    "comingSoon": "Coming soon",
+    "comingSoonBody": "This section is planned. Start with onboarding if you are new.",
+    "lastUpdated": "Last updated: Recently",
+    "estimatedRead": "{{count}} min read",
+    "tocLabels": {
+      "whenToUse": "When to use",
+      "steps": "Steps",
+      "notes": "Notes",
+      "example": "Example",
+      "nextStep": "Next step"
+    },
+    "visitNotifyy": "Visit Notifyy →",
+    "platformCtaLead": "Looking for the actual platform?",
+    "dashboardCta": "Go to Notifyy Dashboard →",
+    "poweredBy": "Powered by Notifyy ·",
+    "visitWebsite": "Visit website"
+  }
+}

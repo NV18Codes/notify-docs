@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  scroll-behavior: smooth;
+  --notifyy-green: #25d366;
+  --notifyy-green-hover: #128c7e;
+  --notifyy-green-soft: rgba(37, 211, 102, 0.12);
+}
+
+@layer components {
+  .doc-screenshot {
+    transition: transform 0.2s ease;
+  }
+  .doc-screenshot:hover {
+    transform: scale(1.02);
+  }
+
+  /** Docs shell — matches marketing: light slate page, crisp cards */
+  .docs-shell-header {
+    @apply border-b border-notifyy-border bg-white/90 backdrop-blur-md dark:border-notifyy-borderDark dark:bg-notifyy-cardDark/95;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(37, 211, 102, 0.04) 0%,
+      transparent 100%
+    );
+  }
+  .dark .docs-shell-header {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(37, 211, 102, 0.06) 0%,
+      transparent 100%
+    );
+  }
+}
+
+@layer utilities {
+  .doc-content h2 {
+    scroll-margin-top: 6rem;
+    @apply text-notifyy-ink dark:text-zinc-50;
+  }
+  .doc-content h3 {
+    scroll-margin-top: 5rem;
+  }
+}

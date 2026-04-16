@@ -1,0 +1,43 @@
+# Send your first campaign
+
+Send an approved template to a small, opted-in audience and read the delivery report before you scale.
+
+![Campaign — template and variables](/docs/onboarding/step-22.png)
+
+![Campaign — audience and send](/docs/onboarding/step-23.png)
+
+## When to use
+
+Use this after at least one template is **approved** and you have a clean segment or CSV (not your whole database on day one).
+
+## Steps
+
+<StepBlock>
+
+1. Open **Campaigns → Create** (or **New campaign**).
+2. Pick a template and language. If it is missing from the list, stop — sync templates from Meta first.
+3. Map template variables to contact fields or static text. Count matters: `{{1}}`, `{{2}}`, … must line up with the template body.
+4. Choose a **test segment** or short list — tens of contacts, not tens of thousands.
+5. Send now or schedule, then open the **campaign report** and scan errors literally (invalid number, template mismatch, opt-out).
+
+</StepBlock>
+
+## Notes
+
+<WarningBox>
+  Marketing copy inside a utility template, or messaging people who did not opt in, will fail review or create compliance risk — fix the template or audience, not the variable mapping.
+</WarningBox>
+
+<TipBox>
+  Export the error rows, fix the underlying spreadsheet, then rerun — guessing at retries without reading errors wastes quota.
+</TipBox>
+
+## Example
+
+Send a festival offer to **500** customers using pre-approved template **`festive_sale_en`**, segment **“Mumbai — marketing opt-in”**, variables mapped to first name and coupon code — then expand only after error rates look boring.
+
+## Next step
+
+→ [Campaigns](/docs/campaigns) (planned) or return to [documentation home](/docs).
+
+<DocFooter slug="first-campaign" />

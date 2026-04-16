@@ -1,16 +1,23 @@
-# React + Vite
+# Notifyy documentation site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Next.js (App Router) documentation for **Notifyy**, with MDX pages, `next-intl` (English + Hindi), and dark/light mode.
 
-Currently, two official plugins are available:
+The previous **Vite + React** app is preserved under `_legacy_vite/` if you need to reference it.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Commands
 
-## React Compiler
+```bash
+npm install
+npm run dev
+npm run build
+npm start
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Open [http://localhost:3000](http://localhost:3000) — the home route redirects to `/docs`. Customer onboarding lives under `/docs/onboarding`.
 
-## Expanding the ESLint configuration
+## Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `app/[locale]/docs/` — documentation routes and onboarding MDX
+- `components/` — `Sidebar`, `Navbar`, `TOC`, callouts, MDX helpers
+- `messages/` — `next-intl` JSON
+- `i18n/` — routing and navigation helpers
