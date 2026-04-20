@@ -10,7 +10,7 @@ export function PlatformCta() {
         href="https://www.notifyy.io/"
         target="_blank"
         rel="noopener noreferrer"
-        className="font-medium text-primary hover:text-primaryDark hover:underline"
+        className="font-medium text-primary hover:underline"
       >
         {copy.docs.dashboardCta}
       </a>

@@ -4,9 +4,9 @@
 
 :root {
   scroll-behavior: smooth;
-  --notifyy-green: #25d366;
-  --notifyy-green-hover: #128c7e;
-  --notifyy-green-soft: rgba(37, 211, 102, 0.12);
+  --notifyy-primary: #003d8a;
+  --notifyy-primary-hover: #1e40af;
+  --notifyy-primary-soft: rgba(0, 61, 138, 0.08);
 }
 
 @layer components {
@@ -17,19 +17,19 @@
     transform: scale(1.02);
   }
 
-  /** Docs shell — matches marketing: light slate page, crisp cards */
+  /** Docs shell — subtle brand tint, light borders */
   .docs-shell-header {
-    @apply border-b border-notifyy-border bg-white/90 backdrop-blur-md dark:border-notifyy-borderDark dark:bg-notifyy-cardDark/95;
+    @apply border-b border-gray-200/80 bg-white/95 backdrop-blur-md dark:border-notifyy-borderDark dark:bg-notifyy-cardDark/95;
     background-image: linear-gradient(
       to bottom,
-      rgba(37, 211, 102, 0.04) 0%,
+      rgba(0, 61, 138, 0.03) 0%,
       transparent 100%
     );
   }
   .dark .docs-shell-header {
     background-image: linear-gradient(
       to bottom,
-      rgba(37, 211, 102, 0.06) 0%,
+      rgba(0, 61, 138, 0.06) 0%,
       transparent 100%
     );
   }

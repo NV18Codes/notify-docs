@@ -11,7 +11,7 @@ export function DocsSiteFooter() {
           href="https://www.notifyy.io/"
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-1 font-medium text-primary hover:text-primaryDark hover:underline"
+          className="ml-1 font-medium text-primary hover:underline"
         >
           {copy.docs.visitWebsite}
         </a>

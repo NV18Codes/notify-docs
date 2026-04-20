@@ -21,10 +21,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     WarningBox,
     pre: (props) => <PreBlock {...props} />,
     hr: (props) => (
-      <hr
-        className="not-prose my-8 border-0 border-t border-gray-200 dark:border-zinc-700"
-        {...props}
-      />
+      <hr className="not-prose my-8 border-0 border-t border-gray-200 dark:border-zinc-700" {...props} />
     ),
     img: (props) => <MdxImage {...props} />,
   };

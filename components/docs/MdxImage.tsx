@@ -20,7 +20,7 @@ export function MdxImage({ src, alt, className }: Props) {
         src={src}
         alt={alt ?? ""}
         className={cn(
-          "not-prose my-6 h-auto max-w-full rounded-lg border border-gray-200 shadow-sm dark:border-zinc-600",
+          "not-prose mx-auto my-6 block h-auto max-w-full rounded-lg border border-gray-200 shadow-sm dark:border-zinc-600",
           className,
         )}
         loading="lazy"
@@ -29,7 +29,7 @@ export function MdxImage({ src, alt, className }: Props) {
   }
 
   return (
-    <span className="not-prose my-6 block">
+    <span className="not-prose mx-auto my-6 block max-w-full text-center">
       <Image
         src={src}
         alt={alt ?? "Documentation screenshot"}
@@ -39,7 +39,7 @@ export function MdxImage({ src, alt, className }: Props) {
         quality={85}
         loading="lazy"
         className={cn(
-          "h-auto w-full rounded-lg border border-gray-200 shadow-sm dark:border-zinc-600",
+          "mx-auto h-auto w-full max-w-full rounded-lg border border-gray-200 shadow-sm dark:border-zinc-600",
           className,
         )}
       />

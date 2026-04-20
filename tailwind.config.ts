@@ -1,8 +1,7 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Notifyy brand — aligned with https://www.notifyy.io/
- * Primary: WhatsApp / product green. Neutrals: slate marketing UI.
+ * Notifyy docs — Gallabox-style clarity: primary blue + neutral slate.
  */
 const config: Config = {
   darkMode: "class",
@@ -14,24 +13,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        /** Main CTA / links / accents */
-        primary: "#25D366",
-        /** Hover / pressed — WhatsApp teal, pairs with primary on marketing */
-        primaryDark: "#128C7E",
-        /** Semantic tokens (notifyy.io–style slate UI) */
+        /** Main brand / links / accents */
+        primary: "#003D8A",
+        /** Darker blue for pressed states (pairs with `hover:bg-blue-800` on buttons) */
+        primaryDark: "#002d68",
+        /** Semantic tokens — minimal neutrals */
         notifyy: {
-          page: "#f4f7fa",
+          page: "#f6f8fb",
           pageDark: "#09090b",
           ink: "#0f172a",
           inkMuted: "#475569",
           muted: "#64748b",
-          border: "#e2e8f0",
+          border: "#e8ecf1",
           borderDark: "#27272a",
           card: "#ffffff",
           cardDark: "#18181b",
-          /** Subtle green wash for CTAs / highlights */
-          tint: "rgba(37, 211, 102, 0.08)",
-          tintDark: "rgba(37, 211, 102, 0.12)",
+          /** Subtle primary wash */
+          tint: "rgba(0, 61, 138, 0.07)",
+          tintDark: "rgba(0, 61, 138, 0.14)",
         },
       },
       maxWidth: {

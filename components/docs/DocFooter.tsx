@@ -33,7 +33,7 @@ export function DocFooter({ slug }: { slug: DocSlug }) {
         {nextSlug ? (
           <Link
             href={docPaths[nextSlug]}
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primaryDark"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
           >
             <span>
               {copy.docs.next}: {copy.nav[docSlugToNavKey[nextSlug]]}

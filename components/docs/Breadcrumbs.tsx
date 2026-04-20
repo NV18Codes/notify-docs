@@ -35,7 +35,7 @@ export function Breadcrumbs() {
             {c.href ? (
               <Link
                 href={c.href}
-                className="text-primary underline-offset-2 hover:text-primaryDark hover:underline"
+                className="text-primary underline-offset-2 hover:underline"
               >
                 {c.label}
               </Link>

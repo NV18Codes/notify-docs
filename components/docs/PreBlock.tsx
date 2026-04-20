@@ -24,7 +24,7 @@ export function PreBlock({ children, ...rest }: ComponentPropsWithoutRef<"pre">)
       <button
         type="button"
         onClick={copy}
-        className="absolute right-2 top-2 rounded-md bg-primary px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hover:bg-primaryDark group-hover:opacity-100"
+        className="absolute right-2 top-2 rounded-md bg-primary px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hover:bg-blue-800 group-hover:opacity-100"
       >
         Copy
       </button>

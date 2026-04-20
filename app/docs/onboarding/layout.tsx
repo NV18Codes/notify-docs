@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 export const metadata: Metadata = {
   title: "Customer Onboarding",
   description:
-    "Learn how to set up Notifyy, connect WhatsApp API, and send your first campaign. WhatsApp onboarding, API integration, and campaign setup.",
+    "Set up Notifyy: connect WhatsApp Business, verify your account, create templates, import contacts, send campaigns, and monitor performance.",
   keywords: [
     "WhatsApp onboarding",
     "WhatsApp campaign setup",
@@ -15,14 +15,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Customer Onboarding | Notifyy Docs",
     description:
-      "Learn how to set up Notifyy, connect WhatsApp API, and send your first campaign.",
+      "Set up Notifyy: connect WhatsApp Business, verify your account, create templates, import contacts, send campaigns, and monitor performance.",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
     title: "Customer Onboarding | Notifyy Docs",
     description:
-      "Learn how to set up Notifyy, connect WhatsApp API, and send your first campaign.",
+      "Set up Notifyy: connect WhatsApp Business, verify your account, create templates, import contacts, send campaigns, and monitor performance.",
   },
 };
 
