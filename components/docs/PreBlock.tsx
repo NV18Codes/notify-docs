@@ -16,7 +16,7 @@ export function PreBlock({ children, ...rest }: ComponentPropsWithoutRef<"pre">)
     <div className="group relative my-5">
       <pre
         ref={ref}
-        className="overflow-x-auto rounded-lg border border-zinc-200 bg-zinc-900 p-4 text-sm text-zinc-100 dark:border-zinc-700"
+        className="overflow-x-auto rounded-lg border border-zinc-200 bg-zinc-900 p-4 text-sm text-zinc-100 dark:border-slate-700 dark:bg-slate-950"
         {...rest}
       >
         {children}

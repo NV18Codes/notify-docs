@@ -12,7 +12,7 @@ export function TOC({ slug, className }: { slug: ArticleSlug; className?: string
 
   return (
     <nav className={cn("text-sm", className)} aria-labelledby="toc-heading">
-      <p id="toc-heading" className="mb-3 font-semibold text-notifyy-ink dark:text-zinc-100">
+      <p id="toc-heading" className="mb-3 font-semibold text-notifyy-ink dark:text-slate-100">
         {copy.docs.onThisPage}
       </p>
       <ul className="space-y-2 border-l border-notifyy-border dark:border-notifyy-borderDark">
@@ -20,7 +20,7 @@ export function TOC({ slug, className }: { slug: ArticleSlug; className?: string
           <li key={item.id}>
             <a
               href={`#${item.id}`}
-              className="-ml-px block border-l-2 border-transparent py-0.5 pl-3 text-notifyy-muted transition-colors hover:border-primary hover:text-primary dark:text-zinc-400 dark:hover:text-primary"
+              className="-ml-px block border-l-2 border-transparent py-0.5 pl-3 text-notifyy-muted transition-colors hover:border-primary hover:text-primary dark:text-notifyy-mutedDark dark:hover:border-sky-500/60 dark:hover:text-sky-300"
             >
               {labels[item.labelKey as keyof typeof labels]}
             </a>

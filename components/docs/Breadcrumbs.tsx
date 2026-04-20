@@ -27,20 +27,20 @@ export function Breadcrumbs() {
   }
 
   return (
-    <nav aria-label="Breadcrumb" className="text-sm text-notifyy-muted dark:text-zinc-500">
+    <nav aria-label="Breadcrumb" className="text-sm text-notifyy-muted dark:text-notifyy-mutedDark">
       <ol className="flex flex-wrap items-center gap-1.5">
         {crumbs.map((c, i) => (
           <li key={`${c.label}-${i}`} className="flex items-center gap-1.5">
-            {i > 0 && <span className="text-notifyy-border dark:text-zinc-600" aria-hidden>/</span>}
+            {i > 0 && <span className="text-notifyy-border dark:text-slate-600" aria-hidden>/</span>}
             {c.href ? (
               <Link
                 href={c.href}
-                className="text-primary underline-offset-2 hover:underline"
+                className="text-primary underline-offset-2 hover:underline dark:text-sky-400 dark:hover:text-sky-300"
               >
                 {c.label}
               </Link>
             ) : (
-              <span className="font-medium text-notifyy-ink dark:text-zinc-200">{c.label}</span>
+              <span className="font-medium text-notifyy-ink dark:text-slate-200">{c.label}</span>
             )}
           </li>
         ))}

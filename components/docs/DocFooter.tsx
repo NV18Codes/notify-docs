@@ -11,14 +11,14 @@ export function DocFooter({ slug }: { slug: DocSlug }) {
 
   return (
     <nav
-      className="not-prose mt-12 flex flex-col gap-3 border-t border-zinc-200 pt-8 dark:border-zinc-800 sm:flex-row sm:justify-between"
+      className="not-prose mt-12 flex flex-col gap-3 border-t border-zinc-200 pt-8 dark:border-notifyy-borderDark sm:flex-row sm:justify-between"
       aria-label="Documentation pagination"
     >
       <div className="min-w-0 flex-1">
         {prevSlug ? (
           <Link
             href={docPaths[prevSlug]}
-            className="inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-primary dark:text-zinc-400 dark:hover:text-primary"
+            className="inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-primary dark:text-slate-400 dark:hover:text-sky-400"
           >
             <span aria-hidden>←</span>
             <span>
@@ -26,14 +26,14 @@ export function DocFooter({ slug }: { slug: DocSlug }) {
             </span>
           </Link>
         ) : (
-          <span className="text-sm text-zinc-400 dark:text-zinc-600">{copy.docs.previous}: —</span>
+          <span className="text-sm text-zinc-400 dark:text-slate-600">{copy.docs.previous}: —</span>
         )}
       </div>
       <div className="min-w-0 flex-1 text-right">
         {nextSlug ? (
           <Link
             href={docPaths[nextSlug]}
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline dark:text-sky-400 dark:hover:text-sky-300"
           >
             <span>
               {copy.docs.next}: {copy.nav[docSlugToNavKey[nextSlug]]}
@@ -41,7 +41,7 @@ export function DocFooter({ slug }: { slug: DocSlug }) {
             <span aria-hidden>→</span>
           </Link>
         ) : (
-          <span className="text-sm text-zinc-400 dark:text-zinc-600">{copy.docs.next}: —</span>
+          <span className="text-sm text-zinc-400 dark:text-slate-600">{copy.docs.next}: —</span>
         )}
       </div>
     </nav>

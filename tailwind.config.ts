@@ -20,17 +20,24 @@ const config: Config = {
         /** Semantic tokens — minimal neutrals */
         notifyy: {
           page: "#f6f8fb",
-          pageDark: "#09090b",
+          /** Deep blue-slate canvas (not flat black) */
+          pageDark: "#0b1120",
           ink: "#0f172a",
           inkMuted: "#475569",
           muted: "#64748b",
           border: "#e8ecf1",
-          borderDark: "#27272a",
+          /** Soft rail / dividers on dark */
+          borderDark: "#2a3548",
           card: "#ffffff",
-          cardDark: "#18181b",
+          /** Elevated panels — sidebar, footer */
+          cardDark: "#121a2d",
+          /** Slightly lifted surface for chips / nested UI */
+          surfaceDark: "#161f35",
+          /** Secondary label text on dark */
+          mutedDark: "#8b9cb8",
           /** Subtle primary wash */
           tint: "rgba(0, 61, 138, 0.07)",
-          tintDark: "rgba(0, 61, 138, 0.14)",
+          tintDark: "rgba(56, 139, 253, 0.12)",
         },
       },
       maxWidth: {
