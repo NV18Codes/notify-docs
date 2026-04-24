@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: copy.meta.title,
   description: copy.meta.description,
+  icons: {
+    icon: "/notifyyLogo.png",
+    shortcut: "/notifyyLogo.png",
+    apple: "/notifyyLogo.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

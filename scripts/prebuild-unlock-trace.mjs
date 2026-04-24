@@ -1,7 +1,7 @@
 /**
- * Windows: `next build` appends to `.next/trace`. If another process (e.g. `next dev`)
- * holds that file, the build throws EPERM. This script removes a stale `trace` file
- * before `next build` and exits with a clear message if the file is locked.
+ * Windows: Next.js opens `.next/trace` for writes. If the file is locked (another
+ * `next dev`, Defender, OneDrive on Desktop, etc.), `next dev` / `next build` can
+ * throw EPERM. This script deletes a stale `trace` file before dev or build.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -19,14 +19,15 @@ try {
   const code = err && typeof err === "object" && "code" in err ? err.code : "";
   if (code === "EPERM" || code === "EBUSY" || code === "EACCES") {
     console.error(`
-Cannot remove .next/trace (file is in use).
+Cannot remove .next/trace (file is in use or blocked).
 
-Fix:
-  1) Stop every "npm run dev" / "next dev" — press Ctrl+C in each terminal.
-  2) Optionally delete the cache:  Remove-Item -Recurse -Force .next
-  3) Run:  npm run build
+Fix (try in order):
+  1) Task Manager → end all "Node.js" processes; close every terminal running Next.js.
+  2) Full cache reset:  npm run dev:clean   (or:  npm run clear-next)
+  3) If the repo is on Desktop and OneDrive syncs it, move the project or exclude the folder.
+  4) Temporarily exclude this folder from real-time antivirus scanning.
 
-On Netlify/CI there is no dev server, so this error should not occur.
+Then run:  npm run dev   or   npm run build
 `);
     process.exit(1);
   }
