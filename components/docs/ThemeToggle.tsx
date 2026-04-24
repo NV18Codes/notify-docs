@@ -10,9 +10,7 @@ export function ThemeToggle() {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return (
-      <span className="h-9 w-9 rounded-md border border-zinc-200 bg-zinc-100 dark:border-notifyy-borderDark dark:bg-notifyy-surfaceDark" />
-    );
+    return <span className="h-9 w-9" aria-hidden />;
   }
 
   const isDark = resolvedTheme === "dark";
@@ -21,11 +19,11 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-primary/20 bg-primary text-white shadow-sm transition-all duration-200 ease-in-out hover:scale-[1.03] hover:bg-blue-800 dark:border-sky-400/30 dark:bg-sky-600 dark:text-white dark:hover:bg-sky-500"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-md text-primary transition-colors duration-200 ease-in-out hover:bg-primary/10 dark:text-sky-300 dark:hover:bg-sky-400/10"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDark ? (
-        <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -33,7 +31,7 @@ export function ThemeToggle() {
           />
         </svg>
       ) : (
-        <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
           <path
             strokeLinecap="round"
             strokeLinejoin="round"

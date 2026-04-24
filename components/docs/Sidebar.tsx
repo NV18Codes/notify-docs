@@ -165,21 +165,20 @@ function CollapsibleBlock({
   const sectionActive = blockContainsActive(block, pathStr);
 
   return (
-    <div className="mb-7 rounded-xl border border-gray-200/80 bg-white/90 p-2 shadow-sm transition-all duration-200 ease-in-out dark:border-notifyy-borderDark dark:bg-notifyy-cardDark/70">
+    <div className="mb-4 transition-all duration-200 ease-in-out">
       <button
         type="button"
         onClick={onToggle}
         className={cn(
-          "mb-2 flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left transition-all duration-200 ease-in-out hover:bg-gray-50 dark:hover:bg-white/[0.04]",
+          "mb-1.5 flex w-full items-center gap-2 rounded-md px-1 py-1.5 text-left transition-all duration-200 ease-in-out hover:bg-gray-50 dark:hover:bg-white/[0.04]",
           sectionActive && "text-primary dark:text-sky-400",
         )}
         aria-expanded={expanded}
       >
         <span
           className={cn(
-            "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-gray-200/90 bg-white text-notifyy-muted shadow-sm transition-colors dark:border-notifyy-borderDark dark:bg-notifyy-surfaceDark dark:text-notifyy-mutedDark",
-            sectionActive &&
-              "border-primary/20 text-primary dark:border-sky-400/30 dark:text-sky-300",
+            "inline-flex h-6 w-6 shrink-0 items-center justify-center rounded text-notifyy-muted transition-colors dark:text-notifyy-mutedDark",
+            sectionActive && "text-primary dark:text-sky-300",
           )}
         >
           <SectionIcon titleKey={block.titleKey} />
@@ -209,7 +208,7 @@ function CollapsibleBlock({
         )}
       >
         <div className="min-h-0 overflow-hidden">
-          <div className="space-y-2 pb-1">{block.items.map((entry) => renderEntry(pathStr, entry))}</div>
+          <div className="space-y-1 pb-1">{block.items.map((entry) => renderEntry(pathStr, entry))}</div>
         </div>
       </div>
     </div>
@@ -259,7 +258,7 @@ export function Sidebar({
   return (
     <aside
       className={cn(
-        "w-72 shrink-0 border-r border-gray-200/80 bg-white p-5 dark:border-notifyy-borderDark dark:bg-notifyy-cardDark lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto",
+        "w-72 shrink-0 border-r border-gray-200/80 bg-white p-4 dark:border-notifyy-borderDark dark:bg-notifyy-cardDark lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto",
         className,
       )}
     >

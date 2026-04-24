@@ -26,7 +26,7 @@ export function DocsSearchTrigger({ className }: { className?: string }) {
         type="button"
         onClick={() => dispatchOpenDocsSearch()}
         className={cn(
-          "inline-flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200/90 bg-white/80 text-notifyy-muted shadow-sm transition-all duration-200 ease-in-out hover:scale-[1.02] hover:border-gray-300 hover:bg-white hover:text-notifyy-ink hover:shadow-md md:hidden dark:border-notifyy-borderDark dark:bg-notifyy-surfaceDark dark:text-notifyy-mutedDark dark:hover:border-slate-600 dark:hover:bg-notifyy-cardDark dark:hover:text-slate-200",
+          "inline-flex h-9 w-9 items-center justify-center rounded-md text-notifyy-muted transition-colors duration-200 ease-in-out hover:bg-gray-100 hover:text-notifyy-ink md:hidden dark:text-notifyy-mutedDark dark:hover:bg-white/[0.06] dark:hover:text-slate-200",
           className,
         )}
         aria-label="Search documentation"
@@ -39,13 +39,13 @@ export function DocsSearchTrigger({ className }: { className?: string }) {
         type="button"
         onClick={() => dispatchOpenDocsSearch()}
         className={cn(
-          "hidden min-w-[170px] items-center justify-between gap-2 rounded-lg border border-gray-200/90 bg-white/85 px-3.5 py-2 text-sm text-notifyy-muted shadow-sm transition-all duration-200 ease-in-out hover:scale-[1.02] hover:border-gray-300 hover:bg-white hover:text-notifyy-ink hover:shadow-md md:inline-flex dark:border-notifyy-borderDark dark:bg-notifyy-surfaceDark dark:text-notifyy-mutedDark dark:hover:border-slate-600 dark:hover:bg-notifyy-cardDark dark:hover:text-slate-200",
+          "hidden min-w-[170px] items-center justify-between gap-2 rounded-md px-2 py-1.5 text-sm text-notifyy-muted transition-colors duration-200 ease-in-out hover:bg-gray-100 hover:text-notifyy-ink md:inline-flex dark:text-notifyy-mutedDark dark:hover:bg-white/[0.06] dark:hover:text-slate-200",
           className,
         )}
         aria-label="Search documentation"
       >
         <span>Search…</span>
-        <kbd className="rounded border border-gray-200 bg-gray-50 px-1 font-mono text-[10px] dark:border-slate-600 dark:bg-slate-900">
+        <kbd className="rounded px-1 font-mono text-[10px] text-notifyy-muted dark:text-notifyy-mutedDark">
           Cmd/Ctrl + K
         </kbd>
       </button>

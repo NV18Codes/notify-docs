@@ -13,7 +13,7 @@ export function Navbar({ className }: { className?: string }) {
           href="https://www.notifyy.io/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center rounded-md border border-primary/20 bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-all duration-200 ease-in-out hover:scale-[1.02] hover:bg-primary/15 dark:border-sky-400/25 dark:bg-sky-400/10 dark:text-sky-300 dark:hover:bg-sky-400/20"
+          className="inline-flex items-center rounded-md px-1 py-1 text-sm font-medium text-primary transition-colors duration-200 ease-in-out hover:text-primaryDark dark:text-sky-300 dark:hover:text-sky-200"
         >
           Visit Notifyy →
         </a>
