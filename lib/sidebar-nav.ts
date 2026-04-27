@@ -26,7 +26,7 @@ export type SidebarLeafItem = {
 /** Nested block under “Customer Onboarding”. */
 export type SidebarSubgroup = {
   type: "subgroup";
-  titleKey: "onboarding";
+  titleKey: "onboarding" | "whatsappTemplates";
   href: string;
   items: SidebarLeafItem[];
 };
@@ -62,8 +62,12 @@ export const SIDEBAR_BLOCKS: SidebarBlock[] = [
     titleKey: "messaging",
     items: [
       { href: "/docs/campaigns", labelKey: "campaigns" },
-      { href: "/docs/templates", labelKey: "whatsappTemplates" },
-      { href: "/docs/carousel", labelKey: "carouselTemplates" },
+      {
+        type: "subgroup",
+        titleKey: "whatsappTemplates",
+        href: "/docs/templates",
+        items: [{ href: "/docs/carousel", labelKey: "carouselTemplates", nested: true }],
+      },
       { href: "/docs/catalog", labelKey: "whatsappCatalog" },
     ],
   },

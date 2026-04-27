@@ -1,0 +1,260 @@
+export const metadata = {
+  title: "WhatsApp Templates",
+  description:
+    "Learn how to create, configure, submit, and manage WhatsApp templates in Notifyy, including variables, buttons, approval workflow, and best practices.",
+  keywords: [
+    "Notifyy WhatsApp templates",
+    "WhatsApp template setup",
+    "Meta template approval",
+    "WhatsApp marketing templates",
+    "template variables and buttons",
+  ],
+  alternates: {
+    canonical: "/docs/templates",
+  },
+  openGraph: {
+    title: "WhatsApp Templates | Notifyy Docs",
+    description:
+      "A practical guide to creating and managing WhatsApp templates in Notifyy, from setup to approval and campaign usage.",
+    url: "/docs/templates",
+    type: "article",
+  },
+};
+
+# WhatsApp Templates
+
+WhatsApp Templates in Notifyy are pre-approved message formats that help you send structured messages to customers outside the 24-hour support window. You need templates for most outbound communication such as reminders, alerts, updates, and promotions.  
+Before any template can be used, Meta reviews and approves it. This process helps maintain quality and policy compliance.
+
+---
+
+## Navigate to Templates
+
+Open Notifyy, go to the **Engagement** section, and click **WhatsApp Templates**.  
+This page is your main workspace for creating and managing all template communication.
+
+The full workflow is simple when followed in order:
+
+1. Login to Notifyy
+2. Hover **Engagement** and open **WhatsApp Templates**
+3. Click **Create Template**
+4. Enter name, category, and language
+5. Configure header, body, variables, and buttons
+6. Review in preview and submit for approval
+7. Sync status and use approved template in campaigns
+
+---
+
+<div className="border border-dashed border-gray-300 rounded-lg h-[220px] flex items-center justify-center text-gray-400 text-sm my-6">
+  Templates Dashboard and Navigation
+</div>
+
+---
+
+## 01. Components of a WhatsApp Template
+
+Each template has a few core parts. If you understand these parts well, creating a good template becomes much easier.
+
+| Component | Explanation |
+|---|---|
+| Template Name | Internal name used by your team to identify and manage templates. Customers do not see this name. |
+| Category | Message purpose: Marketing, Utility, or Authentication. If content does not match the selected category, Meta may reclassify it. |
+| Language | Language selected in template setup. It should match your actual message text. |
+| Header | Optional top section. Can be Text, Image, Video, Document, or Location. |
+| Body | Main message content. This is required for every template. |
+| Variables | Dynamic placeholders such as First Name or Order Id, replaced with real customer data at send time. |
+| Footer | Optional bottom section for short notes, disclaimers, or helpful context. |
+| Buttons | Optional actions customers can tap, like Quick Reply, Website, Contact, or Flow. |
+
+---
+
+## 02. Templates List Screen
+
+This page helps you manage all templates from one place.  
+When your template count grows, this screen becomes very useful for quick searching and control.
+
+From this page, you can:
+
+- View all templates
+- Search templates
+- Filter by category, language, or status
+- Sync status with Meta
+- Create new templates
+- Open actions menu for template operations
+
+<TipBox>
+  Use filters regularly when working with many templates. It saves time and helps avoid selecting the wrong template.
+</TipBox>
+
+---
+
+## 03. How to Create a WhatsApp Template
+
+When creating a template, complete these steps from top to bottom:
+
+1. Click **Create Template** on the Templates listing page.
+2. Enter a unique **Template Name** that your team can understand easily.
+3. Select the correct **Category** and **Language**.
+4. Configure **Header** if needed (Text, Image, Video, Document, or Location).
+5. Write the **Body** and add variables using **Add Variables** where personalization is needed.
+6. Add **Buttons** if the customer should take action directly from WhatsApp.
+7. Review everything in the live **Preview** panel before submission.
+8. Click **Submit** to send the template to Meta for approval.
+
+---
+
+## 04. Header Configuration
+
+The header is optional, but it can improve message clarity and visual impact.  
+Only one header type can be added per template, so choose the one that best matches your message purpose.
+
+Supported header types:
+
+- **Text**: Short heading/title
+- **Image**: `.jpg`, `.png` (max 5 MB)
+- **Video**: `.mp4` (max 16 MB)
+- **Document**: `.pdf` (max 100 MB)
+- **Location**: Static map pin
+
+<div className="border border-dashed rounded-lg h-[220px] flex items-center justify-center my-6">
+  Header Configuration
+</div>
+
+> **Note:** If your message does not need media or title context, you can skip header and submit a body-only template.
+
+---
+
+## 05. Body and Variables
+
+### Template Body
+
+The body is the most important part of your template and is mandatory.  
+Write in clear, simple language so customers immediately understand why they received the message.
+
+### Using Variables
+
+Variables help you personalize one template for many customers.  
+At send time, each variable is replaced with actual data from your contact list or campaign payload.
+
+Example:
+
+Hello **First Name**, your order **Order Id** is confirmed.
+
+<div className="border border-dashed rounded-lg h-[220px] flex items-center justify-center my-6">
+  Body Editor and Variables
+</div>
+
+> **Note:** Each variable must include a sample value in the Samples section for Meta review.
+
+---
+
+## 06. Buttons Configuration
+
+Buttons make your message interactive and reduce customer effort.  
+Instead of typing a response, the customer can tap a button to continue.
+
+Supported types:
+
+- Quick Reply
+- Website (Static / Dynamic)
+- Contact / Phone
+- Flow
+
+<div className="border border-dashed rounded-lg h-[200px] flex items-center justify-center my-6">
+  Buttons Section
+</div>
+
+> **Note:** Up to 3 Quick Reply buttons and up to 2 CTA buttons (Website/Contact) can be added per template.
+
+---
+
+## 07. Template Preview
+
+The preview panel updates live while you edit.  
+Use this panel to check your layout, wording, and button flow before submitting.
+
+- Live updates as you edit
+- Displays header, body, footer, and buttons
+- Shows variable placeholders in preview format
+- Helps catch formatting issues before submission
+
+<div className="border border-dashed rounded-lg h-[200px] flex items-center justify-center my-6">
+  Live Preview Panel
+</div>
+
+---
+
+## 08. Actions Menu
+
+Each template row has a three-dot actions menu for quick operations.  
+Available options depend on the current template status.
+
+Available actions:
+
+- Submit template
+- Edit template (for editable statuses)
+- View template
+- Delete template
+
+<div className="border border-dashed rounded-lg h-[200px] flex items-center justify-center my-6">
+  Actions Menu (Edit / Delete / View)
+</div>
+
+<WarningBox>
+  Deleting a template is permanent and cannot be undone.
+</WarningBox>
+
+---
+
+## 09. Approval Process and Usage
+
+After submission, templates move through the review lifecycle:
+
+- Submitted
+- In Review
+- Pending
+- Approved
+- Rejected
+
+### Usage rules
+
+- **Approved** templates can be used in campaigns.
+- **Rejected** templates should be corrected based on the rejection reason and submitted again as a new or updated draft.
+- Use **Sync Status** to fetch the latest status from Meta.
+
+> **Note:** Approval usually takes 1 to 24 hours in normal conditions.
+
+---
+
+## 10. Best Practices
+
+- Keep wording simple and direct.
+- Use variables where personalization improves customer response.
+- Match selected category to actual message intent.
+- Always review in preview before submission.
+- Start with a small campaign test before full rollout.
+
+---
+
+## Example Scenario
+
+A clinic wants to remind patients about appointments.  
+The team creates a **Utility** template named `appointment_reminder_en`, sets language to English, and adds this body:
+
+Hello **First Name**, this is a reminder for your appointment on **Appointment Date** at **Appointment Time**.
+
+They add:
+
+- A header text: `Appointment Reminder`
+- A quick reply button: `Confirm`
+- A quick reply button: `Reschedule`
+
+Before submitting, they enter sample values for each variable (for example: First Name = Priya, Appointment Date = 29 Apr, Appointment Time = 11:30 AM).  
+After approval, they use the template in a campaign for the next day’s patient list and monitor delivery plus response status.
+
+---
+
+## Summary
+
+WhatsApp Templates help you send consistent and compliant outbound messages at scale.  
+If you follow the right flow—create, review, submit, sync, and then use—you can build reliable communication workflows for campaigns, alerts, and customer updates.
