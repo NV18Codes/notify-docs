@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function DocsHomePage() {
   return (
     <article className="doc-content max-w-3xl">
-      <h1>Notifyy documentation</h1>
       <p className="lead text-zinc-600 dark:text-zinc-400">
         WhatsApp CRM and automation — setup, sending, and operations. Start with onboarding if this is your first workspace.
       </p>

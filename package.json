@@ -6,7 +6,10 @@
     "node": ">=20.9.0"
   },
   "scripts": {
+    "predev": "node scripts/prebuild-unlock-trace.mjs",
     "dev": "next dev",
+    "dev:clean": "node scripts/clear-next-dir.mjs && next dev",
+    "clear-next": "node scripts/clear-next-dir.mjs",
     "prebuild": "node scripts/prebuild-unlock-trace.mjs",
     "build": "next build",
     "start": "next start",

@@ -4,7 +4,7 @@ import { copy } from "@/lib/copy";
 
 export function DocsSiteFooter() {
   return (
-    <footer className="not-prose border-t border-notifyy-border bg-notifyy-card/80 px-4 py-6 dark:border-notifyy-borderDark dark:bg-notifyy-cardDark">
+    <footer className="not-prose border-t border-notifyy-border bg-white px-4 py-6 dark:border-notifyy-borderDark dark:bg-notifyy-cardDark">
       <p className="mx-auto max-w-6xl text-xs text-notifyy-muted dark:text-notifyy-mutedDark lg:px-6">
         {copy.docs.poweredBy}
         <a
