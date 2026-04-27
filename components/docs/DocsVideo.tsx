@@ -17,13 +17,35 @@ export function DocsVideo({
     const video = videoRef.current;
     if (!video) return;
 
+    // Mobile browsers only allow autoplay when the video is definitely muted
+    // before play() is called.
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    const playFromStart = () => {
+      video.pause();
+      video.currentTime = 0;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      void video.play().catch(() => {
+        // Some mobile browsers delay autoplay until metadata is ready.
+        const onReady = () => {
+          video.currentTime = 0;
+          void video.play().catch(() => undefined);
+        };
+        video.addEventListener("loadeddata", onReady, { once: true });
+        video.load();
+      });
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const visible = entry.isIntersecting && entry.intersectionRatio >= 0.6;
+        const visible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
 
         if (visible && !wasVisibleRef.current) {
-          video.currentTime = 0;
-          void video.play();
+          playFromStart();
         }
 
         if (!visible && wasVisibleRef.current) {
@@ -33,7 +55,7 @@ export function DocsVideo({
 
         wasVisibleRef.current = visible;
       },
-      { threshold: [0, 0.6, 1] },
+      { rootMargin: "-12% 0px -12% 0px", threshold: [0, 0.35, 0.6, 1] },
     );
 
     observer.observe(video);
@@ -51,9 +73,11 @@ export function DocsVideo({
         ref={videoRef}
         src={src}
         className="aspect-video h-auto w-full object-contain"
+        autoPlay
         muted
+        loop
         playsInline
-        preload="metadata"
+        preload="auto"
         aria-label="Documentation walkthrough video"
       />
     </div>
