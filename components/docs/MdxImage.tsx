@@ -20,7 +20,7 @@ export function MdxImage({ src, alt, className }: Props) {
         src={src}
         alt={alt ?? ""}
         className={cn(
-          "not-prose mx-auto my-6 block h-auto max-w-full rounded-lg border border-gray-200 shadow-sm dark:border-slate-600/70 dark:shadow-[0_4px_24px_rgba(0,0,0,0.35)]",
+          "not-prose mx-auto my-6 block h-auto max-w-full cursor-pointer rounded-lg border border-gray-200 shadow-sm transition duration-200 ease-in-out hover:scale-[1.02] hover:shadow-md dark:border-slate-600/70 dark:shadow-[0_4px_24px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_8px_32px_rgba(0,0,0,0.45)]",
           className,
         )}
         loading="lazy"
@@ -39,7 +39,7 @@ export function MdxImage({ src, alt, className }: Props) {
         quality={85}
         loading="lazy"
         className={cn(
-          "mx-auto h-auto w-full max-w-full rounded-lg border border-gray-200 shadow-sm dark:border-slate-600/70 dark:shadow-[0_4px_24px_rgba(0,0,0,0.35)]",
+          "mx-auto h-auto w-full max-w-full cursor-pointer rounded-lg border border-gray-200 shadow-sm transition duration-200 ease-in-out hover:scale-[1.02] hover:shadow-md dark:border-slate-600/70 dark:shadow-[0_4px_24px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_8px_32px_rgba(0,0,0,0.45)]",
           className,
         )}
       />

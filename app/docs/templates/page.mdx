@@ -101,6 +101,9 @@ When creating a template, complete these steps from top to bottom:
 7. Review everything in the live **Preview** panel before submission.
 8. Click **Submit** to send the template to Meta for approval.
 
+At this point, your template is either saved as a draft or submitted for Meta review.  
+It is not usable in campaigns until the status changes to **Approved**.
+
 ---
 
 ## 04. Header Configuration
@@ -121,6 +124,8 @@ Supported header types:
 </div>
 
 > **Note:** If your message does not need media or title context, you can skip header and submit a body-only template.
+
+After this step, your template has its top visual or text context configured. Next, move to the body because that is the required part Meta reviews most closely.
 
 ---
 
@@ -146,6 +151,8 @@ Hello **First Name**, your order **Order Id** is confirmed.
 
 > **Note:** Each variable must include a sample value in the Samples section for Meta review.
 
+After completing the body, the template has its core message ready. If you added variables, confirm that every variable has a clear sample value before moving ahead.
+
 ---
 
 ## 06. Buttons Configuration
@@ -166,6 +173,8 @@ Supported types:
 
 > **Note:** Up to 3 Quick Reply buttons and up to 2 CTA buttons (Website/Contact) can be added per template.
 
+Once buttons are added, review whether they genuinely help the customer take the next action. If a button does not improve the flow, keep the template simpler.
+
 ---
 
 ## 07. Template Preview
@@ -181,6 +190,20 @@ Use this panel to check your layout, wording, and button flow before submitting.
 <div className="border border-dashed rounded-lg h-[200px] flex items-center justify-center my-6">
   Live Preview Panel
 </div>
+
+After preview looks correct, decide whether to save the template as a draft or submit it for approval.
+
+### When should you save as draft?
+
+- If your template is not complete yet.
+- If another team member needs to review it.
+- If variables, samples, media, or buttons are still pending.
+
+### When should you submit?
+
+- When the message content is final.
+- When all variables have sample values.
+- When the preview matches what you want customers to receive.
 
 ---
 
@@ -223,6 +246,12 @@ After submission, templates move through the review lifecycle:
 - Use **Sync Status** to fetch the latest status from Meta.
 
 > **Note:** Approval usually takes 1 to 24 hours in normal conditions.
+
+<WarningBox>
+  If a template is rejected, do not use it in campaigns. Review the rejection reason, fix the content, and submit a corrected version for approval.
+</WarningBox>
+
+Once approved, you will be able to select this template while creating campaigns. This is the point where the template becomes ready for real customer communication.
 
 ---
 

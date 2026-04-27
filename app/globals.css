@@ -16,6 +16,18 @@
   .doc-screenshot:hover {
     transform: scale(1.02);
   }
+  .doc-content img,
+  .doc-content [class*="border-dashed"] {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .doc-content img:hover,
+  .doc-content [class*="border-dashed"]:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.1);
+  }
 
   /** Docs shell — subtle brand tint, light borders */
   .docs-shell-header {
