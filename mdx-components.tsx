@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import { DocFooter } from "@/components/docs/DocFooter";
 import { DocMetaStrip } from "@/components/docs/DocMetaStrip";
+import { DocsVideo } from "@/components/docs/DocsVideo";
 import { MdxImage } from "@/components/docs/MdxImage";
 import { MdxLink } from "@/components/docs/MdxLink";
 import { PlatformCta } from "@/components/docs/PlatformCta";
@@ -15,6 +16,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     a: MdxLink,
     DocFooter,
     DocMetaStrip,
+    DocsVideo,
     PlatformCta,
     StepBlock,
     TipBox,

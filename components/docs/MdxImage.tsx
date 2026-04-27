@@ -11,7 +11,7 @@ type Props = Omit<ComponentPropsWithoutRef<"img">, "src" | "width" | "height"> &
 };
 
 const imgClass =
-  "block h-auto w-full max-w-full rounded-lg border border-gray-200/90 shadow-sm transition-all duration-200 ease-in-out group-hover:scale-[1.02] group-hover:shadow-md dark:border-slate-600/60 dark:shadow-[0_4px_24px_rgba(0,0,0,0.35)]";
+  "h-full w-full rounded-md object-contain transition-all duration-200 ease-in-out group-hover:scale-[1.02]";
 
 /** MDX images: optimized `next/image` for local `/public` paths; falls back for remote URLs. Click opens lightbox. */
 export function MdxImage({ src, alt, className }: Props) {
@@ -81,7 +81,7 @@ export function MdxImage({ src, alt, className }: Props) {
       : null;
 
   const btnClass =
-    "group not-prose mx-auto my-6 block w-full max-w-full cursor-pointer rounded-lg p-0 text-left transition-all duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:focus-visible:ring-sky-400";
+    "group not-prose mx-auto my-6 flex aspect-video w-full max-w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-gray-200/90 bg-white p-2 text-left shadow-sm transition-all duration-200 ease-in-out hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-600/60 dark:bg-slate-950/40 dark:shadow-[0_4px_24px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_8px_32px_rgba(0,0,0,0.45)] dark:focus-visible:ring-sky-400";
 
   if (isAbsoluteUrl) {
     return (
@@ -106,7 +106,7 @@ export function MdxImage({ src, alt, className }: Props) {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className={cn(btnClass, "inline-block")}
+          className={btnClass}
           aria-label={alt ? `View larger: ${alt}` : "View larger image"}
         >
           <Image
