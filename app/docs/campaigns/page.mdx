@@ -1,0 +1,299 @@
+export const metadata = {
+  title: "WhatsApp Campaigns",
+  description:
+    "Learn how to create, target, schedule, launch, and track WhatsApp campaigns in Notifyy, including audience selection, retries, recurring campaigns, and campaign status.",
+  keywords: [
+    "Notifyy WhatsApp campaigns",
+    "WhatsApp campaign management",
+    "recurring WhatsApp campaigns",
+    "campaign scheduling",
+    "WhatsApp audience targeting",
+  ],
+  alternates: {
+    canonical: "/docs/campaigns",
+  },
+  openGraph: {
+    title: "WhatsApp Campaigns | Notifyy Docs",
+    description:
+      "A practical guide to creating one-time and recurring WhatsApp campaigns in Notifyy, from approved templates to audience targeting and performance tracking.",
+    url: "/docs/campaigns",
+    type: "article",
+  },
+};
+
+# WhatsApp Campaigns
+
+WhatsApp Campaigns in Notifyy help you send targeted messages to contacts and segments using approved WhatsApp templates.  
+Use campaigns when you want to announce offers, send reminders, share updates, promote events, or run repeat communication at scale.
+
+Before creating a campaign, make sure two things are ready: an **approved WhatsApp template** and a clear **audience segment or contact list**. Without an approved template, the campaign cannot be launched.
+
+---
+
+## Campaign Flow Overview
+
+Campaign creation follows a guided wizard. Complete each step in order so Notifyy can validate your sender, audience, schedule, and final message before launch.
+
+<DocsVideo src="/docs/campaigns/campaign.mp4" />
+
+1. **Campaign**: Add campaign details, sender, and template.
+2. **Select Audience**: Choose segments or individual contacts.
+3. **Schedule**: Decide when the campaign should run and whether retries are needed.
+4. **Review & Save**: Confirm all details and create the campaign.
+
+After creation, the campaign appears in the campaign list. If the campaign is scheduled or waiting to run, you can review its status from the list before delivery starts.
+
+---
+
+## 01. Prerequisites
+
+Before you open the campaign wizard, prepare the items below.
+
+- Create and approve a WhatsApp template from **Engagement → WhatsApp Templates**.
+- Create audience groups from your contacts or segments.
+- Confirm the WhatsApp sender number is connected and has enough daily message limit.
+- Keep campaign content, offer details, and send timing ready.
+
+<TipBox>
+  Campaign setup becomes faster when templates and segments are prepared first. This also reduces the chance of selecting the wrong audience or sending an incomplete message.
+</TipBox>
+
+---
+
+## 02. Start a Campaign
+
+Go to **Campaign Management** and click **Create Campaign**.
+
+In the first step, add the internal campaign information:
+
+- **Campaign Name**: Use a clear name your team can recognize later.
+- **Campaign Category**: Choose WhatsApp as the campaign channel.
+- **Sender Identity**: Select the verified WhatsApp Business number.
+- **Message Template**: Pick an approved template.
+- **Description**: Add an optional internal note for context.
+
+The sender limit appears automatically after selecting the sender identity. Check this number before moving forward because your audience size should stay within the available messaging limit.
+
+<img src="/docs/campaigns/campaign-form.png" alt="Campaign details form in Notifyy" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+At this point, your campaign has the sender and message foundation ready. It is not ready to launch until audience, schedule, and review are completed.
+
+---
+
+## 03. Select Audience
+
+The audience step decides who should receive the campaign and who should be excluded.
+
+You can include:
+
+- **Send to Segments**: Add one or more saved segments.
+- **Send to Contacts**: Add specific contacts directly.
+
+You can exclude:
+
+- **Don't Send to Segments**: Suppress groups such as unsubscribed users or converted leads.
+- **Don't Send to Contacts**: Exclude specific people even if they belong to a selected segment.
+
+At least one segment or contact must be selected before moving ahead. Use exclusions carefully when you want to prevent duplicate or unwanted communication.
+
+<img src="/docs/campaigns/Audience_selection.png" alt="Audience selection step for WhatsApp campaign" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<WarningBox>
+  Always review the final audience before continuing. Sending to the wrong segment is one of the easiest mistakes to make in campaign workflows.
+</WarningBox>
+
+---
+
+## 04. Schedule Campaign
+
+The schedule step controls when the campaign should run.
+
+You can choose:
+
+- **Send Now**: Launch immediately after final confirmation.
+- **Schedule for Later**: Pick a future date and time.
+- **Recurring Campaign**: Repeat the campaign on a fixed schedule.
+
+You can also enable retry for undelivered messages. When enabled, Notifyy attempts to resend messages that were not delivered on the first attempt. Use a retry value between **1 and 3** depending on how important delivery is for the campaign.
+
+<img src="/docs/campaigns/schedule_options.png" alt="Campaign schedule options in Notifyy" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+Use the detailed schedule controls to decide whether the campaign should run once, later, or as a recurring campaign. If retry is enabled, keep the retry count realistic so customers are not contacted too aggressively.
+
+<DocsVideo src="/docs/campaigns/scheduling_options%20with%20details.mp4" />
+
+<TipBox>
+  Enable retries for reminders, alerts, and time-sensitive updates. For standard promotions, one or two retry attempts are usually enough.
+</TipBox>
+
+---
+
+## 05. Review & Save
+
+The final step shows a complete summary of your campaign.
+
+Review:
+
+- Campaign name and channel
+- Sender identity
+- Selected template
+- Audience and exclusions
+- Schedule mode
+- Retry settings
+- WhatsApp message preview
+
+If anything looks incorrect, go back to the relevant step and fix it before creating the campaign. Once you create the campaign, it is queued. If **Send Now** was selected, delivery can begin immediately.
+
+<img src="/docs/campaigns/preview.png" alt="Campaign review and preview step" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+After successful creation, Notifyy shows a confirmation message and returns you to the campaign list.
+
+---
+
+## 06. Campaign List and Status
+
+After creation, campaigns are visible in the WhatsApp Campaigns list. Use search, status filters, type filters, and sorting to locate campaigns quickly.
+
+From the campaign list, you can:
+
+- Search campaigns by name or related details.
+- Edit campaigns that are still editable.
+- Delete campaigns that are no longer needed.
+- Open campaign insights to review performance.
+- Check recipient-level delivery and execution details.
+
+Use edit options when a campaign still needs changes before it runs. You can update eligible settings, then save the corrected version.
+
+<img src="/docs/campaigns/editfeatures.png" alt="Campaign edit features in Notifyy" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+The list view helps you monitor all campaigns in one place. Search and filters make it easier to find a campaign when your workspace has many active or completed sends.
+
+<img src="/docs/campaigns/list-view.png" alt="WhatsApp campaigns list view" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+If a campaign can be restored or recovered from the available action flow, use that option carefully after confirming it is the correct campaign.
+
+<img src="/docs/campaigns/restore.png" alt="Campaign restore action in Notifyy" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+| Status | Meaning | Recommended action |
+|---|---|---|
+| Ready | Campaign is queued and waiting to send. | No action needed unless you want to review it before launch. |
+| Scheduled | Campaign is set for a future date and time. | Review or update before the scheduled time if needed. |
+| Completed | Campaign delivery has finished. | Open insights to review performance. |
+| Failed | Some or all messages could not be delivered. | Check details, fix issues, and recreate or resend if required. |
+
+Campaign insights help you understand what happened after launch. Use them to review delivery progress, recipient status, failures, and overall campaign performance.
+
+### Campaign performance
+
+The stats view summarizes how the campaign performed after it ran. Use it to check delivery health, engagement, and high-level results before deciding whether to repeat or improve the campaign.
+
+<img src="/docs/campaigns/stats.png" alt="Campaign performance statistics in Notifyy" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Recipient status
+
+The recipients view shows message-level status for individual contacts. This helps you identify who received the campaign, who did not, and whether follow-up is needed.
+
+<img src="/docs/campaigns/recipents.png" alt="Campaign recipient status list" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Execution details
+
+The execution view gives more technical detail about how the campaign ran. Use it when you need to investigate failed sends, delivery issues, or retry behavior.
+
+<img src="/docs/campaigns/execution.png" alt="Campaign execution details in Notifyy" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<WarningBox>
+  Delete campaigns carefully. If a campaign has already been launched, review insights and execution details before removing it from your workspace.
+</WarningBox>
+
+---
+
+## 07. Recurring Campaigns
+
+Recurring Campaigns are automated WhatsApp campaigns that repeat on a schedule. Set them up once, define when they repeat, and Notifyy handles future sends automatically.
+
+Use recurring campaigns for:
+
+- Birthday or anniversary wishes
+- Weekly offers or newsletters
+- Monthly payment reminders
+- Festival greetings
+- Daily tips or recurring community updates
+
+Recurring campaigns are configured inside the same campaign creation flow. On the schedule step, choose **Recurring Campaign** instead of sending immediately or scheduling once.
+
+---
+
+## 08. Recurring Schedule Options
+
+When recurring mode is selected, configure the first send date, time, repeat pattern, and end condition.
+
+| Field | What it controls |
+|---|---|
+| Start Date | Date of the first send. Future repeats are calculated from this date. |
+| Time | Time of day when each occurrence is sent. |
+| Repeats | Frequency: Daily, Weekly, Monthly, Yearly, or Custom. |
+| Ends | When the campaign stops: Never, after a number of sends, or on an end date. |
+| Max Recurrences | Number of times the campaign should run when an occurrence limit is selected. |
+| Repeat on | Weekday selection when the repeat type is Weekly. |
+
+After choosing repeat settings, read the schedule summary carefully. It confirms the full recurrence in plain language and helps catch wrong dates, days, or occurrence counts before activation.
+
+---
+
+## 09. Repeat Frequency Examples
+
+### Daily
+
+Use daily campaigns for short, high-frequency communication such as wellness tips, daily offers, or check-in reminders.  
+For example, a clinic can send a daily health tip every morning at 8:00 AM to subscribed patients.
+
+### Weekly
+
+Use weekly campaigns when your communication follows a regular weekly rhythm.  
+For example, a retail store can send offers every Wednesday and Saturday evening to keep customers engaged before weekends.
+
+### Monthly
+
+Use monthly campaigns for renewals, invoices, subscription reminders, or monthly reports.  
+For example, a finance brand can send EMI reminders on the 1st of every month.
+
+### Yearly
+
+Use yearly campaigns for birthdays, anniversaries, and annual festival greetings.  
+For example, a boutique can send a birthday discount to each customer every year.
+
+### Custom
+
+Use custom frequency when standard options do not match your cadence.  
+For example, an event team can send a countdown message every two weeks until the event date.
+
+---
+
+## 10. Quick Launch Checklist
+
+Before creating a campaign, verify the following:
+
+- Approved WhatsApp template is selected.
+- Sender identity and message limit are checked.
+- At least one segment or contact is included.
+- Exclusion lists are configured if required.
+- Schedule mode is correct.
+- Retry count is set only if needed.
+- Message preview looks correct.
+- Final summary has been reviewed.
+
+---
+
+## Example Scenario
+
+A clothing brand wants to promote a weekend sale.  
+The team first creates and approves a marketing template, then builds a segment of customers who purchased in the last 90 days. In the campaign wizard, they select the approved template, choose the customer segment, schedule the campaign for Friday evening, and enable one retry for undelivered messages.
+
+After creating the campaign, they return to the campaign list and confirm the status. Once the campaign runs, they open insights to review delivery, recipient status, and overall performance.
+
+---
+
+## Summary
+
+Campaign Management in Notifyy helps you create, target, schedule, and track WhatsApp campaigns from one place.  
+For best results, prepare approved templates and clean audience segments first, review every step before launch, and monitor campaign performance after delivery.
