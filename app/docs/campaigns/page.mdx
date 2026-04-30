@@ -30,11 +30,29 @@ Before creating a campaign, make sure two things are ready: an **approved WhatsA
 
 ---
 
+## When should you use campaigns?
+
+Use campaigns when you need to reach many customers with one controlled message flow. A campaign is useful for planned communication where the message, audience, and send time need to be reviewed before delivery.
+
+Common use cases include:
+
+- Sending offers or promotions to selected customers.
+- Notifying customers about product, service, or account updates.
+- Re-engaging inactive users with a relevant message.
+- Sending reminders for payments, appointments, renewals, or events.
+- Running recurring outreach such as newsletters or festival greetings.
+
+---
+
 ## Campaign Flow Overview
 
 Campaign creation follows a guided wizard. Complete each step in order so Notifyy can validate your sender, audience, schedule, and final message before launch.
 
 <DocsVideo src="/docs/campaigns/campaign.mp4" />
+
+Think of the flow as:
+
+**Template → Audience → Review → Send → Track**
 
 1. **Campaign**: Add campaign details, sender, and template.
 2. **Select Audience**: Choose segments or individual contacts.
@@ -84,10 +102,19 @@ At this point, your campaign has the sender and message foundation ready. It is 
 
 The audience step decides who should receive the campaign and who should be excluded.
 
-You can include:
+You can choose your audience in two ways:
 
-- **Send to Segments**: Add one or more saved segments.
-- **Send to Contacts**: Add specific contacts directly.
+1. **Contacts**: Send to selected individual users.
+2. **Segments**: Send to filtered groups of users.
+
+Segments are usually better for targeted campaigns because they let you group contacts by conditions such as signup date, city, lifecycle stage, purchase behavior, or previous engagement.
+
+For example, you can send a campaign only to:
+
+- Customers who signed up in the last 7 days.
+- Users who did not respond to a previous campaign.
+- Contacts from a specific city or branch.
+- High-intent leads who match a saved segment.
 
 You can exclude:
 
@@ -141,12 +168,24 @@ Review:
 - Schedule mode
 - Retry settings
 - WhatsApp message preview
+- Template variables and sample values
+
+This review step is important because it is your last chance to confirm the message before customers receive it. Check the message content, selected audience, template variables, and schedule carefully. This helps avoid sending the wrong message to the wrong customer group.
 
 If anything looks incorrect, go back to the relevant step and fix it before creating the campaign. Once you create the campaign, it is queued. If **Send Now** was selected, delivery can begin immediately.
 
 <img src="/docs/campaigns/preview.png" alt="Campaign review and preview step" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
 
 After successful creation, Notifyy shows a confirmation message and returns you to the campaign list.
+
+### What happens when you send a campaign?
+
+Once the campaign is created and starts running:
+
+- Messages are delivered to the selected contacts.
+- Delivery and read status are tracked where available.
+- Failed or undelivered messages may retry automatically if retry is enabled.
+- Campaign results become available in insights after execution begins.
 
 ---
 
@@ -204,6 +243,20 @@ The execution view gives more technical detail about how the campaign ran. Use i
 <WarningBox>
   Delete campaigns carefully. If a campaign has already been launched, review insights and execution details before removing it from your workspace.
 </WarningBox>
+
+### What can you learn from insights?
+
+After sending a campaign, use insights to understand results instead of only checking whether the campaign was created successfully.
+
+You can review:
+
+- Delivery rate
+- Read rate
+- Customer responses
+- Failed or skipped recipients
+- Retry and execution behavior
+
+Use these insights to improve future campaigns, refine audience selection, and adjust message timing.
 
 ---
 
@@ -281,6 +334,19 @@ Before creating a campaign, verify the following:
 - Retry count is set only if needed.
 - Message preview looks correct.
 - Final summary has been reviewed.
+
+---
+
+## Common Failure Scenarios
+
+Most campaign issues happen because one required setup item is missing or incorrect. Check these before recreating the campaign.
+
+| Issue | Why it happens | What to do |
+|---|---|---|
+| Campaign cannot launch | Template is not approved | Select an approved template or wait for approval. |
+| Messages fail | Phone numbers are invalid or missing country codes | Clean the contact list and retry with valid numbers. |
+| Sender unavailable | WhatsApp number is not connected or has limits | Reconnect WhatsApp or choose another sender identity. |
+| Audience missing | No contact or segment was selected | Add at least one target audience before continuing. |
 
 ---
 
