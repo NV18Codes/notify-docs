@@ -1,0 +1,317 @@
+export const metadata = {
+  title: "CRM Segments",
+  description:
+    "Learn how to create active and static CRM segments in Notifyy using contact, company, deal, ticket, and lead filters for targeted WhatsApp campaigns and workflows.",
+  keywords: [
+    "Notifyy CRM segments",
+    "CRM audience segmentation",
+    "active segments",
+    "static segments",
+    "WhatsApp campaign segments",
+    "contact filtering",
+  ],
+  alternates: {
+    canonical: "/docs/segments",
+  },
+  openGraph: {
+    title: "CRM Segments | Notifyy Docs",
+    description:
+      "A practical guide to building, filtering, saving, cloning, and using Notifyy CRM segments for targeted communication.",
+    url: "/docs/segments",
+    type: "article",
+  },
+};
+
+# Segments
+
+Segments in Notifyy help you group CRM records by property values, behavior, and related data. Use them when you want to send more relevant WhatsApp campaigns, organize records for follow-up, or build reusable audiences without selecting contacts manually each time.
+
+Go to **CRM → Segments** to view, create, edit, clone, and manage your segments.
+
+<DocsVideo src="/docs/segments/segments.mp4" />
+
+---
+
+## When should you use segments?
+
+Use segments when your communication depends on who the customer is, what stage they are in, or how they behave in your CRM.
+
+Common examples include:
+
+- Contacts from a specific city, branch, or source.
+- Leads with a high score or a recent enquiry.
+- Customers whose lifecycle stage is active, inactive, or converted.
+- Deals in a selected pipeline stage.
+- Tickets that are open, high priority, or waiting for resolution.
+
+Segments make campaign targeting cleaner because your team can prepare the audience once and reuse it across Notifyy tools.
+
+<img src="/docs/segments/list-view.png" alt="Segments list view in Notifyy CRM" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## 01. Choose Your Segment Type
+
+The first step is to choose which CRM object you want to group. Each object type targets a different kind of record, so select the one that matches your use case.
+
+| Object type | Use it for |
+|---|---|
+| Contacts | Individual people in your CRM, such as subscribers, customers, and users. |
+| Companies | Businesses or organizations linked to contacts. Useful for B2B targeting. |
+| Deals | Sales opportunities, revenue records, and pipeline-based follow-up. |
+| Tickets | Support requests that can be grouped by status, priority, or resolution activity. |
+| Leads | Early-stage prospects before they become qualified contacts or customers. |
+
+For example, choose **Contacts** when you want to send a WhatsApp campaign to customers in Chennai. Choose **Deals** when your sales team wants to follow up only on opportunities in a specific stage.
+
+<img src="/docs/segments/audience.png" alt="Choose object type while creating a Notifyy segment" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<TipBox>
+  Start with the object that will receive the action. For WhatsApp campaigns, contact-based segments are usually the most useful because messages are sent to people.
+</TipBox>
+
+---
+
+## 02. Active vs Static Segments
+
+Notifyy supports two segment types. The right choice depends on whether the audience should keep changing after it is saved.
+
+### Active Segments
+
+Active segments update automatically whenever records match or stop matching the saved criteria. If a contact enters the selected lifecycle stage, they join the segment. If they no longer match, they leave the segment.
+
+Use active segments for:
+
+- Recurring WhatsApp campaigns.
+- Newsletter or update audiences.
+- Follow-up lists based on changing lead status.
+- Outreach based on recent customer behavior.
+- Fields that change often, such as status, lifecycle stage, score, or activity.
+
+### Static Segments
+
+Static segments capture matching records at the time the segment is saved. They do not update on their own. You can still add or remove records manually later.
+
+Use static segments for:
+
+- One-time campaign audiences.
+- Event attendee lists.
+- Manually curated customer groups.
+- Fixed contact batches that should not change after review.
+- Bulk actions where you want a controlled list.
+
+<WarningBox>
+  Use active segments carefully for recurring campaigns. The audience may change before the next send if records are updated in CRM.
+</WarningBox>
+
+---
+
+## 03. Create a Segment
+
+Segment creation follows a guided flow. You choose the object, define filters, preview matching records, then save the segment as active or static.
+
+Before creating a segment, make sure your role has permission to create and update segments.
+
+1. Go to **CRM → Segments**.
+2. Click **Create segment**.
+3. Select the object from the **Choose Object** dropdown.
+4. Click **Next**.
+5. Rename the segment from the edit icon in the top-left area.
+6. If your workspace uses folders, click **Add to folder**, choose a folder, then click **Move**.
+7. In the left panel, click **+ Add filter** to start defining the audience.
+
+You can add multiple filters and filter groups to build more focused audiences. Notifyy supports up to **250 filters** in a segment, including up to **60 associated object filters**.
+
+<img src="/docs/segments/filter.png" alt="Filter builder for creating CRM segments" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## 04. Configure Filters
+
+Filters decide which records qualify for the segment. A filter usually includes three parts: the field, the operator, and the value.
+
+For example:
+
+**City is equal to Bengaluru**  
+**Lead score is greater than 80**  
+**Lifecycle stage is Customer**
+
+### Same-object filters
+
+Same-object filters use fields from the object you are segmenting. In a contact segment, these may include fields such as email, phone number, country, status, source, score, or created date.
+
+To add a same-object filter:
+
+1. Click **+ Add filter**.
+2. Search or browse for the field.
+3. Use field type or collection dropdowns to narrow the list.
+4. Select the field.
+5. Choose an operator such as **is equal to**, **contains**, **is not empty**, **greater than**, or **before**.
+6. Enter or select the value.
+7. Click **Preview** to check the matching count and sample records.
+
+| Field type | How values are entered |
+|---|---|
+| Text | Type a value. Useful for names, email, city, source, or company name. |
+| Number | Enter a numeric value. Useful for score, revenue, age, or quantity. |
+| Date | Select a date or date range. Useful for created date, renewal date, or last activity. |
+| Dropdown | Pick one value from the available options. Useful for status, stage, or country. |
+| Multi-select | Select one or more values. Useful for tags, interests, or categories. |
+| Boolean | Choose yes or no. Useful for fields such as opted in, active, or verified. |
+
+### Associated-object filters
+
+Associated-object filters use data from related records. For example, a contact segment can include contacts whose linked company belongs to a specific industry or whose related deal is in a certain stage.
+
+To add an associated-object filter:
+
+1. Click **+ Add filter**.
+2. Switch to the associated object.
+3. Search or browse for the field.
+4. Select the field and choose an operator.
+5. Enter the required value.
+6. Use the association dropdown if you need to narrow the rule to a primary associated record or a specific association label.
+7. Click **Preview** to verify the result.
+
+Associated filters are helpful when the contact record alone does not contain enough information. For example, you can target contacts whose company industry is education, or contacts linked to deals above a certain value.
+
+---
+
+## 05. Manage Filter Groups
+
+Filter groups help you combine conditions with **AND** and **OR** logic.
+
+Use **AND** when every condition must be true.  
+Use **OR** when any one condition can be true.
+
+For example:
+
+**Lifecycle stage is Customer AND City is Mumbai** targets only customers in Mumbai.  
+**City is Mumbai OR City is Pune** targets records from either city.
+
+In the filter builder, you can:
+
+- Click **+ Add filter** to add another condition inside the current group.
+- Click **+ Add filter group** to create another group connected by OR logic.
+- Switch between **and** and **or** when the targeting rule changes.
+- Close a filter group editor when you are done reviewing it.
+- Delete one filter or remove a full branch when it is no longer needed.
+- Clone a group when you want to reuse similar criteria with small changes.
+
+Use preview after major filter changes. It helps you confirm the segment size before saving and avoids accidentally creating an audience that is too broad or too small.
+
+<img src="/docs/segments/and-or.png" alt="AND and OR filter group logic for Notifyy segments" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## 06. Preview and Save the Segment
+
+The preview panel shows the live matching count, percentage of the database, and sample records. Review this before saving so you know whether the criteria match the audience you intended.
+
+### Preview matching records
+
+When preview is open, Notifyy shows the current segment size and a sample list on the right side of the builder. Use this view to confirm that the filter logic is returning the expected records before you save or use the segment in a campaign.
+
+<img src="/docs/segments/preview.png" alt="Segment preview showing matching records before saving" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+To save:
+
+1. Click **Next**.
+2. Choose **Active** or **Static**.
+3. Add a short description explaining what the segment contains.
+4. Link the segment to a campaign if you want to use it immediately.
+5. Open the **Access** tab if you need to assign visibility to users or teams.
+6. Click **Save and process segment**.
+
+Processing starts after valid criteria are saved. A preview appears immediately, and the final confirmed count displays under the segment name once processing is complete. You can still edit the segment after saving.
+
+<TipBox>
+  Add a clear description for shared segments. It helps other team members understand the audience without opening every filter group.
+</TipBox>
+
+---
+
+## 07. Segment Actions
+
+You can manage saved segments from the segments list. The action menu helps you update the segment, duplicate it, switch how it behaves, and review changes when version history is available.
+
+<img src="/docs/segments/list-actions.png" alt="Segment list actions in Notifyy CRM" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+Use **Edit** when the audience rules, name, folder, description, or access settings need changes. After editing filters, preview the audience again before saving.
+
+Use **Delete** only when the segment is no longer needed. If the segment is connected to a campaign or workflow, check where it is used before removing it.
+
+Use **Clone** when you want to create a similar segment without rebuilding the filters from the beginning.
+
+Use **Switch** when you need to change the segment behavior between active and static. This is helpful when a live audience should become a fixed list, or when a one-time list needs to become an auto-updating group for future campaigns.
+
+Use **Version Control** to review previous changes to the segment rules and understand how the audience definition has evolved. This is useful for teams because it gives context when a segment count changes after filters, access, or settings are updated.
+
+<img src="/docs/segments/segment-actions.png" alt="Segment actions including clone switch and version control" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+To clone a segment:
+
+1. Go to **CRM → Segments**.
+2. Open the **Manage** tab.
+3. Hover over the segment.
+4. Click **More**, then select **Clone**.
+5. Rename the copied segment.
+6. Adjust filters, segment type, description, or access if required.
+7. Click **Save and process segment**.
+
+Cloning is useful when you need variations such as **Active Customers - Chennai**, **Active Customers - Bengaluru**, and **Active Customers - Hyderabad** with the same base logic.
+
+### Switch segment type
+
+Switching changes how the audience is maintained after the segment is saved.
+
+- Switch from **Active to Static** when you want to freeze the current members and use the list for a controlled one-time send.
+- Switch from **Static to Active** when the audience should keep refreshing as records match or leave the criteria.
+- Preview the segment after switching so the final audience count is clear before it is used in a campaign.
+
+### Version control
+
+Version control helps teams understand what changed in a segment over time. Use it when a segment is shared across campaigns or when multiple users manage CRM audiences.
+
+It can help you review:
+
+- Filter changes that increased or reduced the audience.
+- Updates to segment type, access, or description.
+- Previous versions before making a major change.
+- The reason a campaign audience looked different from an earlier send.
+
+---
+
+## 08. Use Segments in Notifyy Tools
+
+Segments are most useful when they are connected to action. In Notifyy, segments can be used to prepare targeted audiences for WhatsApp campaigns and other customer communication flows.
+
+Segments help you:
+
+- Send WhatsApp campaigns to the right audience.
+- Avoid selecting contacts manually for every campaign.
+- Personalize outreach based on CRM data.
+- Exclude groups that should not receive a message.
+- Build repeatable communication flows for sales, marketing, and support.
+
+For example, a retail brand can create an active segment for customers who purchased in the last 90 days and use it for weekend offer campaigns. A support team can create a static segment of customers affected by a service issue and send a one-time update.
+
+---
+
+## Common Segment Examples
+
+| Segment | Recommended type | Example criteria |
+|---|---|---|
+| New leads this week | Active | Created date is within the last 7 days. |
+| High-value customers | Active | Total spend is greater than the selected value. |
+| Event attendees | Static | Source or tag matches the event name at save time. |
+| Open support tickets | Active | Ticket status is open and priority is high. |
+| Win-back audience | Active | Last activity date is older than the selected period. |
+
+---
+
+## Summary
+
+Segments give you better control over who receives campaigns and follow-ups in Notifyy. Choose the right object, decide between active and static behavior, build clear filters, preview the audience, and save the segment for future use.
+
+For changing audiences, use **Active Segments**. For fixed lists, use **Static Segments**. When used with WhatsApp campaigns, segments make targeting more accurate, reduce manual work, and help your team communicate with the right records at the right time.
