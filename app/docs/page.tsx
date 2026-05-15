@@ -63,6 +63,9 @@ export default function DocsHomePage() {
           <Link href="/docs/segments">{copy.nav.segments}</Link>
         </li>
         <li>
+          <Link href="/docs/fields">{copy.nav.fields}</Link>
+        </li>
+        <li>
           <Link href="/docs/property">{copy.nav.propertyManagement}</Link>
         </li>
       </ul>

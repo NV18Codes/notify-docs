@@ -1,0 +1,249 @@
+export const metadata = {
+  title: "CRM Fields",
+  description:
+    "Create, edit, clone, organize, export, and inactivate custom CRM fields and collections in Notifyy. Manage contact, company, deal, ticket, and lead properties from Settings.",
+  keywords: [
+    "Notifyy CRM fields",
+    "custom fields",
+    "default CRM fields",
+    "field collections",
+    "CRM properties",
+    "field validation",
+    "export CRM fields",
+  ],
+  alternates: {
+    canonical: "/docs/fields",
+  },
+  openGraph: {
+    title: "CRM Fields | Notifyy Docs",
+    description:
+      "How to manage CRM fields and collections in Notifyy — defaults, custom fields, rules, cloning, exports, and organization.",
+    url: "/docs/fields",
+    type: "article",
+  },
+};
+
+# Fields
+
+Fields are attributes that store information on Notifyy CRM records. For example, the **Email** field stores a contact's primary email address. Every object comes with default fields, and you can create **custom fields** to capture data specific to your business.
+
+If you want a field with the same setup as an existing one, you can **clone** it instead of building from scratch.
+
+Go to **Settings → Fields** to view, create, edit, clone, organize, and export your fields.
+
+<TipBox>
+  Your account may use personalized names for each object (for example, **Account** instead of **Company**). This guide refers to objects by their Notifyy default names: contacts, companies, deals, tickets, and leads.
+</TipBox>
+
+<img src="/docs/fields/field-list.png" alt="Fields list in Notifyy CRM settings" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## Default fields and custom fields
+
+Every CRM object in Notifyy ships with **default fields**—standard properties Notifyy provides out of the box (for example, **Email**, **Phone**, **Name**, or **Status** on contacts). These cover common CRM needs without extra setup.
+
+When default fields are not enough, you can add **custom fields** to store data specific to your business (membership tier, branch code, internal reference, and so on).
+
+| | Default fields | Custom fields |
+|---|---|---|
+| Provided by | Notifyy for each object | You create in **Settings → Fields** |
+| Typical use | Standard CRM data every team expects | Business-specific or industry-specific data |
+| After creation | Already on records where applicable | Start with null values until you fill them manually or via workflows |
+| Editing in Settings | Many are **system-defined** and cannot be edited or cloned | Fully editable (label, collection, rules) unless in use elsewhere |
+
+Before creating a custom field, open **Settings → Fields**, choose the object, and scan the existing list. A default field may already do what you need.
+
+Default fields are grouped by object:
+
+| Object | Examples of default fields |
+|---|---|
+| Contacts | Email, phone, name, lifecycle stage, source, owner |
+| Companies | Company name, domain, industry, size |
+| Deals | Deal name, amount, stage, close date |
+| Tickets | Subject, status, priority, category |
+| Leads | Lead name, email, status, score |
+
+<TipBox>
+  Prefer default fields when they fit. Custom fields are powerful, but each one adds maintenance for imports, segments, templates, and reporting.
+</TipBox>
+
+---
+
+## 01. Before You Get Started
+
+Before creating a field, review the following:
+
+- **Field editor layout** — The basic editor lets you set a label and field type. The full editor includes a **Rules** tab for validation and visibility options, and a **Preview** tab to review how the field will behave on records.
+- **Default fields first** — Confirm a Notifyy-provided default field on contacts, companies, deals, tickets, or leads does not already meet your requirement (see **Default fields and custom fields** above).
+- **Custom fields start empty** — After creation, new custom fields contain null values. You can set values manually or use workflow actions to populate them.
+- **System-defined fields** — Some default fields are system-defined: they cannot be edited, cloned, or moved. Other fields (including custom fields) also become restricted when they are in use on records or in tools such as segments, templates, or workflows.
+
+<WarningBox>
+  The number of custom fields you can create depends on your Notifyy subscription. If you downgrade to free tools after exceeding the limit, you can still view and edit existing custom fields but cannot create new ones until you are within the allowed limit.
+</WarningBox>
+
+---
+
+## 02. Create a Custom Field
+
+You can set a field label and field type in the basic field editor. If you need to configure validation rules or other options, use the **Rules** and **Preview** tabs in the full editor.
+
+<DocsVideo src="/docs/fields/create-field.mp4" />
+
+1. In your Notifyy account, click the **Settings** icon in the top navigation bar.
+2. In the left sidebar, navigate to **Fields**.
+3. Above the table, click **Create field**.
+4. In the **Field label** text field, enter a unique name for your field.
+5. Open the **Select an object** dropdown and select the object this field belongs to.
+
+<img src="/docs/fields/object-list.png" alt="Select object dropdown while creating a field" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+6. Open the **Select a collection** dropdown and choose the collection where the field should appear.
+7. Open the **Field type** dropdown and select an option.
+
+<DocsVideo src="/docs/fields/field-type.mp4" />
+
+<img src="/docs/fields/field-form.png" alt="Field editor form in Notifyy" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+8. Click the **Rules** tab to set visibility, validation, and other rules for your field.
+9. Click the **Preview** tab to review how your field will function.
+
+<img src="/docs/fields/preview.png" alt="Preview tab showing how a field will appear on records" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+10. Click **Create** in the top right when you are done.
+
+<TipBox>
+  Select the object and collection before configuring rules. Changing these after creation requires moving the field, so getting them right upfront keeps your CRM layout consistent for the team.
+</TipBox>
+
+---
+
+## 03. Edit an Existing Field
+
+1. Open **Settings → Fields**.
+2. Click the **Select an object** dropdown and choose the object whose fields you want to view.
+3. To find the field you need:
+   - Use the **search box** to find a field by name.
+   - Click **column headers** to sort (for example, A to Z).
+4. Click the name of the field you want to edit.
+
+**Note:** System-defined fields cannot be edited.
+
+### Editable tabs
+
+- **Details** — Update basic information like the field name and collection. Object type and internal name cannot be changed after creation.
+- **Rules** — Update validation rules and visibility settings.
+
+Click **Update** when you are done.
+
+---
+
+## 04. Clone a Field
+
+Cloning creates a new field with the same configuration as an existing one. For example, if an existing calculation field has a complex formula you want to reuse, clone it and adjust the formula as needed.
+
+**Note:** System-defined fields cannot be cloned.
+
+1. In your Notifyy account, click the **Settings** icon.
+2. Navigate to **Fields**.
+3. Open the **Actions** menu for the field and select **Clone**.
+
+<img src="/docs/fields/actions.png" alt="Field actions menu showing clone option" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+4. In the editor, set the new field's label, collection, and any other details you want to change.
+5. Click **Create**.
+
+---
+
+## 05. Collections
+
+Collections help you identify and group related fields within an object. Notifyy includes **system-defined collections**, and you can also create **custom collections** to organize your CRM layout.
+
+<img src="/docs/fields/collection-list.png" alt="Collections list in Notifyy Fields settings" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<DocsVideo src="/docs/fields/inactive-collection.mp4" />
+
+The walkthrough above shows the **Collections** tab (creating and managing collections) and the **Inactive** flow (reviewing where a field is used and confirming inactivation).
+
+### Create or edit a collection
+
+**Note:** System-defined collections cannot be edited.
+
+1. Open **Settings → Fields**.
+2. Click the **Collections** tab.
+3. Open the **Select an object** dropdown and choose the object whose collections you want to manage.
+4. To create a new collection, click **Create collection** in the upper right. To edit an existing one, click the collection name or open **Actions**.
+5. In the dialog, enter the collection name and click **Save**.
+
+To view the fields in a collection, open **Actions** for the collection and select **View fields**.
+
+### Move a single field to a collection
+
+**Note:** System-defined fields cannot be moved.
+
+1. Open **Actions** for the field, or select the field row, then click **Move to collection**.
+2. In the dialog, select the target collection from the dropdown and click **Save**.
+
+### Move multiple fields to a collection
+
+1. Select the checkboxes next to the fields you want to move.
+2. At the top of the table, click **+ Add to collection**.
+3. In the dialog, select the collection and click **Move field**.
+
+### Delete a collection
+
+**Note:** System-defined collections cannot be deleted.
+
+1. Open **Actions** for the collection (or select it), then click **Delete collection**.
+2. If any fields are assigned to the collection, move them to another collection first.
+3. Once all fields are moved, click **Delete** to confirm.
+
+---
+
+## 06. Inactivate Fields
+
+You can inactivate a field if it is no longer being used in any records or tools such as segments or templates. Use the video in **Collections** above to see the confirmation dialog and usage review panel before you inactivate.
+
+1. Open the **Select an object** dropdown and choose the object whose fields you want to inactivate.
+2. Open the **Actions** menu for the field, or select the field, and click **Inactive**.
+3. In the dialog, review where the field is currently used. Fields in use in contacts, templates, or other assets must be removed from those tools before the field can be inactivated.
+4. Click **Inactive field** to confirm.
+
+To inactivate multiple fields at once, select the checkboxes next to those fields and click **Inactive** at the top of the table.
+
+<WarningBox>
+  A field linked to live segments, templates, or workflows must be removed from those tools before it can be inactivated.
+</WarningBox>
+
+---
+
+## 07. Export Fields
+
+Export permissions are required to export fields.
+
+### Export an individual field
+
+1. In your Notifyy account, click the **Settings** icon in the top navigation bar.
+2. In the left sidebar, navigate to **Fields**.
+3. Open the **Select an object** dropdown and select an object to view its fields.
+4. In the table, select a field and choose **Export field definition**.
+5. In the dialog, confirm the file format and click **Export**.
+
+The exported file includes basic information such as: name, internal name, type, collection name, and the user who created it. For contact, company, deal, and ticket fields, the file also includes last updated time and update source.
+
+### Export all fields
+
+You can export a spreadsheet of all fields across all objects or selected objects. The exported file includes each field's name, internal name, type, description, collection, options (if applicable), creator, usages, and fill rate. Contact, company, deal, and ticket fields also include last updated time and update source.
+
+1. In the upper right of the Fields page, click **Export all fields**.
+2. In the dialog:
+   - Select the checkboxes next to the objects whose fields you want to export.
+   - Open the **File format** dropdown and select the format you want.
+   - Click **Export**.
+
+---
+
+## Summary
+
+Fields define what your CRM records can capture and how that data is validated. Start with default fields where they fit, create custom fields when your business needs them, and use clone, collections, inactivate, and export tools to keep your field setup clean as you grow. Well-organized fields make your segments, campaigns, templates, and workflows more reliable and easier to manage.

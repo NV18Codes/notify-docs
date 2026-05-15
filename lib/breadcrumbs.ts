@@ -14,6 +14,7 @@ export type NavKey =
   | "contactManagement"
   | "importObject"
   | "segments"
+  | "fields"
   | "propertyManagement"
   | "teamInbox"
   | "contacts"
@@ -38,6 +39,7 @@ export function segmentToNavKey(segment: string): NavKey | null {
     contacts: "contactManagement",
     import: "importObject",
     segments: "segments",
+    fields: "fields",
     property: "propertyManagement",
     "team-inbox": "teamInbox",
     crm: "crm",
