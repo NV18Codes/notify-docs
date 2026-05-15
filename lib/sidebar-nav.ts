@@ -14,6 +14,7 @@ export type NavDocLabelKey =
   | "contactManagement"
   | "importObject"
   | "segments"
+  | "fields"
   | "propertyManagement"
   | "teamInbox";
 
@@ -83,6 +84,7 @@ export const SIDEBAR_BLOCKS: SidebarBlock[] = [
       { href: "/docs/contacts", labelKey: "contactManagement" },
       { href: "/docs/import", labelKey: "importObject" },
       { href: "/docs/segments", labelKey: "segments" },
+      { href: "/docs/fields", labelKey: "fields" },
       { href: "/docs/property", labelKey: "propertyManagement" },
     ],
   },

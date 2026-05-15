@@ -92,6 +92,12 @@ Use active segments for:
 
 Static segments capture matching records at the time the segment is saved. They do not update on their own. You can still add or remove records manually later.
 
+- You can create **static segments without any filters** and manage membership entirely by hand.
+- Contacts can be **added manually** when you need a specific list, independent of CRM rules.
+- Static segments are a good fit for **fixed or one-time** contact groups.
+- **Active segments require filters** so the audience can update automatically as records match or leave the criteria.
+- A **static segment that has no filters cannot be converted into an active segment**, because active segments need filter rules to stay in sync.
+
 Use static segments for:
 
 - One-time campaign audiences.
@@ -99,6 +105,14 @@ Use static segments for:
 - Manually curated customer groups.
 - Fixed contact batches that should not change after review.
 - Bulk actions where you want a controlled list.
+
+<DocsVideo src="/docs/segments/static-segments.mp4" />
+
+**Example — VIP list without filters**  
+A static segment can be created without filters and used for manually managing contacts based on business requirements. For example, if you create a static segment called “VIP Contacts” without any filters, you can manually add selected contacts into it, including contacts from other active segments. Only the contacts you add are stored in this segment, and it will not update automatically unless you add or remove members manually.
+
+**Use case — Leads for targeted campaigns**  
+You can capture leads and add them to a static segment without filters. Those leads stay in that segment until you change them, and later you can run campaigns only for those contacts using the **Select Segment** option in campaigns.
 
 <WarningBox>
   Use active segments carefully for recurring campaigns. The audience may change before the next send if records are updated in CRM.
@@ -108,7 +122,7 @@ Use static segments for:
 
 ## 03. Create a Segment
 
-Segment creation follows a guided flow. You choose the object, define filters, preview matching records, then save the segment as active or static.
+Segment creation follows a guided flow. You choose the object, define filters when you need them (or skip filters for a manual static segment), preview matching records when filters exist, then save the segment as active or static.
 
 Before creating a segment, make sure your role has permission to create and update segments.
 
@@ -118,9 +132,9 @@ Before creating a segment, make sure your role has permission to create and upda
 4. Click **Next**.
 5. Rename the segment from the edit icon in the top-left area.
 6. If your workspace uses folders, click **Add to folder**, choose a folder, then click **Move**.
-7. In the left panel, click **+ Add filter** to start defining the audience.
+7. In the left panel, click **+ Add filter** to start defining the audience. For a **manual static list**, you can leave this empty, save as **Static**, and add contacts later.
 
-You can add multiple filters and filter groups to build more focused audiences. Notifyy supports up to **250 filters** in a segment, including up to **60 associated object filters**.
+You can add multiple filters and filter groups to build more focused audiences. Notifyy supports high limits on filters in a segment, including associated object filters, so you can build very detailed audiences when needed.
 
 <img src="/docs/segments/filter.png" alt="Filter builder for creating CRM segments" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
 
@@ -243,7 +257,7 @@ Use **Delete** only when the segment is no longer needed. If the segment is conn
 
 Use **Clone** when you want to create a similar segment without rebuilding the filters from the beginning.
 
-Use **Switch** when you need to change the segment behavior between active and static. This is helpful when a live audience should become a fixed list, or when a one-time list needs to become an auto-updating group for future campaigns.
+Use **Switch** when you need to change the segment behavior between active and static. This is helpful when a live audience should become a fixed list, or when a saved list already has filters and should become an auto-updating group for future campaigns. You cannot switch a **static segment with no filters** to active, because active segments need filter criteria for automatic updates.
 
 Use **Version Control** to review previous changes to the segment rules and understand how the audience definition has evolved. This is useful for teams because it gives context when a segment count changes after filters, access, or settings are updated.
 
@@ -266,7 +280,7 @@ Cloning is useful when you need variations such as **Active Customers - Chennai*
 Switching changes how the audience is maintained after the segment is saved.
 
 - Switch from **Active to Static** when you want to freeze the current members and use the list for a controlled one-time send.
-- Switch from **Static to Active** when the audience should keep refreshing as records match or leave the criteria.
+- Switch from **Static to Active** when the segment already has filters and the audience should keep refreshing as records match or leave the criteria. Filterless static segments cannot be switched to active.
 - Preview the segment after switching so the final audience count is clear before it is used in a campaign.
 
 ### Version control
