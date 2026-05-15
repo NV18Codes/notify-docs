@@ -1,13 +1,13 @@
 export const metadata = {
   title: "CRM Fields",
   description:
-    "Create, edit, clone, organize, export, and inactivate custom CRM fields and collections in Notifyy. Manage contact, company, deal, ticket, and lead properties from Settings.",
+    "Create, edit, clone, organize, export, and inactivate custom CRM fields and collections in Notifyy. Manage contact, company, deal, ticket, and lead fields from Settings.",
   keywords: [
     "Notifyy CRM fields",
     "custom fields",
     "default CRM fields",
     "field collections",
-    "CRM properties",
+    "CRM field management",
     "field validation",
     "export CRM fields",
   ],
@@ -29,7 +29,9 @@ Fields are attributes that store information on Notifyy CRM records. For example
 
 If you want a field with the same setup as an existing one, you can **clone** it instead of building from scratch.
 
-Go to **Settings → Fields** to view, create, edit, clone, organize, and export your fields.
+Open **Settings**, then go to **Data Management → Fields** to view, create, edit, clone, organize, and export your fields.
+
+<img src="/docs/fields/data-management.png" alt="Fields under Data Management in Notifyy Settings sidebar" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
 
 <TipBox>
   Your account may use personalized names for each object (for example, **Account** instead of **Company**). This guide refers to objects by their Notifyy default names: contacts, companies, deals, tickets, and leads.
@@ -41,18 +43,18 @@ Go to **Settings → Fields** to view, create, edit, clone, organize, and export
 
 ## Default fields and custom fields
 
-Every CRM object in Notifyy ships with **default fields**—standard properties Notifyy provides out of the box (for example, **Email**, **Phone**, **Name**, or **Status** on contacts). These cover common CRM needs without extra setup.
+Every CRM object in Notifyy ships with **default fields**—standard fields Notifyy provides out of the box (for example, **Email**, **Phone**, **Name**, or **Status** on contacts). These cover common CRM needs without extra setup.
 
 When default fields are not enough, you can add **custom fields** to store data specific to your business (membership tier, branch code, internal reference, and so on).
 
 | | Default fields | Custom fields |
 |---|---|---|
-| Provided by | Notifyy for each object | You create in **Settings → Fields** |
+| Provided by | Notifyy for each object | You create in **Settings → Data Management → Fields** |
 | Typical use | Standard CRM data every team expects | Business-specific or industry-specific data |
 | After creation | Already on records where applicable | Start with null values until you fill them manually or via workflows |
 | Editing in Settings | Many are **system-defined** and cannot be edited or cloned | Fully editable (label, collection, rules) unless in use elsewhere |
 
-Before creating a custom field, open **Settings → Fields**, choose the object, and scan the existing list. A default field may already do what you need.
+Before creating a custom field, open **Settings → Data Management → Fields**, choose the object, and scan the existing list. A default field may already do what you need.
 
 Default fields are grouped by object:
 
@@ -92,7 +94,7 @@ You can set a field label and field type in the basic field editor. If you need 
 <DocsVideo src="/docs/fields/create-field.mp4" />
 
 1. In your Notifyy account, click the **Settings** icon in the top navigation bar.
-2. In the left sidebar, navigate to **Fields**.
+2. In the left sidebar, go to **Data Management → Fields**.
 3. Above the table, click **Create field**.
 4. In the **Field label** text field, enter a unique name for your field.
 5. Open the **Select an object** dropdown and select the object this field belongs to.
@@ -121,7 +123,7 @@ You can set a field label and field type in the basic field editor. If you need 
 
 ## 03. Edit an Existing Field
 
-1. Open **Settings → Fields**.
+1. Open **Settings → Data Management → Fields**.
 2. Click the **Select an object** dropdown and choose the object whose fields you want to view.
 3. To find the field you need:
    - Use the **search box** to find a field by name.
@@ -146,7 +148,7 @@ Cloning creates a new field with the same configuration as an existing one. For 
 **Note:** System-defined fields cannot be cloned.
 
 1. In your Notifyy account, click the **Settings** icon.
-2. Navigate to **Fields**.
+2. Go to **Data Management → Fields**.
 3. Open the **Actions** menu for the field and select **Clone**.
 
 <img src="/docs/fields/actions.png" alt="Field actions menu showing clone option" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
@@ -170,7 +172,7 @@ The walkthrough above shows the **Collections** tab (creating and managing colle
 
 **Note:** System-defined collections cannot be edited.
 
-1. Open **Settings → Fields**.
+1. Open **Settings → Data Management → Fields**.
 2. Click the **Collections** tab.
 3. Open the **Select an object** dropdown and choose the object whose collections you want to manage.
 4. To create a new collection, click **Create collection** in the upper right. To edit an existing one, click the collection name or open **Actions**.
@@ -205,6 +207,8 @@ To view the fields in a collection, open **Actions** for the collection and sele
 
 You can inactivate a field if it is no longer being used in any records or tools such as segments or templates. Use the video in **Collections** above to see the confirmation dialog and usage review panel before you inactivate.
 
+**Note:** System-defined fields cannot be marked as inactive.
+
 1. Open the **Select an object** dropdown and choose the object whose fields you want to inactivate.
 2. Open the **Actions** menu for the field, or select the field, and click **Inactive**.
 3. In the dialog, review where the field is currently used. Fields in use in contacts, templates, or other assets must be removed from those tools before the field can be inactivated.
@@ -220,12 +224,10 @@ To inactivate multiple fields at once, select the checkboxes next to those field
 
 ## 07. Export Fields
 
-Export permissions are required to export fields.
-
 ### Export an individual field
 
 1. In your Notifyy account, click the **Settings** icon in the top navigation bar.
-2. In the left sidebar, navigate to **Fields**.
+2. In the left sidebar, go to **Data Management → Fields**.
 3. Open the **Select an object** dropdown and select an object to view its fields.
 4. In the table, select a field and choose **Export field definition**.
 5. In the dialog, confirm the file format and click **Export**.
