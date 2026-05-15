@@ -85,7 +85,6 @@ export const SIDEBAR_BLOCKS: SidebarBlock[] = [
       { href: "/docs/import", labelKey: "importObject" },
       { href: "/docs/segments", labelKey: "segments" },
       { href: "/docs/fields", labelKey: "fields" },
-      { href: "/docs/property", labelKey: "propertyManagement" },
     ],
   },
   {

@@ -65,9 +65,6 @@ export default function DocsHomePage() {
         <li>
           <Link href="/docs/fields">{copy.nav.fields}</Link>
         </li>
-        <li>
-          <Link href="/docs/property">{copy.nav.propertyManagement}</Link>
-        </li>
       </ul>
 
       <h2>{copy.sidebar.support}</h2>

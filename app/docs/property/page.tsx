@@ -1,6 +1,6 @@
-import { PlaceholderDoc } from "@/components/docs/PlaceholderDoc";
-import { copy } from "@/lib/copy";
+import { redirect } from "next/navigation";
 
+/** Redirect legacy Property Management URL to Fields docs. */
 export default function PropertyPage() {
-  return <PlaceholderDoc title={copy.nav.propertyManagement} />;
+  redirect("/docs/fields");
 }
