@@ -128,6 +128,14 @@ function SectionIcon({
         strokeLinejoin="round"
       />
     ),
+    integration: (
+      <path
+        d="M8 12h8M12 8v8M7 4h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
     support: (
       <path
         d="M12 20v-3.5M7.8 17.8A8 8 0 1 1 20 11.2c0 2.2-.9 4.2-2.4 5.6l-2.2-2.2A5 5 0 1 0 7 11.2c0 1.4.6 2.8 1.6 3.7l-.8 2.9Z"

@@ -1,0 +1,220 @@
+export const metadata = {
+  title: "Contact Management",
+  description:
+    "Create, edit, filter, and recover contacts in Notifyy CRM. Learn validation rules, inline edit, bulk edit, and recently deleted contacts for WhatsApp-ready customer records.",
+  keywords: [
+    "Notifyy contact management",
+    "CRM contacts",
+    "create contact Notifyy",
+    "bulk edit contacts",
+    "contact filters CRM",
+  ],
+  alternates: {
+    canonical: "/docs/contacts",
+  },
+  openGraph: {
+    title: "Contact Management | Notifyy Docs",
+    description:
+      "Manage customer contacts in Notifyy—creation rules, inline and bulk edit, filters, and restore from recently deleted.",
+    url: "/docs/contacts",
+    type: "article",
+  },
+};
+
+# Contact Management
+
+The **Contact** object in Notifyy CRM stores and organizes customer information in one place—names, communication details, ownership, and the data you need for day-to-day operations. Contacts are the base record type for most customer-facing work in Notifyy.
+
+Well-maintained contacts support **segments**, **workflows**, **WhatsApp communication**, **campaigns**, and reporting. This guide covers how to create contacts, update them quickly, filter lists, and recover deleted records.
+
+Go to **CRM → Contacts** to open the contact workspace.
+
+<img src="/docs/contacts/list-view.png" alt="Notifyy CRM contacts listing with search, filters, and Add Contact" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## When should you use contacts?
+
+Use the Contact module when you need to:
+
+- Store **customer or lead details** your team will message or follow up on.
+- Keep **email and phone** in a consistent format for WhatsApp and email channels.
+- Assign **contact owners** for sales or support accountability.
+- Build **segments and audiences** from contact properties (see [Segments](/docs/segments)).
+- Import records in bulk (see [Import Data](/docs/import)).
+
+Contacts are individual people—not companies. Link companies or deals through related objects when your CRM model uses them.
+
+---
+
+## 01. Create a contact
+
+You can add contacts one at a time with **Add Contact**. The creation panel opens on the **right side** of the screen so you can keep the list visible while entering details.
+
+1. Go to **CRM → Contacts**.
+2. Click **Add Contact**.
+3. Enter customer details in the panel (name, email, phone, and any other fields your workspace exposes).
+4. Save the contact with **Create**, or use **Create & add another** to enter multiple records in a row.
+
+<DocsVideo src="/docs/contacts/create-contact.mp4" />
+
+<img src="/docs/contacts/create-form.png" alt="New Contact form with first name, email, and phone fields" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+The form marks required fields (for example, **First name** and contact details). Optional fields such as gender, order ID, or date of birth appear when your workspace includes them.
+
+### Customize form fields
+
+Admins can change which fields appear on the create form via **Customize form fields** in the New Contact panel.
+
+<img src="/docs/contacts/edit-contact-form.png" alt="Edit Contact form builder to add and reorder fields" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Validation rules
+
+Notifyy requires enough information to identify and reach the person. Creation succeeds only when these rules are met:
+
+| Rule | Requirement |
+|---|---|
+| Name | **First name** is required. |
+| Reachability | At least one of **email** or **phone number** must be provided. |
+
+**Valid combinations**
+
+- **First name** + **email address**
+- **First name** + **phone number**
+- **First name** + **email** + **phone** (recommended for WhatsApp and email outreach)
+
+**Invalid examples**
+
+- Email only, with no first name.
+- First name only, with no email and no phone.
+- Empty submission.
+
+If validation fails, the form shows an appropriate message and **does not save** until the required combination is complete.
+
+<WarningBox>
+  Use **E.164-style phone numbers** with country code where possible (for example, +91 for India). Incorrect formats cause delivery and segment matching issues later.
+</WarningBox>
+
+<TipBox>
+  For WhatsApp-first teams, capture **phone** and **first name** on every contact you plan to message. Email alone is not enough for WhatsApp campaigns.
+</TipBox>
+
+---
+
+## 02. Inline edit
+
+**Inline edit** lets you change a single field **directly in the contacts table** without opening the full record page. This is useful for quick corrections—updating an email, owner, city, or status while reviewing a list.
+
+### How it works
+
+1. On the contacts listing, locate the field you want to change.
+2. Click the cell or use the inline edit control for that column.
+3. Enter the new value and confirm (save on blur or explicit save, depending on your UI).
+4. The grid refreshes with the updated value.
+
+**Example:** A user notices a typo in an email address on the list view, clicks the **Email** cell in the table, fixes it, and continues working without opening the full New Contact form.
+
+Inline edits happen in the same **contacts table** shown in the list view—use row checkboxes only when you intend bulk actions, not when editing a single cell.
+
+### Expected behavior
+
+- The new value is **saved immediately** after you confirm the edit.
+- The **contacts grid** shows the updated data without a full page reload in most cases.
+- If save fails (validation or permissions), the cell should show an error and **revert or allow retry**—the old value must not silently disappear.
+
+Inline edit is best for **one field on one row**. For many fields on many rows, use **bulk edit** instead.
+
+---
+
+## 03. Bulk edit
+
+**Bulk edit** updates **multiple contacts at once** with the same change—ideal when you are assigning an owner, updating a lifecycle stage, or setting a shared property after an import or event.
+
+1. On **CRM → Contacts**, select the checkboxes for the records you want to update.
+2. Open the bulk action menu (for example, **Bulk edit** or **Edit**).
+3. Choose the field(s) to change and enter the new value(s).
+4. Apply the change and confirm if prompted.
+
+**Example:** After a trade show, select forty new contacts and set **Contact owner** to the inside-sales rep who will follow up.
+
+<DocsVideo src="/docs/contacts/bulk-edit.mp4" />
+
+### Expected behavior
+
+- Changes apply to **all selected records** in one operation.
+- A summary or success message should indicate how many contacts were updated.
+- If some rows fail validation, the UI should report **which records failed** rather than failing silently for the whole batch.
+
+<WarningBox>
+  Bulk edit cannot override **required field rules** on individual records. If a change would leave a contact without a valid email/phone combination where your workspace enforces it, those rows may be skipped or rejected.
+</WarningBox>
+
+---
+
+## 04. Filters
+
+**Filters** narrow the contacts list to records that match conditions you define—so you can work on a subset without exporting or building a segment first.
+
+### Common filter examples
+
+| Goal | Example filter |
+|---|---|
+| Location | **City** is equal to **Chennai** |
+| Ownership | **Contact owner** is a specific user |
+| Recency | **Created date** is within **this month** |
+| Segment-style logic | Custom field **Customer tier** equals **Premium** |
+
+1. Open the filter builder on the contacts page.
+2. Add one or more conditions (field, operator, value).
+3. Apply filters to refresh the grid.
+4. Clear or adjust filters when you need the full list again.
+
+Use the **Filters** control on the contacts toolbar (next to **Edit columns** and **Sort**) to open the filter builder.
+
+<img src="/docs/contacts/filters.png" alt="Contact filters applied on the contacts listing" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Expected behavior
+
+- You can apply **multiple filters** at the same time (typically combined with AND logic unless your UI offers OR groups).
+- You can **modify** active filters without starting over.
+- You can **clear all filters** to return to the unfiltered contact list.
+- Filtered views are for **working lists** in CRM; for reusable campaign audiences, save criteria as a [Segment](/docs/segments).
+
+<TipBox>
+  Use filters for operational triage (today’s leads, one owner’s queue). Use **segments** when the same audience will be reused in campaigns or automation.
+</TipBox>
+
+---
+
+## 05. Recently deleted contacts
+
+When you delete a contact, Notifyy moves it to **Recently Deleted** instead of removing it permanently right away. This gives you a window to **restore** mistakes or **purge** records you no longer need.
+
+1. Open **CRM → Contacts**.
+2. Click **Recently deleted** on the toolbar (trash icon).
+3. Select one or more deleted records if you need bulk actions.
+4. Click **Restore** to move records back to the active list, or **Delete permanently** to remove them for good.
+
+<img src="/docs/contacts/recently-deleted.png" alt="Recently deleted contacts with Restore and Delete permanently actions" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Available actions
+
+| Action | Result |
+|---|---|
+| **Restore contact** | Record returns to the **active contacts** list with its data intact. |
+| **Permanently delete** | Record is removed for good and **cannot be recovered**. |
+
+### Expected behavior
+
+- **Restored** contacts appear again in the main contacts grid and behave like any active record (filters, segments, and ownership apply as before).
+- **Permanently deleted** contacts are gone from Recently Deleted and from active lists—they should not sync back from integrations unless created again as new records.
+
+<WarningBox>
+  Permanent delete is irreversible. Confirm you are not removing contacts still referenced in live segments, campaigns, or compliance holds before using **Permanently delete**.
+</WarningBox>
+
+---
+
+## Summary
+
+Contacts are the core customer records in Notifyy CRM. Create them with **first name** plus **email or phone**, use **inline edit** for quick single-field fixes, **bulk edit** for batch updates, **filters** to focus the list, and **Recently Deleted** to restore or purge records safely. Accurate contact data keeps WhatsApp messaging, segments, and team ownership reliable as you scale.

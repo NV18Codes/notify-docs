@@ -8,6 +8,7 @@
     "messaging": "Messaging",
     "automation": "Automation",
     "crm": "CRM",
+    "integration": "Integration",
     "support": "Support"
   },
   "nav": {
@@ -29,6 +30,8 @@
     "segments": "Segments",
     "fields": "Fields",
     "propertyManagement": "Property Management",
+    "integration": "Integration",
+    "hubspot": "HubSpot",
     "teamInbox": "Team Inbox",
     "crm": "CRM",
     "templates": "Templates"

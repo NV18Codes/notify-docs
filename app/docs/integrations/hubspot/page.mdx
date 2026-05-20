@@ -1,0 +1,257 @@
+export const metadata = {
+  title: "HubSpot Integration",
+  description:
+    "Connect Notifyy to HubSpot CRM with OAuth 2.0. Sync contacts, deals, companies, tickets, and meetings—setup, scopes, security, sync behavior, and troubleshooting.",
+  keywords: [
+    "Notifyy HubSpot integration",
+    "HubSpot CRM sync",
+    "HubSpot OAuth",
+    "contact sync HubSpot",
+    "deal sync HubSpot",
+    "CRM integration Notifyy",
+  ],
+  alternates: {
+    canonical: "/docs/integrations/hubspot",
+  },
+  openGraph: {
+    title: "HubSpot Integration | Notifyy Docs",
+    description:
+      "Set up and manage the HubSpot CRM integration in Notifyy—authorization, data sync, scopes, security, and verification.",
+    url: "/docs/integrations/hubspot",
+    type: "article",
+  },
+};
+
+# HubSpot
+
+The HubSpot integration connects your HubSpot CRM account to Notifyy so contact, deal, and related CRM data can stay aligned across both systems. The connection uses **HubSpot OAuth 2.0** and only accesses data within the scopes you approve during authorization.
+
+Use this guide to connect HubSpot, understand what syncs automatically, review requested permissions, and troubleshoot common connection issues.
+
+---
+
+## What this integration does
+
+After a successful connection, Notifyy can:
+
+- Read and write **contact** records in HubSpot.
+- Read and write **deal** records.
+- Sync **companies**, **tickets**, **appointments**, and **meetings** when those scopes are granted.
+- Run an **initial sync** immediately after linking, then keep data updated on a schedule and via webhooks (when configured).
+
+The integration is designed for teams that use HubSpot as their CRM source of truth while running messaging, campaigns, or workflows in Notifyy.
+
+<TipBox>
+  Only users with permission to install third-party apps in HubSpot can complete the OAuth step. Confirm access with your HubSpot admin before starting.
+</TipBox>
+
+---
+
+## Prerequisites
+
+Before you connect HubSpot, make sure you have:
+
+- An active **HubSpot account** (Marketing, Sales, or Service Hub as required by your use case).
+- Permission to **install and authorize third-party applications** in that HubSpot portal.
+- A Notifyy account with access to the **Integrations** section.
+- A clear list of which objects you need synced (contacts only, or contacts plus deals, companies, and tickets).
+
+---
+
+## 01. Connect HubSpot
+
+Start the connection from Notifyy. You do not need API keys in this flow—OAuth handles secure linking.
+
+### Access Notifyy
+
+1. Open the Notifyy application and sign in to your workspace (Google, Microsoft, or email/phone).
+
+<img src="/docs/integrations/hubspot/img-1.png" alt="Notifyy sign-in page" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Open the HubSpot integration
+
+1. In the left sidebar, go to **Integrations**.
+2. On the integrations page, find the **HubSpot** card (CRM).
+3. Click **Connect** on the HubSpot card.
+
+<img src="/docs/integrations/hubspot/img-2.png" alt="Notifyy Integrations page with HubSpot Connect button" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+If HubSpot is already connected, the card shows a **Connected** badge with **Open configuration** and **Disconnect** instead of **Connect**.
+
+---
+
+## 02. Complete OAuth authorization
+
+After you click **Connect**, Notifyy redirects you to HubSpot to sign in and authorize the link.
+
+### Sign in to HubSpot
+
+1. On the HubSpot OAuth bridge screen, confirm you are connecting **Notifyy** to HubSpot.
+2. Click **Sign in to your HubSpot account** (or create a new account if you do not have one yet).
+
+<img src="/docs/integrations/hubspot/img-3.png" alt="HubSpot OAuth bridge connecting Notifyy to HubSpot" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Choose your HubSpot portal
+
+1. On the **Choose an account** screen, select the HubSpot portal you want to link.
+2. Review the portal name and ID, then click **Choose account**.
+3. On the next HubSpot screens, review the **requested scopes** and click **Connect app** to approve access.
+4. HubSpot redirects back to Notifyy with an authorization code. Notifyy exchanges that code for access and refresh tokens—no manual copy-paste is required.
+
+<img src="/docs/integrations/hubspot/img-4.png" alt="HubSpot choose account screen for OAuth authorization" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<WarningBox>
+  If you deny a required scope, sync for that object type will not work until you reconnect and approve the full scope set. Pick the correct portal if you manage multiple HubSpot accounts.
+</WarningBox>
+
+---
+
+## 03. Confirm the connection
+
+Once authorization succeeds, Notifyy establishes the link in the background.
+
+- Your HubSpot account is **securely linked** to Notifyy.
+- **OAuth tokens** are stored in encrypted form.
+- An **initial data synchronization** starts automatically.
+
+Return to **Integrations** and confirm the HubSpot card shows **Connected**. You can open **Open configuration** to review settings or use **Disconnect** if you need to remove the link later.
+
+<img src="/docs/integrations/hubspot/img-5.png" alt="HubSpot integration connected on Notifyy Integrations page" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+The first sync may take longer depending on record volume.
+
+---
+
+## 04. Functional capabilities
+
+### Contact management
+
+- Retrieve contact records from HubSpot into Notifyy.
+- Create new contacts in HubSpot from Notifyy workflows (when enabled).
+- Update existing contact field values so both systems reflect the same data.
+
+### Deal management
+
+- Pull deal records and pipeline-related data from HubSpot.
+- Create new deals or update deal stages and properties when your automation rules require it.
+
+### Additional CRM objects
+
+Depending on approved scopes, the integration can also interact with **companies**, **tickets**, **appointments**, and **meetings**. Enable only the objects your team actually uses to keep sync focused and easier to audit.
+
+---
+
+## 05. How data synchronization works
+
+| Phase | Behavior |
+|---|---|
+| Initial sync | Runs right after connection to import existing HubSpot records into Notifyy. |
+| Incremental sync | Runs on a defined schedule to pick up changes since the last run. |
+| Webhooks | When configured, delivers near real-time updates for supported events instead of waiting for the next scheduled sync. |
+
+Sync direction and field mapping depend on your Notifyy configuration. After connection, validate a sample contact and deal in both systems before relying on the integration for live campaigns.
+
+<TipBox>
+  Run a small test batch after the initial sync—verify one contact and one deal in HubSpot and Notifyy before enabling high-volume automations.
+</TipBox>
+
+---
+
+## 06. Requested OAuth scopes
+
+Notifyy requests the following HubSpot scopes during authorization. Each scope maps to read or write access for a CRM object type.
+
+| Scope | Access |
+|---|---|
+| `crm.objects.contacts.read` | Read contacts |
+| `crm.objects.contacts.write` | Create and update contacts |
+| `crm.objects.deals.read` | Read deals |
+| `crm.objects.deals.write` | Create and update deals |
+| `crm.objects.companies.read` | Read companies |
+| `crm.objects.companies.write` | Create and update companies |
+| `crm.objects.tickets.read` | Read tickets |
+| `crm.objects.tickets.write` | Create and update tickets |
+| `crm.objects.appointments.read` | Read appointments |
+| `crm.objects.appointments.write` | Create and update appointments |
+| `crm.objects.meetings.read` | Read meetings |
+| `crm.objects.meetings.write` | Create and update meetings |
+
+Notifyy only uses data allowed by the scopes you approve. If you remove an object type from scope at reconnect time, sync for that object stops.
+
+---
+
+## 07. Security and data handling
+
+- All HubSpot API traffic uses **HTTPS**.
+- OAuth **access and refresh tokens** are stored encrypted and are not exposed in the UI.
+- Data access is limited to the **authorized scopes** from your HubSpot consent screen.
+- Notifyy does not store your HubSpot password—authentication is entirely through OAuth.
+
+Treat HubSpot credentials and Notifyy admin access with the same care as any production CRM integration.
+
+---
+
+## 08. Token lifecycle
+
+HubSpot access tokens expire. Notifyy handles renewal automatically in most cases.
+
+- **Access tokens** are refreshed before they expire when a valid refresh token is present.
+- If refresh fails (for example, after a password reset, revoked app, or HubSpot admin removal), Notifyy marks the integration as disconnected and prompts you to **reconnect** via OAuth.
+
+Reconnecting is the same flow as the initial setup: **Integrations → HubSpot → Connect**.
+
+---
+
+## 09. Disconnect HubSpot
+
+To stop sync and remove stored tokens:
+
+1. Open **Integrations** and locate the **HubSpot** card.
+2. Click **Disconnect**.
+3. Confirm when prompted.
+
+Notifyy deletes the stored OAuth tokens and stops scheduled sync and webhook processing for that portal. Records already in Notifyy are not automatically deleted—review your data retention policy if you need to clean up copied records.
+
+---
+
+## 10. Errors and reliability
+
+The integration includes safeguards for common failure modes:
+
+| Situation | Expected behavior |
+|---|---|
+| Temporary API errors | Automatic retries with backoff where appropriate. |
+| Expired access token | Refresh attempted before retrying the request. |
+| Refresh token invalid | Connection marked as disconnected; user must re-authorize. |
+| Persistent failures | Logged for monitoring; visible in integration status or support review. |
+
+If sync appears stalled, check HubSpot app permissions, confirm the integration is still connected, and retry after reconnecting if needed.
+
+---
+
+## 11. Verification checklist
+
+Use this checklist after setup to confirm the integration is production-ready:
+
+1. **Sign in to Notifyy** and open **Integrations**.
+2. **Click Connect** on the HubSpot card.
+3. **Complete OAuth**—sign in to HubSpot, choose the portal, and approve scopes.
+4. **Confirm connected status** on the HubSpot card (**Connected** badge).
+5. **Wait for initial sync** to finish (or check progress if shown).
+6. **Create or update a test contact** in Notifyy and verify the change in HubSpot (or the reverse, depending on your sync rules).
+7. **Create or update a test deal** if deals are in scope.
+8. **Disconnect and reconnect** in a sandbox portal first if you are testing before go-live.
+
+---
+
+## Support
+
+If connection, sync, or scope errors persist after reconnecting, contact the Notifyy support team with your HubSpot portal ID, approximate sync time, and any error message shown on the **Integrations** page.
+
+**Email:** [support@notifyy.io](mailto:support@notifyy.io)
+
+---
+
+## Summary
+
+The HubSpot integration links your CRM data to Notifyy through OAuth, scoped permissions, and scheduled plus webhook-driven sync. Connect from **Integrations**, approve only the scopes you need, verify contacts and deals after the first sync, and reconnect if tokens expire or access is revoked in HubSpot.
