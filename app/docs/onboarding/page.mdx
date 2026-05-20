@@ -1,194 +1,325 @@
+export const metadata = {
+  title: "Customer Onboarding",
+  description:
+    "Meta WhatsApp Business API onboarding prerequisites and Notifyy embedded signup—phone number, Business Manager, GST, website, and verification for India.",
+  keywords: [
+    "WhatsApp Business API onboarding",
+    "Meta Business Manager verification",
+    "Notifyy WhatsApp setup",
+    "WABA onboarding India",
+    "GST WhatsApp API verification",
+  ],
+  alternates: {
+    canonical: "/docs/onboarding",
+  },
+  openGraph: {
+    title: "Customer Onboarding | Notifyy Docs",
+    description:
+      "Complete Meta prerequisites and connect WhatsApp Business API to Notifyy—step-by-step for Indian businesses.",
+    url: "/docs/onboarding",
+    type: "article",
+  },
+};
+
 # Customer Onboarding
 
-Setting up Notifyy correctly ensures that your WhatsApp communication works smoothly from the beginning. This process connects your WhatsApp Business account, prepares your messaging setup, and allows you to start engaging with your customers.
+This guide covers **Meta (WhatsApp Business API) onboarding** for businesses using Notifyy. You will prepare mandatory prerequisites first, then complete Notifyy’s embedded signup flow to link your Facebook Business Portfolio, WhatsApp Business Account (WABA), and phone number.
+
+Approval typically takes **2–7 business days** once documents and names match across Meta, your website, and GST records. Some steps finish in hours; business verification can take longer.
 
 👉 [Access Notifyy Platform](https://www.notifyy.io/)
 
-_Last updated: Recently · Estimated time: 6–8 minutes_
+<TipBox>
+  Prepare everything in the **Prerequisites** section before you click **Login with Facebook** in Notifyy. Missing or mismatched documents are the most common cause of delays.
+</TipBox>
 
 ---
 
 ## Overview
 
-During onboarding, you will complete a series of steps that prepare your account for real usage. Each step is important and builds on the previous one.
+To use WhatsApp Business API through Notifyy, Meta requires:
 
-By the end of this process, you will be able to send messages, manage contacts, and track campaign performance.
+- A **dedicated phone number** not active on consumer WhatsApp apps.
+- A **Meta Business Manager** account with accurate legal details.
+- A **live business website** and **domain-matched email**.
+- **GST or equivalent business registration** for Indian entities.
+- A compliant **WhatsApp display name** aligned with your brand.
+
+After prerequisites are ready, you complete Notifyy’s **embedded signup** (Facebook login → portfolio → WABA → number → permissions). Post-connection steps in Meta include **payment setup** and **business verification** in WhatsApp Manager.
 
 ---
 
-## Step 1: Connect WhatsApp Business Account
+## Onboarding prerequisites
 
-<img src="/docs/onboarding/step-1.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-2.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-3.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+Complete these items **before** starting Notifyy onboarding. Requirements follow Meta policy for the **India region** (May 2026) and may change when Meta updates its policies.
 
-### What this step means
+### 1. Phone number (new / dedicated)
 
-This step connects your WhatsApp number to Notifyy. Without this connection, you will not be able to send or receive any messages.
+The number registered for WhatsApp Business API must:
 
-### What you need to do
-
-1. Click on **Connect Account**
-2. Enter your business details
-3. Add your WhatsApp phone number
-4. Complete OTP verification
+- **Not** be linked to any existing WhatsApp or WhatsApp Business app account.
+- Be **released** from WhatsApp apps first (delete the app account on that number if it was in use).
+- Receive **OTP** via SMS or voice call during registration.
+- Work as an **Indian mobile** or supported **VoIP** number per Meta rules.
+- Remain on the **API only** after registration—it cannot return to the regular WhatsApp consumer app.
 
 <WarningBox>
-  <strong>Warning:</strong> The phone number must not already be connected to another WhatsApp Business API provider.
+  A **brand-new SIM** is strongly recommended to avoid migration conflicts and failed number registration.
 </WarningBox>
 
-> **Note:** Keep your phone nearby to complete OTP verification.
+### 2. Facebook (Meta) Business Manager account
 
-<TipBox>
-  Use a dedicated business number instead of a personal number.
-</TipBox>
+API access requires a Meta Business Manager:
 
----
-
-## Step 2: Verify Your Business
-
-<img src="/docs/onboarding/step-4.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-5.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-6.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-
-### What this step means
-
-Verification confirms your business identity and allows you to use WhatsApp messaging features fully.
-
-### What you need to do
-
-1. Enter your business name
-2. Select your business category
-3. Submit verification
-
-> **Note:** Verification may take a few minutes or longer depending on checks.
+- Use a **personal Facebook account** as the admin/owner who will run onboarding.
+- Create Business Manager at [business.facebook.com](https://business.facebook.com).
+- Enter **business name, address, and phone** exactly as on legal documents.
+- Assign **admin roles** to teammates who will manage WhatsApp and verification.
 
 <WarningBox>
-  <strong>Warning:</strong> Incorrect business details may delay or fail verification.
+  Without a Business Manager—and ideally **business verification**—WhatsApp API access stays limited. You can apply for verification while onboarding with Notifyy.
 </WarningBox>
 
+### 3. Business website
+
+Meta expects a **public, live** website:
+
+- No login walls or permanent “under construction” pages.
+- **Legal business name** in the footer, matching GST/legal documents.
+- Clear description of **products or services**.
+- **Contact details and business address** visible.
+- A Facebook Page or Instagram profile may help during signup, but a **live website** is required for full business verification.
+
 <TipBox>
-  Ensure your business name matches official documents.
+  No site yet? Use a one-page site (Google Sites, Wix, Carrd) and put your **legal name in the footer** before you submit verification.
 </TipBox>
 
----
+### 4. Business email (domain-matched)
 
-## Step 3: Create WhatsApp Templates
+Meta uses email to confirm business ownership:
 
-<img src="/docs/onboarding/step-7.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-8.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-9.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-10.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+- Use **name@yourbusiness.com** on the same domain as your website.
+- **Free providers** (Gmail, Yahoo, Outlook) are not accepted for verification.
+- Keep access to this inbox—Meta may send verification or action-required notices.
 
-### What this step means
+### 5. GST certificate / business registration
 
-Templates are required to send outbound messages to customers.
+For Indian businesses, submit official registration:
 
-### What you need to do
+**Primary (recommended)**
 
-1. Go to Templates
-2. Click Create Template
-3. Select type
-4. Add your message content
-5. Submit the template for approval
+- **GST certificate** (most reliable for Meta India)
+- **MSME / Udyam** registration
+- **Certificate of incorporation** (Pvt. Ltd.)
+
+**Supporting**
+
+- Bank statement with business name and address
+- Utility bill for address proof
+- Shop & Establishment certificate (may be rejected—prefer GST when available)
+
+**Document quality**
+
+- Colour scan, full document visible.
+- **Legal name** must match Facebook Business Manager **exactly**.
+- **Address** must match Meta Business Manager.
 
 <WarningBox>
-  <strong>Warning:</strong> Campaigns cannot be sent without approved templates.
+  **Aadhaar and PAN alone are not accepted** as business proof. Use a business registration document.
 </WarningBox>
 
-> **Note:** Approval time depends on WhatsApp review.
+### Critical name-matching rule
+
+The legal name must be **identical** on:
+
+1. GST / registration document  
+2. Facebook Business Manager  
+3. Website footer  
+
+Even small differences (**Pvt Ltd** vs **Private Limited**) can cause rejection. Fix Business Manager first, then re-submit documents.
+
+### 6. WhatsApp Business display name
+
+Customers see this name in WhatsApp. Meta rules:
+
+- Must reflect your **real brand or legal trade name**.
+- Must **not** be a generic phrase or marketing slogan (e.g. “Best Deals India”).
+- Must align with **website and legal documents**.
+- Meta may **re-review** the display name as messaging limits increase.
 
 <TipBox>
-  Keep templates clear and simple for faster approval.
+  Display name review often takes **24–48 hours** after business verification progresses.
 </TipBox>
+
+### Quick reference checklist
+
+| Requirement | What to prepare |
+|---|---|
+| New mobile number | Fresh SIM, not on WhatsApp apps; OTP-capable |
+| Facebook account | Personal account to admin Business Manager |
+| Meta Business Manager | Created at business.facebook.com; details match GST |
+| Business website | Live site; legal name in footer; matches domain email |
+| Business email | Domain email (e.g. you@yourdomain.com) |
+| GST / registration | Legal name matches Business Manager exactly |
+| Display name | Brand name only—no slogans or generic terms |
+
+### Expected approval timeline
+
+| Step | Estimated time |
+|---|---|
+| Meta business verification | 2–4 business days |
+| WABA creation and number setup | Same day (a few hours) |
+| Display name approval | 24–48 hours |
+| Total (approx.) | **3–10 business days** |
+
+Template and messaging approvals happen **after** onboarding in separate WhatsApp Manager workflows—not during this connection guide.
 
 ---
 
-## Step 4: Import Customer Contacts
+## Meta WhatsApp API onboarding via Notifyy
 
-<img src="/docs/onboarding/step-11.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-12.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-13.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-14.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-15.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-
-### What this step means
-
-This step adds your customer data into Notifyy for messaging.
-
-### What you need to do
-
-1. Go to **Contacts → Import**
-2. Upload CSV file
-3. Map fields
-4. Confirm the import
+When prerequisites are ready, follow the embedded signup flow in Notifyy.
 
 <WarningBox>
-  <strong>Warning:</strong> If phone numbers are missing country codes, messages will fail.
+  If the number already has **WhatsApp** or **WhatsApp Business** installed, **remove or migrate** that account before onboarding. Meta often fails number registration when the line is still active on the consumer app.
 </WarningBox>
 
-> **Note:** Ensure CSV format is correct before uploading.
+---
 
-<TipBox>
-  Test with a small dataset before importing large lists.
-</TipBox>
+## Step 1: Log in via Notifyy
+
+1. Open the Notifyy onboarding page for your workspace.
+2. Click **Login with Facebook**.
+3. Grant the **permissions** Meta requests for Business Portfolio and WhatsApp setup.
+
+<img src="/docs/onboarding/step-1.png" alt="Notifyy onboarding Login with Facebook" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+<img src="/docs/onboarding/step-2.png" alt="Facebook login and permissions for WhatsApp API" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+Use the same Facebook user who admins your Meta Business Manager.
 
 ---
 
-## Step 5: Create and Send Your First Campaign
+## Step 2: Select or create a business portfolio
 
-<img src="/docs/onboarding/step-16.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-17.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-18.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-19.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-20.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-21.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+1. Choose an **existing Meta Business Account** or create a new **Business Portfolio**.
+2. Enter **Business name**, **business email**, **category**, **website URL**, **country**, and **time zone**.
+3. Confirm details match your GST and website footer before continuing.
 
-### What this step means
-
-Campaigns allow you to send messages to multiple customers at once.
-
-### What you need to do
-
-1. Go to Campaigns
-2. Create campaign
-3. Select template
-4. Choose audience
-5. Send
-
-<WarningBox>
-  <strong>Warning:</strong> Campaign will fail if template is not approved.
-</WarningBox>
-
-> **Note:** Always review content before sending.
-
-<TipBox>
-  Start with a small audience.
-</TipBox>
+<img src="/docs/onboarding/step-3.png" alt="Select or create Meta Business Portfolio" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+<img src="/docs/onboarding/step-4.png" alt="Business portfolio details form" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
 
 ---
 
-## Step 6: Analytics & Tracking
+## Step 3: Create a WhatsApp Business Account (WABA)
 
-<img src="/docs/onboarding/step-22.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-23.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-24.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-25.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-26.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
-<img src="/docs/onboarding/step-27.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+Meta creates your **WhatsApp Business Account**, **display name**, and **WhatsApp business profile**.
 
-### What this step means
+1. Review the **display name**—it must match GST, Business Manager, and your website.
+2. Complete profile fields Meta requires for your category and region.
 
-This section helps you understand how your campaigns are performing.
-
-### What you can track
-
-- Message delivery
-- Engagement
-- Responses
-
-<TipBox>
-  Use these insights to improve your future campaigns and targeting strategy.
-</TipBox>
+<img src="/docs/onboarding/step-5.png" alt="Create WhatsApp Business Account and display name" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+<img src="/docs/onboarding/step-6.png" alt="WhatsApp business profile setup" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
 
 ---
+
+## Step 4: Add your WhatsApp number
+
+1. Enter a **fresh mobile number** not in use on WhatsApp apps.
+2. Choose **SMS** or **voice call** for OTP.
+3. Complete **OTP verification** on that device or line.
+
+<img src="/docs/onboarding/step-7.png" alt="Add WhatsApp phone number for API" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+<img src="/docs/onboarding/step-8.png" alt="OTP verification for WhatsApp number" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## Step 5: Complete embedded signup
+
+1. Review the **permission summary** linking Facebook Business, WABA, and Notifyy.
+2. Click **Continue** or **Finish** to complete embedded signup.
+3. Wait until Notifyy shows the workspace as **connected**.
+
+<img src="/docs/onboarding/step-9.png" alt="Embedded signup permissions review" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+<img src="/docs/onboarding/step-10.png" alt="Embedded signup completed in Notifyy" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+For more detail on connection troubleshooting, see [Connect WhatsApp](/docs/connect-whatsapp).
+
+---
+
+## Step 6: Open WhatsApp Manager
+
+1. In [Meta Business Suite](https://business.facebook.com), open **All tools**.
+2. Launch **WhatsApp Manager** for the portfolio you connected.
+3. Confirm your **WABA**, **phone number**, and **display name** appear correctly.
+
+<img src="/docs/onboarding/step-11.png" alt="Open WhatsApp Manager from Meta Business" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## Step 7: Add a payment method
+
+WhatsApp Business API billing requires a valid payment method in Meta.
+
+1. In WhatsApp Manager, go to **Settings → Payment configuration** (or **Billing**).
+2. Add a **credit or debit card** accepted by Meta for your country.
+3. Save billing details before scaling message volume.
+
+<img src="/docs/onboarding/step-12.png" alt="WhatsApp Manager payment configuration" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+<img src="/docs/onboarding/step-13.png" alt="Add payment method for WhatsApp API" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## Step 8: Verify your business
+
+1. Go to **Business settings → Security center** (or **Business verification**).
+2. Click **Start verification**.
+3. Upload **GST** or other accepted documents; legal name and address must match Business Manager.
+
+<img src="/docs/onboarding/step-14.png" alt="Start Meta business verification" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+<img src="/docs/onboarding/step-15.png" alt="Upload GST and business documents" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+<img src="/docs/onboarding/step-16.png" alt="Business verification submission" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+See also [Verify your business](/docs/verify-business) for focused verification notes.
+
+---
+
+## Step 9: Wait for Meta verification
+
+- Review status in **Security center** or WhatsApp Manager.
+- Respond to **Action required** items Meta emails or surfaces in the UI.
+- Typical range: **a few minutes to 2–3 business days**; complex cases may take longer.
+
+<img src="/docs/onboarding/step-17.png" alt="Meta verification pending status" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+<img src="/docs/onboarding/step-18.png" alt="Meta verification approved or action required" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+Do not register the same number on WhatsApp apps while verification is in progress.
+
+---
+
+## Step 10: Finish setup in Notifyy
+
+When Meta shows a connected WABA and verification is submitted or approved:
+
+1. Return to Notifyy and confirm **WhatsApp** status is **Connected** with no blocking errors.
+2. Note your **phone number ID** and **WABA** in settings if your team needs them for support.
+3. Proceed to operational guides when you are ready—for example [Connect WhatsApp](/docs/connect-whatsapp) checks and [Verify business](/docs/verify-business) follow-ups.
+
+<img src="/docs/onboarding/step-19.png" alt="Notifyy workspace WhatsApp connected" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+<img src="/docs/onboarding/step-20.png" alt="Notifyy onboarding complete" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+Messaging features, templates, and campaigns are configured **after** this onboarding flow in their own documentation sections—not as part of core API connection.
+
+---
+
+## Important notes
+
+- **Number conflict:** Remove WhatsApp / WhatsApp Business from the line before API registration.
+- **Name mismatch:** Align GST, Business Manager, and website footer before uploading documents.
+- **Policy changes:** Meta may update requirements; check Meta Business Help Center for the latest India guidance.
+- **Notifyy support:** If embedded signup fails after prerequisites are correct, contact [support@notifyy.io](mailto:support@notifyy.io) with screenshots and your Business Manager ID.
+
+---
+
+## Summary
+
+Prepare a dedicated number, verified Business Manager, live website, domain email, GST-aligned documents, and an approved display name—then complete Notifyy’s **Login with Facebook** embedded signup through WABA and number verification. Finish payment and business verification in **WhatsApp Manager**, wait for Meta approval, and confirm **Connected** status in Notifyy before moving to day-to-day product configuration.

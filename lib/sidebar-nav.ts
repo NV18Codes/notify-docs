@@ -16,6 +16,7 @@ export type NavDocLabelKey =
   | "segments"
   | "fields"
   | "propertyManagement"
+  | "hubspot"
   | "teamInbox";
 
 export type SidebarLeafItem = {
@@ -36,7 +37,7 @@ export type SidebarMenuEntry = SidebarLeafItem | SidebarSubgroup;
 
 export type SidebarBlock = {
   type: "group";
-  titleKey: "gettingStarted" | "messaging" | "automation" | "crm" | "support";
+  titleKey: "gettingStarted" | "messaging" | "automation" | "crm" | "integration" | "support";
   items: SidebarMenuEntry[];
 };
 
@@ -86,6 +87,11 @@ export const SIDEBAR_BLOCKS: SidebarBlock[] = [
       { href: "/docs/segments", labelKey: "segments" },
       { href: "/docs/fields", labelKey: "fields" },
     ],
+  },
+  {
+    type: "group",
+    titleKey: "integration",
+    items: [{ href: "/docs/integrations/hubspot", labelKey: "hubspot" }],
   },
   {
     type: "group",

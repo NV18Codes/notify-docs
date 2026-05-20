@@ -16,6 +16,8 @@ export type NavKey =
   | "segments"
   | "fields"
   | "propertyManagement"
+  | "integration"
+  | "hubspot"
   | "teamInbox"
   | "contacts"
   | "crm"
@@ -41,6 +43,8 @@ export function segmentToNavKey(segment: string): NavKey | null {
     segments: "segments",
     fields: "fields",
     property: "propertyManagement",
+    integrations: "integration",
+    hubspot: "hubspot",
     "team-inbox": "teamInbox",
     crm: "crm",
   };

@@ -54,7 +54,7 @@ export default function DocsHomePage() {
       <h2>{copy.sidebar.crm}</h2>
       <ul>
         <li>
-          <Link href={futureSectionPaths.contacts}>{copy.nav.contactManagement}</Link>
+          <Link href="/docs/contacts">{copy.nav.contactManagement}</Link>
         </li>
         <li>
           <Link href="/docs/import">{copy.nav.importObject}</Link>
@@ -64,6 +64,13 @@ export default function DocsHomePage() {
         </li>
         <li>
           <Link href="/docs/fields">{copy.nav.fields}</Link>
+        </li>
+      </ul>
+
+      <h2>{copy.sidebar.integration}</h2>
+      <ul>
+        <li>
+          <Link href="/docs/integrations/hubspot">{copy.nav.hubspot}</Link>
         </li>
       </ul>
 

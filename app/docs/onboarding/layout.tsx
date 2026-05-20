@@ -4,25 +4,25 @@ import type { ReactNode } from "react";
 export const metadata: Metadata = {
   title: "Customer Onboarding",
   description:
-    "Set up Notifyy: connect WhatsApp Business, verify your account, create templates, import contacts, send campaigns, and monitor performance.",
+    "Meta WhatsApp Business API prerequisites and Notifyy embedded signup—Business Manager, GST, website, WABA, and verification for India.",
   keywords: [
     "WhatsApp onboarding",
-    "WhatsApp campaign setup",
+    "Meta Business Manager",
     "WhatsApp API integration",
     "Notifyy",
-    "WhatsApp Business API",
+    "WhatsApp Business API India",
   ],
   openGraph: {
     title: "Customer Onboarding | Notifyy Docs",
     description:
-      "Set up Notifyy: connect WhatsApp Business, verify your account, create templates, import contacts, send campaigns, and monitor performance.",
+      "Prepare Meta prerequisites and complete WhatsApp Business API onboarding through Notifyy.",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
     title: "Customer Onboarding | Notifyy Docs",
     description:
-      "Set up Notifyy: connect WhatsApp Business, verify your account, create templates, import contacts, send campaigns, and monitor performance.",
+      "Prepare Meta prerequisites and complete WhatsApp Business API onboarding through Notifyy.",
   },
 };
 

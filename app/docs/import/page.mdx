@@ -1,0 +1,358 @@
+export const metadata = {
+  title: "Import Data",
+  description:
+    "Bulk import and update CRM records in Notifyy from CSV or XLSX. Single and multi-object import, column mapping, validation, import history, and segment organization.",
+  keywords: [
+    "Notifyy import data",
+    "CRM bulk import",
+    "CSV import contacts",
+    "import mapping Notifyy",
+    "import history CRM",
+  ],
+  alternates: {
+    canonical: "/docs/import",
+  },
+  openGraph: {
+    title: "Import Data | Notifyy Docs",
+    description:
+      "Complete guide to importing contacts and related objects in Notifyy—workflow, file format, action types, validation, and segments.",
+    url: "/docs/import",
+    type: "article",
+  },
+};
+
+# Import Data
+
+The **Import Data** module lets you **create and update CRM records in bulk** by uploading structured files instead of entering data one row at a time. Notifyy validates each upload and processes only records that pass your file rules and field configuration.
+
+Use import when you are **migrating** from another system, **syncing** periodic updates, **loading event lists**, or **associating** related objects (for example, contacts and companies) in one job.
+
+Open **Settings → Data Management → Import Data** to start an import or review past runs.
+
+<img src="/docs/import/list-view.png" alt="File Imports list with Import Data button" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## Why use import?
+
+Import helps teams:
+
+- Upload **large customer lists** without manual [Contact](/docs/contacts) creation.
+- **Migrate** existing databases into Notifyy.
+- **Update** records in bulk using exported record IDs.
+- **Link related objects** (contact ↔ company, deal ↔ contact) in a single multi-object import.
+- Keep CRM data **consistent** with validation before anything is written.
+
+<WarningBox>
+  Notifyy supports up to **50,000 records** per import. Split larger files into multiple jobs and verify each run in **Import history** before continuing.
+</WarningBox>
+
+---
+
+## Import types
+
+| Type | What you upload | Typical use |
+|---|---|---|
+| **Single object import** | One object, such as **Contacts** only | Lead lists, customer CSV exports |
+| **Multiple object import** | Two or more related objects, such as **Contacts** and **Companies** | Migrations where accounts and people arrive together |
+
+**Multiple object import** creates **associations automatically** between related rows (for example, linking a contact to a company when both are in the file). You can confirm associations on individual contact records after the job completes.
+
+---
+
+## 01. Import workflow
+
+The wizard moves through **Type → Upload → Map → Details**. Follow the steps below, or watch the full flow in the video.
+
+<DocsVideo src="/docs/import/import-data.mp4" />
+
+### Step 1 — Open Import Data
+
+1. Sign in to Notifyy.
+2. Go to **Settings → Data Management → Import Data** (shown as **File Imports**).
+
+### Step 2 — Start a new import
+
+Click **Import Data** in the top right to open the import wizard.
+
+<img src="/docs/import/list-view.png" alt="File Imports page with Import Data button" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Step 3 — Select object type
+
+On the **Type** step, choose the **object** you are importing—for example, **Contacts**. For multi-object imports, select each related object your file includes.
+
+<img src="/docs/import/select-objects.png" alt="Select Contacts or other CRM objects to import" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Step 4 — Select import method
+
+On the **Upload** step, open **Choose How to Import Contacts** and pick:
+
+- **Create only contacts**
+- **Update only contacts**
+- **Create and update contacts**
+
+<img src="/docs/import/how-to-import.png" alt="Choose how to import contacts dropdown" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Step 5 — Upload file
+
+Upload a **CSV** or **XLSX** file (max **50,000** records). Use **Download sample file** or **View required fields** if you need a template.
+
+<img src="/docs/import/import-file.png" alt="Upload step with drag and drop for CSV or XLSX" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+If mandatory columns are missing, Notifyy shows a **file validation** error and blocks upload until you fix the file.
+
+<img src="/docs/import/invalid-format.png" alt="File validation failed missing mandatory contact fields" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Step 6 — Map file columns
+
+On the **Map** step, match each file column to a Notifyy field. The **Mapping guide** shows required fields for create and update. Click **Continue** only when all required mappings are green.
+
+<img src="/docs/import/mapped.png" alt="Map file columns to Notifyy contact fields" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Step 7 — Review details
+
+On the **Details** step, confirm the summary. For contact imports, you can enable **Automatically organize imported contacts into a segment** before you finish.
+
+<img src="/docs/import/segment-checkbox.png" alt="Automatically organize imported contacts into a segment checkbox" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Step 8 — Start import
+
+Click **Continue** or **Start import** to process the file. Notifyy validates rows and writes valid records. Large files may take time—check **File Imports** when the status changes to **Completed** or **Failed**.
+
+### Step 9 — Review import history
+
+Return to **File Imports** to see **import name**, **object type**, row counts, **errors**, **status**, and **uploaded by**. Click an import name to open the summary, or use **Actions** (⋮) to download the **input file** or **failed records file**.
+
+<img src="/docs/import/list-view.png" alt="Import history with status Completed Uploaded and Failed" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## 02. File structure and headers
+
+Column headers should follow Notifyy naming:
+
+**Pattern:** `Field Name [object_name.field_internal_name]`
+
+**Example headers**
+
+```
+First Name [contact.firstname]
+Last Name [contact.lastname]
+Email [contact.email]
+Phone Number [contact.phone]
+```
+
+**Example rows**
+
+```
+John | Smith | john@gmail.com | +919999999999
+David | Miller | david@gmail.com | +918888888888
+```
+
+Use the exact internal field names your workspace expects—export a sample from Notifyy or copy headers from a template file if your admin provides one.
+
+<img src="/docs/import/excel-view.png" alt="Example Excel file with Notifyy column headers" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## 03. File requirements and validation
+
+Before upload, confirm:
+
+| Rule | Requirement |
+|---|---|
+| Minimum rows | At least **two data records** (plus header row as applicable) |
+| Mandatory fields | Required columns must have values on every row |
+| Headers | Column headers must be **unique** |
+| Formats | **CSV** or **XLSX** only |
+| Empty mandatory columns | Not allowed |
+| Field configuration | Values must match field types and rules (select options, dates, phones) |
+
+Invalid rows may be skipped or reported in the **Failed records file** after import (see [Import history](#09-import-history-and-downloads)).
+
+---
+
+## 04. Import action types
+
+Choose the method that matches your file content.
+
+### Create only
+
+Creates **new records** only. Existing matches are not updated. Use for fresh lists where every row should become a new contact (or other object).
+
+### Update only
+
+Updates **existing records** using **Record ID** as the unique key. Export records from the object first to obtain IDs, then include the ID column in your update file.
+
+<TipBox>
+  **Update only** fails for rows without a valid Record ID or with IDs that do not exist in Notifyy. Double-check exports before bulk updates.
+</TipBox>
+
+### Create and update
+
+**Creates** new rows and **updates** existing ones in a single import—useful when a file mixes net-new leads with corrected data for customers already in CRM.
+
+
+---
+
+## 05. Field rules and formats
+
+Imported values must respect how fields are configured in [Fields](/docs/fields).
+
+### Single select
+
+If **Customer type [contact.customer_type]** is single select with options **Premium**, **Standard**, **Basic**, uploaded values must **match exactly** (case and spelling).
+
+```
+John | john@gmail.com | Premium
+David | david@gmail.com | Standard
+```
+
+### Multi select
+
+Values must use only **configured options**, typically separated as your import template specifies.
+
+### Boolean
+
+Use accepted true/false values defined for your workspace.
+
+### Dates
+
+Supported date formats include:
+
+| Format | Example |
+|---|---|
+| yyyy-MM-dd (ISO) | 2024-01-15 |
+| yyyy/MM/dd | 2024/01/15 |
+| yyyy.MM.dd | 2024.01.15 |
+| dd/MM/yyyy | 15/01/2024 |
+| dd-MM-yyyy | 15-01-2024 |
+| dd.MM.yyyy | 15.01.2024 |
+| dd-MMM-yyyy | 15-Jan-2024 |
+| MMM dd, yyyy | Jan 15, 2024 |
+
+### Date and time
+
+| Format | Example |
+|---|---|
+| ISO with offset (preferred) | 2024-01-15T10:30:00+05:30 |
+| yyyy-MM-dd'T'HH:mm:ss | 2024-01-15T10:30:00 |
+| yyyy-MM-dd HH:mm:ss | 2024-01-15 10:30:00 |
+| yyyy/MM/dd HH:mm:ss | 2024/01/15 10:30:00 |
+| yyyy.MM.dd HH:mm:ss | 2024.01.15 10:30:00 |
+| dd/MM/yyyy HH:mm:ss | 15/01/2024 10:30:00 |
+
+### Phone numbers
+
+These formats are commonly accepted:
+
+| Input |
+|---|
+| +919030010213 |
+| '+919030010213 |
+| 919030010213 |
+| +91 9030010213 |
+| +91-9030010213 |
+
+Prefer **country code** and consistent formatting for WhatsApp and SMS workflows.
+
+---
+
+## 06. Mapping validation
+
+During column mapping, Notifyy checks that file columns align with valid fields. **Errors and warnings** must be reviewed before the wizard lets you proceed.
+
+- Fix unmapped required fields.
+- Resolve type mismatches (for example, text in a date column).
+- Re-upload the file if headers are wrong rather than forcing a bad mapping.
+
+---
+
+## 07. Organize imports into a segment (during import)
+
+On the final setup step for **contact** imports, you can enable **Automatically organize imported contacts into a segment**.
+
+<img src="/docs/import/segment-checkbox.png" alt="Checkbox to organize imported contacts into a segment" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+When selected, Notifyy groups imported contacts into a segment immediately after a successful run—useful for campaign audiences without building a [Segment](/docs/segments) manually afterward.
+
+---
+
+## 08. Association behavior (multi-object import)
+
+When you import **multiple objects** in one job, Notifyy creates **associations** between related records automatically.
+
+| Example association |
+|---|
+| Contact → Company |
+| Deal → Contact |
+
+Open a contact record after import to verify linked company or deal data appears as expected.
+
+---
+
+## 09. Import history and downloads
+
+**Import history** lists past jobs with details such as:
+
+| Column | Meaning |
+|---|---|
+| Import name | Label for the run |
+| Object type | Contacts, companies, etc. |
+| Total rows | Rows in the uploaded file |
+| New records | Successfully created |
+| Updated records | Successfully updated |
+| Errors | Failed or skipped count |
+| Status | Completed, failed, in progress |
+| Uploaded by | User who ran the import |
+| Upload date | When the file was processed |
+
+From the **Actions** menu (⋮) on a history row you can download:
+
+- **Input file** — the original upload
+- **Failed records file** — rows that failed validation or processing
+
+Use the **Status** filter to find imports that are **Uploaded**, **Completed**, or **Failed**.
+
+---
+
+## 10. Manage imported contacts and segments (after import)
+
+If you did not enable **Automatically organize imported contacts into a segment** during setup, you can work with imported contacts from the **Import summary** page.
+
+### Open the import summary
+
+1. In **File Imports**, click the **import name** (for example, `contacts_import_template.csv`).
+2. Review totals for **new records**, **updated records**, and **errors**.
+3. Use **Download input file** if you need the original upload.
+
+<img src="/docs/import/import-view.png" alt="Import summary with contact records from completed import" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Bulk actions on imported contacts
+
+Select one or more contacts on the summary page. A toolbar appears with actions such as:
+
+| Action | Use it to |
+|---|---|
+| **Assign** | Set **contact owner** (or similar) on selected records |
+| **Edit** | Update fields on selected records in bulk |
+| **Delete** | Remove selected contacts from the summary list |
+| **More** | Open **Add to segment** and other options |
+
+<img src="/docs/import/filters.png" alt="Bulk actions Assign Edit Delete and More on selected imported contacts" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Add to a static segment
+
+From **More**, choose **Add to segment**, pick an existing **static segment** or create one, then confirm. You can **edit** the segment later from [Segments](/docs/segments) if rules or membership need to change.
+
+<DocsVideo src="/docs/import/add-to-segement.mp4" />
+
+The walkthrough above shows **assign**, **edit**, **delete**, adding contacts to a **static segment**, and **editing** segment setup after import.
+
+This avoids re-importing the same file when you only need to organize records for downstream work.
+
+---
+
+## Summary
+
+Import Data moves large volumes into Notifyy safely: choose **single** or **multi-object** import, prepare **CSV/XLSX** with correct headers, pick **create**, **update**, or **both**, map columns and fix validation issues, then run the job and review **Import history**. Use segment options during or after import to tie new contacts to [Segments](/docs/segments) for messaging—without manual entry row by row.
