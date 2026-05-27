@@ -1,0 +1,269 @@
+# Chatbot Configuration and Flow Management
+
+This guide explains how to build and publish a WhatsApp chatbot in Notifyy using the WorkFlow Builder.
+
+You will complete setup in this order:
+
+1. **Flow Management** — build the conversation path.
+2. **Variable Management** — store reusable customer data.
+3. **Chatbot Configuration** — link flow to trigger phrases.
+4. **Chatbot Settings** — configure fallback and handoff.
+
+<WarningBox>
+  <strong>Important:</strong> End every flow branch with **Goodbye Message** or **Close Chat**. Without an end node, the bot may continue in a loop.
+</WarningBox>
+
+---
+
+## 1) Flow Management
+
+### Create a flow
+
+1. Go to **WorkFlow Builder** → **Flow Management**.
+2. Click **+ Create Flow**.
+3. Enter a name and optional description.
+4. Click **Create Flow** to open the canvas.
+5. Add nodes, connect them, and save.
+
+<img src="/docs/chatbot/create-flow-form.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" alt="Create Flow form in Notifyy WorkFlow Builder" />
+
+<MdxVideo
+  src="/docs/chatbot/create-flow.mp4"
+  autoPlayOnView
+  loop
+  caption="Creating a flow and opening the builder canvas"
+/>
+
+### Flow overview
+
+After creating a flow, the builder canvas opens. This is where you map the full conversation journey.
+
+<MdxVideo
+  src="/docs/chatbot/flow-mgmt-overview.mp4"
+  autoPlayOnView
+  loop
+  caption="Flow Management overview in Notifyy WorkFlow Builder"
+/>
+
+### Understand flow logic
+
+- **Flow** — One end-to-end chatbot journey (for example: plans enquiry or booking).
+- **Node** — One action in that journey (send message, ask question, buttons, assignment, etc.).
+- **Connection** — Defines what step runs next based on user input.
+
+Every flow starts at the **Starting Point** node. Once a trigger phrase matches, Notifyy runs the linked flow from this node.
+
+### Example path
+
+If a customer sends "Plans", a typical path can be:
+
+1. Ask for name
+2. Send a personalised welcome message
+3. Show plan options
+4. Ask for phone number
+5. Save details to Google Sheets
+6. End with **Goodbye Message**
+
+Always close each branch with **Goodbye Message** or **Close Chat** to prevent looped conversations.
+
+---
+
+## Node Types
+
+Available nodes in the Flow Management sidebar:
+
+### Messages
+
+- **Send a Message** — Plain text; use `{{variable}}` for personalisation.
+- **Media** — Image, video, audio, or document.
+- **Goodbye Message** — Closes the chat. Required at the end of every branch.
+
+### Questions
+
+Collect and validate customer input: name, email, phone, number, date, file, address, URL, or free text. Invalid replies are re-prompted automatically.
+
+### WhatsApp options
+
+- **Reply Buttons** — Up to 3 tap-to-reply options.
+- **List Buttons** — Scrollable menu with sections.
+- **Keyword Options** — Customer types a number or keyword.
+- **WhatsApp Flow** — In-app form for leads or bookings.
+
+### AI, logic, and inbox
+
+- **AI Reply / AI Tasks / AI Agents** — Automated or AI-driven responses.
+- **Conditions** — Route the flow based on variable values.
+- **Assign to an Agent** — Transfer to a human in the inbox.
+- **Close Chat** — End the conversation; customer can start a new one later.
+
+### Payments and integrations
+
+- **Send a WhatsApp Payment** — Razorpay checkout in WhatsApp.
+- **Integrations** — Google Sheets, HubSpot, Shopify, calendars, Zoom/Meet, hotel PMS, Notifyy CRM.
+
+<WarningBox>
+  After a payment node, add a **Conditions** node to handle success and failure separately.
+</WarningBox>
+
+---
+
+## 2) Variable Management
+
+Variables store data collected during a conversation. Create them once, then use `{{variable_key}}` in any message or node.
+
+### Create a variable
+
+1. Go to **Variable Management**.
+2. Click **+ Create Variable**.
+3. Enter a key (e.g. `first_name`, `booking_date`).
+4. Select a type: **String**, **Number**, **Boolean**, or **Date**.
+5. Click **Create Variable**.
+
+<img src="/docs/chatbot/create-varible-form.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" alt="Create Variable dialog in Notifyy" />
+
+<img src="/docs/chatbot/create-variable-datatypes.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" alt="Variable data types" />
+
+<MdxVideo
+  src="/docs/chatbot/create-variable.mp4"
+  autoPlayOnView
+  loop
+  caption="Creating a variable and selecting its data type"
+/>
+
+### Using variables
+
+- `Hello {{first_name}}, thanks for reaching out!`
+- `Your booking for {{guests}} guests on {{checkin_date}} is confirmed.`
+- `Total: {{order_total}} — complete payment below.`
+
+<TipBox>
+  Variables can also be created inside a flow node using **Use field**—pre-creating them is optional.
+</TipBox>
+
+---
+
+## 3) Chatbot Configuration
+
+Link a flow to keyword triggers so it starts when a customer sends a matching message on WhatsApp.
+
+### How it works
+
+1. Customer sends a message.
+2. Notifyy checks active chatbot trigger phrases.
+3. On match, the linked flow runs.
+4. On no match, the fallback from **Chatbot Settings** is sent.
+
+### Create a chatbot
+
+1. Go to **Chatbot Configuration**.
+2. Click **+ Create Chatbot**.
+3. Enter a name.
+4. Select the flow to link.
+5. Add a description (optional).
+6. Enter trigger phrases and press **Enter** after each.
+7. Click **Create Chatbot**.
+
+<img src="/docs/chatbot/create-chatbot-form.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" alt="Create Chatbot form" />
+
+<MdxVideo
+  src="/docs/chatbot/create-chatbot.mp4"
+  autoPlayOnView
+  loop
+  caption="Linking a flow to trigger phrases"
+/>
+
+### Trigger rules
+
+- Up to **5 phrases** per chatbot (140 characters each).
+- Matching is **case-insensitive**.
+- If keywords overlap across chatbots, the **first match** applies.
+
+---
+
+## 4) Chatbot Settings
+
+Configure the reply sent when no trigger phrase matches, including optional agent handoff.
+
+### Access settings
+
+1. Log in to Notifyy.
+2. Go to **WorkFlow Builder** → **Chatbot Settings**.
+3. Open the **Fallback & Handoff** panel.
+
+<img src="/docs/chatbot/chatbot-settings.png" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" alt="Chatbot Settings panel" />
+
+<WarningBox>
+  When settings are **Active**, the fallback sends automatically on every unmatched message. Set to **Inactive** during maintenance.
+</WarningBox>
+
+### Configuration options
+
+| Setting | Description |
+|---------|-------------|
+| **Channel** | WhatsApp (default) |
+| **Active / Inactive** | Enable or disable fallback |
+| **Fallback type** | Text message or Reply buttons (up to 3) |
+| **Message body** | Up to 1024 characters |
+| **Max retries** | Resend fallback before escalation (0–5) |
+| **Agent handoff** | Transfer to a live agent after retries |
+
+<TipBox>
+  Reply-button fallbacks guide users clearly—e.g. Contact Us, Demo, Plans.
+</TipBox>
+
+Click **Save settings** to apply, or **Discard changes** to revert. The WhatsApp preview panel shows the final appearance.
+
+---
+
+## Quick Reference
+
+| Goal | Node |
+|------|------|
+| Send text | Send a Message |
+| Send file or image | Media |
+| End chat permanently | Goodbye Message |
+| Close chat, allow restart | Close Chat |
+| Collect customer data | Ask for name, email, phone, date, etc. |
+| 2–3 tap options | Reply Buttons |
+| Scrollable menu | List Buttons |
+| Number or keyword reply | Keyword Options |
+| In-app form | WhatsApp Flow |
+| Collect payment | Send a WhatsApp Payment |
+| Route by condition | Conditions |
+| Hand off to agent | Assign to an Agent |
+| Save to spreadsheet | Google Sheets |
+| Sync to CRM | HubSpot or Notifyy CRM |
+
+---
+
+## Best Practices
+
+- Build short flows first; expand after testing each branch.
+- Use clear, unique trigger phrases.
+- Name variables descriptively (`checkin_date`, not `var1`).
+- Preview and confirm the flow is saved before linking to a chatbot.
+- Enable agent handoff for issues the bot cannot resolve.
+
+---
+
+## Video Walkthrough
+
+Full configuration walkthrough—from flow creation through variables, triggers, and settings.
+
+<MdxVideo
+  src="/docs/chatbot/chatbot-creating and working.mp4"
+  controls
+  playbackRate={1.5}
+  caption="Full setup: flows, variables, chatbot configuration, and settings"
+/>
+
+### Working Example
+
+Configured chatbot responding on WhatsApp after a trigger phrase is matched.
+
+<MdxVideo
+  src="/docs/chatbot/working-preview.mp4"
+  autoPlayOnView
+  loop
+  caption="Chatbot in action on WhatsApp"
+/>
