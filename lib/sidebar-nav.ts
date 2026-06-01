@@ -17,6 +17,8 @@ export type NavDocLabelKey =
   | "fields"
   | "propertyManagement"
   | "hubspot"
+  | "whatsappFlows"
+  | "paymentIntegrations"
   | "teamInbox";
 
 export type SidebarLeafItem = {
@@ -91,7 +93,11 @@ export const SIDEBAR_BLOCKS: SidebarBlock[] = [
   {
     type: "group",
     titleKey: "integration",
-    items: [{ href: "/docs/integrations/hubspot", labelKey: "hubspot" }],
+    items: [
+      { href: "/docs/integrations/hubspot", labelKey: "hubspot" },
+      { href: "/docs/integrations/whatsapp-flow", labelKey: "whatsappFlows" },
+      { href: "/docs/integrations/payment-integrations", labelKey: "paymentIntegrations" },
+    ],
   },
   {
     type: "group",

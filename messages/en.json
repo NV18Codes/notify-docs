@@ -32,6 +32,8 @@
     "propertyManagement": "Property Management",
     "integration": "Integration",
     "hubspot": "HubSpot",
+    "whatsappFlows": "WhatsApp Flows",
+    "paymentIntegrations": "WhatsApp Payment Integration",
     "teamInbox": "Team Inbox",
     "crm": "CRM",
     "templates": "Templates"

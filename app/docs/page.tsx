@@ -72,6 +72,12 @@ export default function DocsHomePage() {
         <li>
           <Link href="/docs/integrations/hubspot">{copy.nav.hubspot}</Link>
         </li>
+        <li>
+          <Link href="/docs/integrations/whatsapp-flow">{copy.nav.whatsappFlows}</Link>
+        </li>
+        <li>
+          <Link href="/docs/integrations/payment-integrations">{copy.nav.paymentIntegrations}</Link>
+        </li>
       </ul>
 
       <h2>{copy.sidebar.support}</h2>
