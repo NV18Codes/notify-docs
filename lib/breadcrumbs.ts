@@ -18,6 +18,8 @@ export type NavKey =
   | "propertyManagement"
   | "integration"
   | "hubspot"
+  | "whatsappFlows"
+  | "paymentIntegrations"
   | "teamInbox"
   | "contacts"
   | "crm"
@@ -45,6 +47,8 @@ export function segmentToNavKey(segment: string): NavKey | null {
     property: "propertyManagement",
     integrations: "integration",
     hubspot: "hubspot",
+    "whatsapp-flow": "whatsappFlows",
+    "payment-integrations": "paymentIntegrations",
     "team-inbox": "teamInbox",
     crm: "crm",
   };

@@ -1,34 +1,224 @@
 export const metadata = {
-  title: "Payment Integrations",
+  title: "WhatsApp Payment Integration",
   description:
-    "Accept WhatsApp payments in Notifyy with Razorpay and related payment integrations—setup, checkout flows, and post-payment routing in chatbots.",
+    "Configure WhatsApp Payments in Notifyy—set up Razorpay and UPI, onboard gateways, manage payment events, and track transactions from the Payments object in CRM.",
   keywords: [
-    "WhatsApp payments",
+    "WhatsApp Payments",
     "Notifyy payment integration",
     "Razorpay WhatsApp",
-    "payment checkout",
-    "chatbot payments",
+    "UPI VPA WhatsApp",
+    "payment event configuration",
+    "WhatsApp payment notifications",
   ],
   alternates: {
     canonical: "/docs/integrations/payment-integrations",
   },
   openGraph: {
-    title: "Payment Integrations | Notifyy Docs",
+    title: "WhatsApp Payment Integration | Notifyy Docs",
     description:
-      "Connect payment providers and send WhatsApp payment requests from Notifyy chatbot flows.",
+      "Set up payment providers, complete gateway onboarding, configure payment event notifications, and manage WhatsApp payment records in Notifyy.",
     url: "/docs/integrations/payment-integrations",
     type: "article",
   },
 };
 
-# Payment Integrations
+# WhatsApp Payment Integration
 
-Documentation for payment integrations in Notifyy is being prepared.
+WhatsApp Payments let you collect money inside WhatsApp—through live conversations, automated chatbot journeys, or follow-up notifications when a transaction succeeds or fails.
 
-Add screenshots to `public/docs/integrations/payment-integrations/` and screen recordings as `.mp4` files in the same folder. Reference them in this page with:
+In Notifyy you connect a payment provider (such as **Razorpay** or **UPI VPA ID**), complete onboarding, then reuse that configuration wherever payments are supported.
 
-```mdx
-<img src="/docs/integrations/payment-integrations/your-screenshot.png" alt="Description" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+---
 
-<DocsVideo src="/docs/integrations/payment-integrations/your-recording.mp4" />
-```
+## Open WhatsApp Payments
+
+1. Log in to Notifyy.
+2. Go to **Integrations** → **WhatsApp Payments**.
+
+The **Configuration** tab lists your payment setups with provider, type, status, and **Actions**. Switch to **Events** when you need to configure automated payment notifications. Use search, status filters, and **Recently deleted** to manage records at scale.
+
+<img src="/docs/integrations/payment-integrations/screenshots/payment-list-view.png" alt="WhatsApp Payments configuration list with status and actions" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## Create a payment configuration
+
+Click **+ Create Configuration** to start. The wizard has three parts: choose a provider, enter configuration details, then connect and authorize the account.
+
+<DocsVideo src="/docs/integrations/payment-integrations/recordings/create-payment.mp4" />
+
+### Step 1: Select a payment provider
+
+Pick the method you want customers to pay with:
+
+- **Razorpay** — payment gateway checkout in WhatsApp
+- **UPI VPA ID** — UPI-based collection
+
+Some providers may show as **Coming Soon**. Select one and click **Next**.
+
+### Step 2: Enter configuration details
+
+| Field | Required |
+|-------|----------|
+| **Payment Configuration Name** | Yes — must be unique |
+| **Merchant Category Code** | Optional |
+| **Purpose Code** | Optional |
+
+Click **Create** when the details are complete. The new row appears in the list—usually with status **Needs Connection** until onboarding finishes.
+
+<DocsVideo src="/docs/integrations/payment-integrations/recordings/process.mp4" />
+
+### Step 3: Connect and authorize your provider
+
+Notifyy cannot charge customers until the provider account is linked.
+
+1. On the configuration row, open **Actions** (or use the link icon) and choose **Generate onboarding link** / **Onboard**.
+2. Click **Connect Now** — Notifyy opens the provider sign-in page in a new window.
+3. **Log in** with your provider credentials. For **Razorpay**, use the same login as your Razorpay dashboard.
+4. Review the access Notifyy is requesting, then click **Authorize** (or **Allow**).
+5. When authorization succeeds, you return to Notifyy and status changes to **Active**.
+
+<img src="/docs/integrations/payment-integrations/screenshots/generate-onboarding-link.png" alt="Generate onboarding link action on a payment configuration row" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+If you selected **UPI VPA ID**, follow the same onboarding steps and sign in with your UPI provider when prompted.
+
+<TipBox>
+  Use a Razorpay merchant account that already supports WhatsApp Payments. Authorization can fail if the account is not enabled for the channel you need.
+</TipBox>
+
+<TipBox>
+  Status still **Needs Connection**? Open **Actions** → **Manage connection status** and run **Connect Now** again.
+</TipBox>
+
+---
+
+## Payment status
+
+| Status | Meaning |
+|--------|-----------|
+| **Active** | Provider connected; ready for conversations, chatbots, and events |
+| **Needs Connection** | Configuration saved but onboarding not finished |
+
+---
+
+## Use payments in conversations and chatbots
+
+Once a configuration is **Active**, you can collect payments in two ways.
+
+### Customer conversations
+
+Send a payment request during a live WhatsApp chat using the active configuration.
+
+### Chatbot journeys
+
+In **WorkFlow Builder** → **Flow Management**, add a **Send a WhatsApp Payment** node:
+
+1. Open or create a chatbot flow.
+2. Add **Send a WhatsApp Payment** from Payments and integrations.
+3. Select an **Active** configuration (Razorpay or UPI).
+4. Wire the next step—for example, a **Conditions** node to branch on success vs. failure.
+
+<TipBox>
+  Only **Active** configurations appear in chatbot payment nodes. Finish Step 3 onboarding before building payment steps in your bot.
+</TipBox>
+
+See [Chatbot Configuration and Flow Management](/docs/chatbot) for full WorkFlow Builder guidance.
+
+---
+
+## Configuration Actions
+
+Each row exposes **Actions** for day-to-day management:
+
+- **View** — open configuration details
+- **Edit** — update settings where allowed
+- **Delete** — remove unused configurations
+- **Manage connection status** — reconnect or verify provider authorization
+- **Generate onboarding link** — resume or repeat provider connection
+
+Search by **configuration name** or **display name**, and filter by status when you manage multiple setups.
+
+---
+
+## Delete a configuration
+
+Configurations tied to **Chatbot Flows** cannot be deleted until they are removed from those flows.
+
+If dependencies exist, an **Entity Usage** popup lists every reference. Detach the configuration from chatbots and other modules first, then delete.
+
+<WarningBox>
+  Deleting or disconnecting a configuration that is still used in a live chatbot will break payment steps for customers mid-journey.
+</WarningBox>
+
+---
+
+## Recently deleted
+
+Deleted configurations move to **Recently deleted**. From there you can **Restore** a setup or **Delete permanently**.
+
+---
+
+## Payment event configuration
+
+Payment events send automatic WhatsApp messages when transaction status changes—success, failure, pending, or refund updates.
+
+### Open the Events tab
+
+1. Go to **Integrations** → **WhatsApp Payments**.
+2. Open the **Events** tab.
+
+The listing shows event type, message status, configuration status, event status, and **Actions** for each event.
+
+### Supported events
+
+Configure independently:
+
+- Payment Success
+- Payment Failed
+- Payment Pending
+- Refund Success
+- Refund Failed
+
+### Configure an event
+
+1. Open **Actions** on the event row.
+2. Click **Configure**.
+3. Set **Channel Type**, **Sender**, **Event Type**, **Message Template**, and **Order Status**.
+4. Choose an **approved WhatsApp template**—for example, a Payment Success template when a charge completes.
+5. Map payment fields (status, amount, order ID, payment reference ID) to template variables.
+6. Check the **preview panel** on the right, then save.
+
+| Event state | Behavior |
+|-------------|----------|
+| **Configured** | Setup complete |
+| **Not Configured** | Not set up yet |
+| **Active** | Notifications send when the event fires |
+| **Inactive** | Paused — no messages sent |
+
+Only **Active** event configurations trigger WhatsApp notifications.
+
+---
+
+## Payments object in CRM
+
+All WhatsApp payment transactions live under **CRM → Payments**.
+
+Use this view to monitor activity in one place—Payment Success, Payment Pending, Payment Failed, Refund Initiated, Refunded, Refund Failed, and other transaction statuses.
+
+1. Click **CRM**.
+2. Select **Payments**.
+
+---
+
+## At a glance
+
+| Task | Where to go |
+|------|-------------|
+| List configurations | **Integrations → WhatsApp Payments** → **Configuration** |
+| Create a setup | **+ Create Configuration** |
+| Connect Razorpay / UPI | **Actions** → onboarding link → **Connect Now** → authorize |
+| Check readiness | Status **Active** vs. **Needs Connection** |
+| Collect in chatbots | **Send a WhatsApp Payment** node in WorkFlow Builder |
+| Payment notifications | **Events** tab → **Actions** → **Configure** |
+| View transactions | **CRM → Payments** |
+| Remove safely | Check Entity Usage if used in chatbot flows |

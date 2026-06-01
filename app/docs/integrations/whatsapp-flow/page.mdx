@@ -1,34 +1,172 @@
 export const metadata = {
-  title: "WhatsApp Flow Integration",
+  title: "WhatsApp Flows",
   description:
-    "Configure WhatsApp Flow in Notifyy—build in-app forms, connect flows to chatbots, and guide customers through structured journeys on WhatsApp.",
+    "Create, preview, publish, and manage WhatsApp Flows in Notifyy—multi-screen journeys with interactive components for templates, conversations, and chatbots.",
   keywords: [
-    "WhatsApp Flow",
+    "WhatsApp Flows",
     "Notifyy WhatsApp Flow",
-    "in-app WhatsApp forms",
-    "flow integration",
+    "WhatsApp Flow Builder",
+    "flow responses",
+    "interactive WhatsApp forms",
     "WhatsApp automation",
   ],
   alternates: {
     canonical: "/docs/integrations/whatsapp-flow",
   },
   openGraph: {
-    title: "WhatsApp Flow Integration | Notifyy Docs",
+    title: "WhatsApp Flows | Notifyy Docs",
     description:
-      "Set up WhatsApp Flow in Notifyy for lead capture, bookings, and structured customer journeys.",
+      "Build multi-screen WhatsApp Flows in Notifyy—create screens, configure components, preview, publish, and review customer responses.",
     url: "/docs/integrations/whatsapp-flow",
     type: "article",
   },
 };
 
-# WhatsApp Flow
+# WhatsApp Flows
 
-Documentation for WhatsApp Flow integration in Notifyy is being prepared.
+WhatsApp Flows let you guide customers through structured, in-chat experiences—collecting details, showing options, and capturing responses without sending them to a browser or external form.
 
-Add screenshots to `public/docs/integrations/whatsapp-flow/` and screen recordings as `.mp4` files in the same folder. Reference them in this page with:
+In Notifyy you design these journeys in the **Flow Builder**, publish them when ready, and reuse them across **WhatsApp Templates**, **customer conversations**, and **chatbot flows**.
 
-```mdx
-<img src="/docs/integrations/whatsapp-flow/your-screenshot.png" alt="Description" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+---
 
-<DocsVideo src="/docs/integrations/whatsapp-flow/your-recording.mp4" />
-```
+## Open WhatsApp Flows
+
+1. Log in to Notifyy.
+2. Go to **Integrations** → **WhatsApp Flows**.
+
+The list view shows your existing flows with status, category, and quick access to each record. From here you can create a new flow or open **Actions** on any row to manage an existing one.
+
+<img src="/docs/integrations/whatsapp-flow/screenshots/list-view.png" alt="WhatsApp Flows list in Notifyy Integrations" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## Create a flow
+
+1. Click **Create Flow**.
+2. Enter a **flow name**, **category**, and **description**.
+3. Click **Create** to open the Flow Builder.
+
+<img src="/docs/integrations/whatsapp-flow/screenshots/flow-form.png" alt="Create Flow form with name, category, and description" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<DocsVideo src="/docs/integrations/whatsapp-flow/recordings/create-flow.mp4" />
+
+<TipBox>
+  Use a clear category and description—when you have many flows, these fields make it easier for your team to find the right one later.
+</TipBox>
+
+---
+
+## Flow Builder
+
+The Flow Builder is a visual editor where you assemble the customer journey screen by screen. Add components, set validation, connect navigation, and organize the flow into logical stages.
+
+<img src="/docs/integrations/whatsapp-flow/screenshots/overview.png" alt="WhatsApp Flow Builder canvas with screens and components" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Screens
+
+Most flows span more than one screen. Use separate screens to break long forms into steps—for example, contact details on one screen and preferences on the next.
+
+From the builder you can **create**, **edit**, **delete**, and **rearrange** screens until the journey reads clearly from start to finish.
+
+### Components
+
+Each screen is built from components. Notifyy supports:
+
+- **Text** — headings, labels, and helper copy
+- **Text Input** — free-form entry
+- **Dropdown**, **Radio Button**, **Checkbox** — structured choices
+- **Date Picker** — date selection
+- **Image** — visual content on a screen
+- **Footer** — supporting text at the bottom of a screen
+- **Navigation Buttons** — move the customer forward or back
+
+Combine these to match how you want the conversation to feel—simple lead capture, a multi-step booking form, or a guided product selector.
+
+### Mandatory fields
+
+Mark fields as **mandatory** when the customer must answer before continuing. Optional fields keep the flow lighter when the data is nice-to-have rather than required.
+
+<WarningBox>
+  Requiring too many mandatory fields on early screens can increase drop-off. Ask only for what the next step actually needs.
+</WarningBox>
+
+---
+
+## Preview before you publish
+
+Use **Preview** to walk through the flow as a customer would—check copy, layout, validation, and navigation on every screen.
+
+<DocsVideo src="/docs/integrations/whatsapp-flow/recordings/example-preview.mp4" />
+
+Fix anything that feels unclear while the flow is still in **Draft**. Published flows cannot be edited in place (see **Edit a flow** below).
+
+---
+
+## Publish a flow
+
+When preview looks good, click **Publish**. The flow becomes **Active** and available wherever WhatsApp Flows are supported:
+
+- **WhatsApp Templates** — attach a flow to template-based outreach
+- **Customer conversations** — agents or automation can trigger in-chat flows
+- **Chatbot journeys** — link a published flow from a **WhatsApp Flow** node in the WorkFlow Builder
+
+See [Chatbot Configuration and Flow Management](/docs/chatbot) for how flows fit into bot journeys.
+
+---
+
+## Flow Actions
+
+Every flow row includes an **Actions** menu. This is where you manage responses, duplicate setups, edit drafts, and retire flows you no longer need.
+
+<img src="/docs/integrations/whatsapp-flow/screenshots/actions.png" alt="Actions menu on a WhatsApp Flow listing row" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### View flow responses
+
+When customers complete a flow, their submissions are stored against that flow record.
+
+1. Open **Actions** on the flow.
+2. Select **Flow Responses**.
+
+Review submissions in the list and **export** them when you need a spreadsheet or offline analysis.
+
+### Clone a flow
+
+**Clone** creates a copy of an existing flow—screens, components, and structure included. Use it when you want a similar journey (for example, a second booking form with small changes) without rebuilding from scratch.
+
+### Edit a flow
+
+Whether you can edit depends on status:
+
+| Status | Editable? |
+|--------|-----------|
+| **Draft** | Yes — open the builder and change freely |
+| **Published** | No — content is locked while live |
+| **Deprecated** | No |
+
+To change a published flow, **Clone** it, edit the copy as a draft, publish the new version, and update any templates or chatbots that should use it.
+
+### Deprecate a flow
+
+**Deprecate** retires a flow so it is no longer used going forward. Notifyy blocks deprecation if the flow is still referenced elsewhere—for example in **Chatbot Flows** or **WhatsApp Templates**.
+
+If dependencies exist, an **Entity Usage** popup lists every place the flow is linked. Remove it from those modules first, then deprecate.
+
+<WarningBox>
+  Deprecating a flow that is still wired into a live chatbot or template can break customer journeys. Always check Entity Usage before confirming.
+</WarningBox>
+
+---
+
+## At a glance
+
+| Task | Where to go |
+|------|-------------|
+| Create a flow | **Integrations → WhatsApp Flows** → **Create Flow** |
+| Build screens & components | Flow Builder (opens after create) |
+| Test the journey | **Preview** in the builder |
+| Go live | **Publish** |
+| See customer submissions | **Actions** → **Flow Responses** |
+| Copy an existing setup | **Actions** → **Clone** |
+| Change content | Edit while **Draft**; clone if already **Published** |
+| Retire a flow | **Actions** → **Deprecate** (after removing dependencies) |
