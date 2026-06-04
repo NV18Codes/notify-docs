@@ -65,6 +65,12 @@ export default function DocsHomePage() {
         <li>
           <Link href="/docs/fields">{copy.nav.fields}</Link>
         </li>
+        <li>
+          <Link href="/docs/table-view">{copy.nav.tableView}</Link>
+        </li>
+        <li>
+          <Link href="/docs/export">{copy.nav.exportRecords}</Link>
+        </li>
       </ul>
 
       <h2>{copy.sidebar.integration}</h2>
