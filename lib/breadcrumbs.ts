@@ -15,6 +15,8 @@ export type NavKey =
   | "importObject"
   | "segments"
   | "fields"
+  | "tableView"
+  | "exportRecords"
   | "propertyManagement"
   | "integration"
   | "hubspot"
@@ -44,6 +46,8 @@ export function segmentToNavKey(segment: string): NavKey | null {
     import: "importObject",
     segments: "segments",
     fields: "fields",
+    "table-view": "tableView",
+    export: "exportRecords",
     property: "propertyManagement",
     integrations: "integration",
     hubspot: "hubspot",

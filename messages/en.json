@@ -29,6 +29,8 @@
     "importObject": "Import Object",
     "segments": "Segments",
     "fields": "Fields",
+    "tableView": "Table View",
+    "exportRecords": "Export",
     "propertyManagement": "Property Management",
     "integration": "Integration",
     "hubspot": "HubSpot",

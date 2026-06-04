@@ -1,0 +1,161 @@
+export const metadata = {
+  title: "CRM Export Records",
+  description:
+    "Export CRM records from Notifyy—download filtered views as CSV or Excel, choose view fields or all fields, and retrieve completed files from Export Data in Settings.",
+  keywords: [
+    "Notifyy CRM export",
+    "export contacts CSV",
+    "export Excel xlsx",
+    "export filtered view",
+    "CRM export history",
+    "export view fields",
+    "Settings Export Data",
+  ],
+  alternates: {
+    canonical: "/docs/export",
+  },
+  openGraph: {
+    title: "CRM Export Records | Notifyy Docs",
+    description:
+      "Export records from a saved CRM view—configure name, file format, and field scope, then download when processing completes.",
+    url: "/docs/export",
+    type: "article",
+  },
+};
+
+# Export Records
+
+Export lets you download CRM records from the **current table view**—after you filter, save the view, and run an export, the file contains only the rows that match that view.
+
+Use it for backups, reporting, handoffs to spreadsheets, or sharing a slice of data with teams outside Notifyy. Works alongside [Table View](/docs/table-view) for filtering and saved views.
+
+---
+
+## Before you export
+
+Exports respect the **active view**:
+
+1. Open the CRM object you need (for example **Contacts**).
+2. Apply **filters** so the grid shows the right records.
+3. **Save** the view so the filter set is stored.
+4. Open that **saved view** before exporting.
+
+<DocsVideo src="/docs/export/recordings/filter-selections.mp4" />
+
+<WarningBox>
+  Only records visible in the selected view are exported. If you skip saving the view, you may export a broader or different set than you intended.
+</WarningBox>
+
+See [Table View](/docs/table-view) for creating views, filters, and saving layouts.
+
+---
+
+## Export records
+
+1. Navigate to the required **object** (Contacts, Companies, Deals, etc.).
+2. Apply the **filters** you need and **save** the view.
+3. Open the saved view and click **Export Contacts** (or the export action for that object).
+4. Complete the export dialog and click **Export**.
+
+Notifyy creates an export request. When processing finishes, download the file from **Export Data** in Settings.
+
+<DocsVideo src="/docs/export/recordings/export-contacts.mp4" />
+
+<img src="/docs/export/screenshots/form-view.png" alt="Export Contacts dialog with export name, CSV format, and view fields scope" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## Export configuration
+
+In the export dialog, three settings control the output file.
+
+### Export name
+
+Enter a **unique export name** (required, up to 50 characters). You will use this label to find the job under **Settings → Export Data**.
+
+### File format
+
+| Format | Extension | Best for |
+|--------|-----------|----------|
+| **CSV** | `.csv` | Simple imports, scripts, lightweight files |
+| **Excel** | `.xlsx` | Formulas, formatting, business users on Excel |
+
+Select **CSV (.csv)** or **Excel (.xlsx)** from the **File Format** dropdown. Required.
+
+### Fields scope
+
+| Scope | What is included |
+|-------|------------------|
+| **View fields** | Only columns visible in the **current view** (shown as View Properties in export history) |
+| **All fields** | Every field on the object for the filtered records (All Properties) |
+
+Required. Use **View fields** when the file should match the table layout; use **All fields** for a complete data extract of the filtered rows.
+
+---
+
+## Export from a saved view
+
+Typical workflow:
+
+1. Apply filters on **Contacts** (for example, owner or date range).
+2. **Save** the view.
+3. Open that view from the view list.
+4. Run **Export Contacts** and submit the dialog.
+5. Download from **Settings → Export Data** when status is **Completed**.
+
+The file includes **only** records in that view—not your entire CRM.
+
+<DocsVideo src="/docs/export/recordings/export-contacts-process.mp4" />
+
+---
+
+## Export history
+
+After you submit an export:
+
+1. Go to **Settings** → **Data Management** → **Export Data**.
+2. Search by export name or filter by **object** and **status**.
+3. When **Status** is **Completed**, click the **download** action to save the file.
+
+<img src="/docs/export/screenshots/list-view.png" alt="Export Data page listing completed exports with format, scope, record count, and download action" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<DocsVideo src="/docs/export/recordings/dowloading-process.mp4" />
+
+<TipBox>
+  Large exports may take time to process. Check back on Export Data if the job is not **Completed** yet.
+</TipBox>
+
+---
+
+## Validations
+
+| Rule | Detail |
+|------|--------|
+| Export name | Required before **Export** is enabled |
+| File format | Required — CSV or Excel |
+| Fields scope | Required — View fields or All fields |
+| Download | Available when status is **Completed** |
+
+---
+
+## Export at a glance
+
+| Task | Steps |
+|------|--------|
+| Export a subset | Filter → save view → open view → **Export Contacts** |
+| Match table columns | **View fields** |
+| Full field dump | **All fields** |
+| Spreadsheet format | **CSV** or **Excel (.xlsx)** |
+| Retrieve file | **Settings → Export Data** → download |
+
+---
+
+## Key capabilities
+
+| Feature | Benefit |
+|---------|---------|
+| View-based export | Export exactly what the saved view shows |
+| Filtered records | No manual cleanup of unrelated rows |
+| View vs. all fields | Control file width and sensitivity |
+| CSV & Excel | Fit downstream tools and audiences |
+| Export history | Track jobs and re-download when complete |

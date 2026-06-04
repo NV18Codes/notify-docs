@@ -15,6 +15,8 @@ export type NavDocLabelKey =
   | "importObject"
   | "segments"
   | "fields"
+  | "tableView"
+  | "exportRecords"
   | "propertyManagement"
   | "hubspot"
   | "whatsappFlows"
@@ -88,6 +90,8 @@ export const SIDEBAR_BLOCKS: SidebarBlock[] = [
       { href: "/docs/import", labelKey: "importObject" },
       { href: "/docs/segments", labelKey: "segments" },
       { href: "/docs/fields", labelKey: "fields" },
+      { href: "/docs/table-view", labelKey: "tableView" },
+      { href: "/docs/export", labelKey: "exportRecords" },
     ],
   },
   {
