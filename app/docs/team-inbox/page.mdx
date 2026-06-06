@@ -1,0 +1,256 @@
+export const metadata = {
+  title: "Team Inbox",
+  description:
+    "Manage WhatsApp customer conversations in Notifyy Team Inbox—assign chats, filter by agent, handle 24-hour sessions, send template messages, and use Quick Replies for faster responses.",
+  keywords: [
+    "Notifyy Team Inbox",
+    "WhatsApp inbox",
+    "shared inbox",
+    "assign conversations",
+    "WhatsApp 24 hour window",
+    "template messages inbox",
+    "Quick Replies Notifyy",
+    "customer conversation management",
+  ],
+  alternates: {
+    canonical: "/docs/team-inbox",
+  },
+  openGraph: {
+    title: "Team Inbox & Quick Replies | Notifyy Docs",
+    description:
+      "Centralize WhatsApp conversations, collaborate with your team, reopen or close chats, handle expired sessions, and speed up replies with Quick Replies.",
+    url: "/docs/team-inbox",
+    type: "article",
+  },
+};
+
+# Team Inbox
+
+Team Inbox is where your business handles WhatsApp customer conversations in one place—send and receive messages, assign chats to agents, track what happened on each thread, and keep the team aligned without switching tools.
+
+This guide covers the **Inbox** workspace and **Quick Replies** for faster, consistent responses.
+
+---
+
+## Access the Inbox
+
+1. Log in to Notifyy.
+2. Click **Inbox** in the left navigation menu.
+
+The workspace opens with your organization and channel selectors, conversation categories on the left, the message list in the center, and the active chat on the right. Use the **⋮** menu next to the channel to start an outbound message, open **Quick Replies**, or message an existing contact.
+
+<img src="/docs/team-inbox/screenshots/inbox-overview.png" alt="Notifyy Team Inbox with conversation list, category sidebar, and channel actions menu" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<DocsVideo src="/docs/team-inbox/recordings/inbox-navigation.mp4" />
+
+---
+
+## Inbox categories
+
+Use the category list to focus on the conversations that need attention. Count badges show how many threads sit in each bucket.
+
+| Category | What you see |
+|----------|----------------|
+| **Assigned** | Chats owned by an agent |
+| **Unassigned** | Open conversations waiting to be picked up |
+| **All Open** | Every active conversation |
+| **All Closed** | Resolved or manually closed threads |
+| **All Expired** | Sessions past the WhatsApp 24-hour window |
+
+<img src="/docs/team-inbox/screenshots/inbox-categories.png" alt="Inbox category sidebar showing Assigned, Unassigned, All Open, All Closed, and All Expired counts" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### New incoming messages
+
+Every new customer message lands in **Unassigned** first. Assign the conversation to an agent before you start handling it—this keeps ownership clear and avoids two agents replying at once.
+
+<WarningBox>
+  Start work on a new chat only after it is **assigned**. Unassigned threads are for triage; assigned threads are where agents should reply.
+</WarningBox>
+
+---
+
+## Filter by agent
+
+The **Agent** dropdown at the top of the inbox limits the list to conversations linked to the selected agent. Use it when a team lead reviews workload or when an agent wants to see only their own queue.
+
+---
+
+## Search conversations
+
+Search by **contact name** or **phone number** to jump to a specific customer without scrolling the full list. The search field sits above the conversation list in the inbox header.
+
+---
+
+## Assign a conversation
+
+1. Open the conversation.
+2. Select **Assign**.
+3. Choose the **agent** who will own the chat.
+
+The thread moves to that agent’s assigned queue and appears when you filter by agent or open **Assigned**.
+
+<DocsVideo src="/docs/team-inbox/recordings/assigning-contact.mp4" />
+
+---
+
+## Comments
+
+Add **comments** on a conversation for internal notes—handoff context, follow-up reminders, or context the customer should not see. Comments support collaboration without sending extra WhatsApp messages.
+
+---
+
+## Conversation event history
+
+Open **event history** on a thread to review what changed over time—messages sent and received, assignment updates, and status changes. Use it when you need an audit trail or when debugging who did what on a chat.
+
+---
+
+## Filter conversation history by date
+
+Narrow history with **From Date** and **To Date** filters when you only need activity from a specific period—for example, last week’s escalation or a campaign reply window.
+
+---
+
+## Conversation status
+
+Change status as the conversation progresses:
+
+- **Active → Closed** when the issue is resolved.
+- **Closed → Active** when the customer returns and you need to continue the same thread.
+
+Closed chats appear under **All Closed**; active ones stay in open categories.
+
+---
+
+## Conversation expiry (24-hour window)
+
+WhatsApp allows free-form session messages for **24 hours** after the customer’s last message. When that window ends, the conversation **expires**.
+
+- Expired threads appear under **All Expired**.
+- You **cannot** continue with normal text or media messages on an expired chat.
+- To re-engage, send an **approved WhatsApp template** message.
+
+<TipBox>
+  Plan template messages for follow-ups after expiry—order updates, support check-ins, or re-openers after a day of silence.
+</TipBox>
+
+---
+
+## Shared inbox
+
+Team Inbox is **shared**—multiple users can view, assign, and manage the same pool of conversations. Categories, assignment, and comments keep work organized when several agents operate in parallel.
+
+---
+
+## Send a template to any contact
+
+Template messages work for **saved contacts** and **unsaved numbers**—useful after expiry or when starting a new outbound thread. Open the **⋮** menu beside your WhatsApp channel (see the overview screenshot above), then:
+
+1. Choose **Existing Contact** or **New Contact**.
+2. Pick a saved contact or enter a **phone number**.
+3. Select an **approved template**.
+4. Click **Send**.
+
+The template delivers to the selected number. Once the customer replies, a new session window opens for normal messages (until the next expiry).
+
+<DocsVideo src="/docs/team-inbox/recordings/New_existing-contact.mp4" />
+
+<WarningBox>
+  Expired conversations require a **template**—not a regular chat message—to continue. The same rule applies when messaging a number outside the 24-hour session window.
+</WarningBox>
+
+---
+
+## Inbox at a glance
+
+| Task | How |
+|------|-----|
+| Triage new WhatsApp messages | **Unassigned** → assign to an agent |
+| Work your queue | **Assigned** + agent filter |
+| Resolve a chat | Set status to **Closed** |
+| Re-open a case | **Closed → Active** |
+| Past 24-hour window | **All Expired** → send **template** |
+| Internal handoff | **Comments** + event history |
+| Outbound to any number | **⋮** → Existing / New contact → template |
+
+---
+
+# Quick Replies
+
+Quick Replies are predefined message shortcuts agents use during live chats. Type a shortcut (for example `/hello`) to insert a full response—text or media—without retyping the same answer every time.
+
+Access them from **Inbox** via the channel **⋮** menu → **Quick Replies**, or from the Quick Replies area in your workspace.
+
+---
+
+## Create a Quick Reply
+
+1. Click **New Quick Reply**.
+2. Fill in:
+   - **Shortcut** — command agents type in chat (must start with `/`, no spaces, unique)
+   - **Name** — label for your team in the list
+   - **Channel** — where the reply applies (for example WhatsApp)
+   - **Content Type** — Text, Image, Video, or Document
+   - **Message** — body text or uploaded media
+3. Click **Create**.
+
+### Shortcut rules
+
+| Rule | Detail |
+|------|--------|
+| Prefix | Must start with `/` |
+| Spaces | Not allowed in the shortcut |
+| Uniqueness | Each shortcut must be unique |
+
+**Example:** `/hello` — when an agent types `/hello` in a conversation, Notifyy inserts the saved response.
+
+### Content types
+
+| Type | Use for |
+|------|---------|
+| **Text** | Standard reply copy |
+| **Image** | Visual instructions or product shots |
+| **Video** | Short demos or walkthroughs |
+| **Document** | PDFs, invoices, or files |
+
+### Preview before you save
+
+The right-hand **WhatsApp preview** shows how the message will look—copy, layout, and media placement—so you can validate the reply before agents use it in live chats.
+
+<DocsVideo src="/docs/team-inbox/recordings/Quick-replies-preview.mp4" />
+
+---
+
+## Search Quick Replies
+
+Search by **shortcut** or **reply name** to find an existing entry quickly when your library grows.
+
+---
+
+## Edit a Quick Reply
+
+Open any quick reply to update **message content**, **shortcut**, **name**, or **media**. Changes apply the next time an agent uses that shortcut.
+
+---
+
+## Quick Replies at a glance
+
+| Task | How |
+|------|-----|
+| Open library | **Inbox** → channel **⋮** → **Quick Replies** |
+| Add shortcut | **New Quick Reply** → `/yourcommand` |
+| Validate look | Preview panel before **Create** |
+| Find existing | Search by shortcut or name |
+| Update copy | Edit the quick reply record |
+
+---
+
+## Why Team Inbox matters
+
+| Capability | Benefit |
+|------------|---------|
+| Shared inbox | Whole team sees the same WhatsApp queue |
+| Assignment | Clear ownership per conversation |
+| Status & expiry | Aligns with WhatsApp session rules |
+| Templates | Legitimate way to re-engage after 24 hours |
+| Quick Replies | Faster, consistent agent responses |

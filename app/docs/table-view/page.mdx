@@ -1,0 +1,174 @@
+export const metadata = {
+  title: "CRM Table View",
+  description:
+    "Use Notifyy CRM Table View to browse records in a spreadsheet layout—search, filter, sort, customize columns, freeze key fields, and save reusable views.",
+  keywords: [
+    "Notifyy Table View",
+    "CRM table view",
+    "CRM spreadsheet view",
+    "custom CRM views",
+    "freeze columns CRM",
+    "save filtered view",
+    "CRM column management",
+    "pin favorite views",
+  ],
+  alternates: {
+    canonical: "/docs/table-view",
+  },
+  openGraph: {
+    title: "CRM Table View | Notifyy Docs",
+    description:
+      "Manage CRM records in Table View—create views, customize columns, freeze the first three columns, and save filters for faster daily work.",
+    url: "/docs/table-view",
+    type: "article",
+  },
+};
+
+# Table View
+
+Table View gives you a spreadsheet-style layout for CRM records—contacts, companies, deals, and other objects in Notifyy. Search, filter, and sort in one place; customize which columns appear; and save layouts as **views** your team can reuse.
+
+Open a CRM object (for example **Contacts**) and work in Table View when you need to scan many rows, export data, or update records from the grid.
+
+<img src="/docs/table-view/screenshots/table-overview.png" alt="Contacts Table View with search, filters, sort, edit columns, and contact records grid" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+The toolbar above the grid includes **Search**, **Edit columns**, **Filters**, **Sort**, **Recently deleted**, and **Export** (where available for the object).
+
+---
+
+## What you can do in Table View
+
+- **Search** records from the toolbar
+- **Filter** to narrow the list, then **save** filters on a view
+- **Sort** by name, email, phone, owner, created date, and more
+- **Customize columns**—add, remove, reorder, resize, show, or hide
+- **Create multiple views** for different teams or workflows
+- **Assign, edit, or delete** records from the grid where supported
+- **Freeze** leading columns while scrolling wide tables
+
+---
+
+## Column management
+
+Click **Edit columns** to open the column editor. Search available fields on the left, select what to show, and arrange the **Selected columns** list on the right.
+
+| Action | How |
+|--------|-----|
+| **Add columns** | Select fields from categorized lists (or **Create a new field**) |
+| **Remove columns** | Click **X** on a selected column (required columns stay) |
+| **Reorder columns** | Drag using the handle on each row |
+| **Lock / freeze columns** | Set **Locked columns** count—columns above the divider stay fixed when scrolling |
+| **Apply** | Save the layout to the active view |
+
+<img src="/docs/table-view/screenshots/edit-column-overview.png" alt="Edit Table Columns modal with field picker, locked columns, and selected column list" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<DocsVideo src="/docs/table-view/recordings/edit-column.mp4" />
+
+<TipBox>
+  **Name** is required and typically locked as the first column. Use **Locked columns** to keep identifiers visible on wide tables—up to three columns can stay fixed while you scroll.
+</TipBox>
+
+---
+
+## Sort records
+
+Open **Sort** in the toolbar and pick ascending or descending order for fields such as **Name**, **Email**, **Phone Number**, **Contact Owner**, or **Created Date**.
+
+<img src="/docs/table-view/screenshots/sort.png" alt="Sort dropdown with A-Z and Z-A options for contact table columns" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+Sorting applies to the current view. Combine with filters when you need a focused, ordered slice of data.
+
+---
+
+## Filter records
+
+Use **Filters** to narrow rows by field values. When the result set is what you need, save it on the view so you do not rebuild the same filters next time.
+
+<DocsVideo src="/docs/table-view/recordings/filters.mp4" />
+
+---
+
+## Create a view
+
+Saved views remember columns, filters, and sorting. Use them when different roles need different layouts on the same object.
+
+1. Click **+** next to the view tabs (or **Create new view** in the view menu).
+2. Enter a **view name**.
+3. Configure **columns**, **filters**, and **sorting**.
+4. Save the view.
+
+<img src="/docs/table-view/screenshots/create-new-table.png" alt="Create new view menu listing saved contact table views" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<TipBox>
+  Name views by purpose—e.g. “Open deals – APAC” or “Contacts – no owner”—so teammates pick the right layout quickly.
+</TipBox>
+
+---
+
+## Freeze columns
+
+In **Edit columns**, set **Locked columns** to freeze the first one, two, or three columns (including required fields like **Name**). Frozen columns remain on the left while you scroll horizontally through the rest of the grid.
+
+<DocsVideo src="/docs/table-view/recordings/freeze-column.mp4" />
+
+This keeps key identifiers visible on large datasets and makes row-by-row comparison easier.
+
+---
+
+## Work with records in the grid
+
+From Table View you can manage individual records without leaving the list—select rows with checkboxes, then assign owners, edit fields inline, or delete contacts when your permissions allow.
+
+<DocsVideo src="/docs/table-view/recordings/assign-edit-delete-contact.mp4" />
+
+---
+
+## Update a view
+
+1. Open the view to change.
+2. Adjust **columns**, **filters**, or **sorting**.
+3. Click **Save View** (or **Apply** after editing columns).
+
+Teammates with access see the updated layout on their next visit.
+
+---
+
+## Clone, pin, favorite, and save
+
+- **Clone** — duplicate an existing view under a new name
+- **Pin** — keep important views at the top of the list
+- **Favorite** — mark views you open often
+- **Save** — persist filters and layout changes on the current view
+
+<DocsVideo src="/docs/table-view/recordings/clone-pin-favorite-save.mp4" />
+
+---
+
+## Delete a view
+
+1. Select the view.
+2. Click **Delete**.
+3. Confirm in the dialog—customizations for that view are removed permanently.
+
+<img src="/docs/table-view/screenshots/delete-table-consent.png" alt="Delete View confirmation dialog" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<WarningBox>
+  Deleting a view does **not** delete CRM records—only the saved layout. Confirm with your team before removing a shared view others rely on.
+</WarningBox>
+
+---
+
+## Table View at a glance
+
+| Task | Steps |
+|------|--------|
+| Browse records | Open CRM object → Table View |
+| Adjust columns | **Edit columns** → select / reorder → **Apply** |
+| Sort | **Sort** → choose field and direction |
+| Filter | **Filters** → apply → **Save** on view |
+| New layout | **+** / **Create new view** → configure → save |
+| Freeze key fields | **Edit columns** → **Locked columns** |
+| Copy layout | **Clone** → new name |
+| Quick access | **Pin** or **Favorite** |
+| Remove layout | **Delete** → confirm |
+| Row actions | Select rows → assign / edit / delete from grid |

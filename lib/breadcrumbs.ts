@@ -15,9 +15,14 @@ export type NavKey =
   | "importObject"
   | "segments"
   | "fields"
+  | "tableView"
+  | "exportRecords"
   | "propertyManagement"
   | "integration"
   | "hubspot"
+  | "whatsappFlows"
+  | "paymentIntegrations"
+  | "zoom"
   | "teamInbox"
   | "contacts"
   | "crm"
@@ -42,9 +47,14 @@ export function segmentToNavKey(segment: string): NavKey | null {
     import: "importObject",
     segments: "segments",
     fields: "fields",
+    "table-view": "tableView",
+    export: "exportRecords",
     property: "propertyManagement",
     integrations: "integration",
     hubspot: "hubspot",
+    "whatsapp-flow": "whatsappFlows",
+    "payment-integrations": "paymentIntegrations",
+    zoom: "zoom",
     "team-inbox": "teamInbox",
     crm: "crm",
   };

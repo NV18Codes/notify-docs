@@ -65,12 +65,27 @@ export default function DocsHomePage() {
         <li>
           <Link href="/docs/fields">{copy.nav.fields}</Link>
         </li>
+        <li>
+          <Link href="/docs/table-view">{copy.nav.tableView}</Link>
+        </li>
+        <li>
+          <Link href="/docs/export">{copy.nav.exportRecords}</Link>
+        </li>
       </ul>
 
       <h2>{copy.sidebar.integration}</h2>
       <ul>
         <li>
           <Link href="/docs/integrations/hubspot">{copy.nav.hubspot}</Link>
+        </li>
+        <li>
+          <Link href="/docs/integrations/whatsapp-flow">{copy.nav.whatsappFlows}</Link>
+        </li>
+        <li>
+          <Link href="/docs/integrations/payment-integrations">{copy.nav.paymentIntegrations}</Link>
+        </li>
+        <li>
+          <Link href="/docs/integrations/zoom">{copy.nav.zoom}</Link>
         </li>
       </ul>
 

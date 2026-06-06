@@ -15,8 +15,13 @@ export type NavDocLabelKey =
   | "importObject"
   | "segments"
   | "fields"
+  | "tableView"
+  | "exportRecords"
   | "propertyManagement"
   | "hubspot"
+  | "whatsappFlows"
+  | "paymentIntegrations"
+  | "zoom"
   | "teamInbox";
 
 export type SidebarLeafItem = {
@@ -86,12 +91,19 @@ export const SIDEBAR_BLOCKS: SidebarBlock[] = [
       { href: "/docs/import", labelKey: "importObject" },
       { href: "/docs/segments", labelKey: "segments" },
       { href: "/docs/fields", labelKey: "fields" },
+      { href: "/docs/table-view", labelKey: "tableView" },
+      { href: "/docs/export", labelKey: "exportRecords" },
     ],
   },
   {
     type: "group",
     titleKey: "integration",
-    items: [{ href: "/docs/integrations/hubspot", labelKey: "hubspot" }],
+    items: [
+      { href: "/docs/integrations/hubspot", labelKey: "hubspot" },
+      { href: "/docs/integrations/whatsapp-flow", labelKey: "whatsappFlows" },
+      { href: "/docs/integrations/payment-integrations", labelKey: "paymentIntegrations" },
+      { href: "/docs/integrations/zoom", labelKey: "zoom" },
+    ],
   },
   {
     type: "group",
