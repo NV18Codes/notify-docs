@@ -84,6 +84,9 @@ export default function DocsHomePage() {
         <li>
           <Link href="/docs/integrations/payment-integrations">{copy.nav.paymentIntegrations}</Link>
         </li>
+        <li>
+          <Link href="/docs/integrations/zoom">{copy.nav.zoom}</Link>
+        </li>
       </ul>
 
       <h2>{copy.sidebar.support}</h2>

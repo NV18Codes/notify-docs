@@ -1,0 +1,238 @@
+export const metadata = {
+  title: "Connect Zoom to Notifyy | Zoom OAuth Integration Setup",
+  description:
+    "Connect Zoom to Notifyy via Integrations → Platforms—OAuth 2.0 sign-in, authorize scopes, confirm Connected status, manage meetings and webinars, and disconnect safely.",
+  keywords: [
+    "connect Zoom to Notifyy",
+    "Notifyy Zoom integration",
+    "Zoom OAuth 2.0 setup",
+    "Integrations Platforms Zoom",
+    "authorize Zoom Notifyy",
+    "Zoom meeting management",
+    "Zoom webinar sync",
+    "disconnect Zoom Notifyy",
+    "Open configuration Zoom",
+    "Zoom integration verification",
+  ],
+  alternates: {
+    canonical: "/docs/integrations/zoom",
+  },
+  openGraph: {
+    title: "Connect Zoom to Notifyy | OAuth Integration Guide",
+    description:
+      "Step-by-step Zoom setup in Notifyy—Platforms page, Connect, OAuth authorization, Connected status, and sync verification.",
+    url: "/docs/integrations/zoom",
+    type: "article",
+  },
+};
+
+# Zoom integration
+
+The Zoom integration connects your Zoom account to Notifyy for **meeting management**, **webinar synchronization**, and **user authorization**. Setup uses **Zoom OAuth 2.0**—Notifyy operates strictly within the scopes you approve during authorization.
+
+---
+
+## Application overview
+
+This integration enables:
+
+| Area | Capabilities |
+|------|----------------|
+| **Meetings** | Retrieve, create, update, and delete Zoom meetings |
+| **Users** | Retrieve user information and sync host details |
+| **Webinars** | Retrieve webinar information; create and update webinars |
+
+**Data synchronization:**
+
+- **Initial sync** runs immediately after connection
+- **Incremental sync** runs automatically at defined intervals
+- **Zoom webhooks** provide near real-time updates when configured
+
+---
+
+## Prerequisites
+
+- A valid **Zoom account**
+- Permission to **install and authorize** Zoom applications
+- Access to the **Notifyy** application platform
+
+<TipBox>
+  Confirm with your Zoom admin that you can authorize third-party apps before starting OAuth.
+</TipBox>
+
+---
+
+## Step 1: Initiate Zoom connection
+
+1. Log in to the **Notifyy** application.
+2. Navigate to **Integrations** → **Platforms**.
+
+<img src="/docs/integrations/zoom/screenshots/zoom-1.png" alt="Notifyy sidebar with Integrations menu and Platforms submenu" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+3. Locate the **Zoom** integration card under available platforms.
+4. Click **Connect** on the Zoom integration card.
+
+<img src="/docs/integrations/zoom/screenshots/zoom-2.png" alt="Notifyy Integrations Platforms page with Zoom card and Connect button" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<DocsVideo src="/docs/integrations/zoom/recordings/integration-zoom.mp4" />
+
+The Zoom card shows **Video Conferencing** with **API**, **Webhook**, and **OAuth** tags.
+
+---
+
+## Step 2: Authorization process
+
+After you click **Connect**, Notifyy redirects to the **Zoom OAuth** authorization screen.
+
+### Sign in to Zoom
+
+On the Zoom sign-in page, authenticate using your preferred method:
+
+- **Zoom account credentials** — Email address and password
+- **SSO** (Single Sign-On)
+- **Apple**
+- **Google**
+- **Facebook**
+- **Microsoft**
+
+<img src="/docs/integrations/zoom/screenshots/zoom-3.png" alt="Zoom OAuth sign-in page with credentials and social sign-in options" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+### Review scopes and authorize
+
+- **Requested scopes** are displayed for review
+- Authorization is completed by selecting **Authorize**
+- Upon approval, the system redirects back to Notifyy with an authorization code (handled automatically)
+
+<img src="/docs/integrations/zoom/screenshots/zoom-4.png" alt="Notifyy Platforms page showing Zoom Connected after OAuth authorization" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<WarningBox>
+  Denying a required scope blocks meeting or webinar actions that depend on it. Disconnect and connect again, approving the full scope set, to restore access.
+</WarningBox>
+
+---
+
+## Step 3: Connection establishment
+
+When authorization succeeds:
+
+- The Zoom account is **securely linked**
+- **OAuth tokens** are generated and stored securely (encrypted)
+- **Initial synchronization** is triggered
+
+Return to **Integrations → Platforms** and confirm the Zoom card shows **Connected**.
+
+---
+
+## Meeting management
+
+- Retrieve meetings from Zoom
+- **Create** meetings
+- **Update** meetings
+- **Delete** meetings
+
+---
+
+## User management
+
+- Retrieve **user information** from Zoom
+- **Sync host details** for scheduling workflows
+
+---
+
+## Webinar management
+
+- Retrieve **webinar information**
+- **Create** and **update** webinars
+
+---
+
+## Requested scopes (example)
+
+| Scope | Purpose |
+|-------|---------|
+| `meeting:read` | Read and list meetings |
+| `meeting:write` | Create, update, delete meetings |
+| `webinar:read` | Read webinar data |
+| `webinar:write` | Create and update webinars |
+| `user:read` | Read user and host information |
+
+---
+
+## Security and data handling
+
+- All API communication uses **HTTPS**
+- OAuth tokens are stored in **encrypted** form
+- Data access is limited strictly to **authorized scopes**
+
+---
+
+## Token lifecycle management
+
+- **Access tokens** refresh automatically prior to expiration
+- **Refresh failures** trigger re-authentication—click **Connect** on the Zoom card again
+
+---
+
+## Disconnection process
+
+Navigate to **Integrations** → **Platforms** and open the Zoom integration card.
+
+After successfully integrating Zoom, the card displays a **Connected** status and provides two options:
+
+- **Open configuration** — opens Zoom integration settings and configuration details
+- **Disconnect** — removes the Zoom integration from your Notifyy account
+
+<img src="/docs/integrations/zoom/screenshots/zoom-5.png" alt="Zoom Connected card with Open configuration and Disconnect buttons" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+Click **Disconnect** to remove the Zoom integration from the account.
+
+<img src="/docs/integrations/zoom/screenshots/zoom-6.png" alt="Zoom disconnected success notification with Connect button restored on Zoom card" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+Notifyy **deletes token data** and **stops synchronization**. Meetings in Zoom are not deleted—only the Notifyy link ends.
+
+---
+
+## Error handling and reliability
+
+- **Automatic retry** mechanisms for transient failures
+- **Token expiration** handled via the refresh flow
+- **Failures** are logged and monitored
+
+---
+
+## Verification steps
+
+Confirm the integration end to end:
+
+1. **Initiate connection** — log in → **Integrations** → **Platforms** → Zoom → **Connect**
+2. **Complete OAuth authorization** — sign in and **Authorize**
+3. **Confirm connection** — Zoom card shows **Connected**
+4. **Create or update** a Zoom meeting from Notifyy
+5. **Verify data synchronization** — meeting appears in Zoom and reflects in Notifyy
+
+<img src="/docs/integrations/zoom/screenshots/zoom-7.png" alt="Notifyy sign-in page for workspace access" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<img src="/docs/integrations/zoom/screenshots/zoom-8.png" alt="Integrations Platforms grid with Zoom Connect button" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<img src="/docs/integrations/zoom/screenshots/zoom-10.png" alt="Zoom OAuth sign-in during verification walkthrough" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+<img src="/docs/integrations/zoom/screenshots/zoom-11.png" alt="Zoom Connected status confirming successful integration" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+
+---
+
+## Support
+
+Authorization issues, scope gaps, or sync problems—contact [Notifyy support](https://www.notifyy.io/contact).
+
+---
+
+## Connect Zoom at a glance
+
+| Step | Action |
+|------|--------|
+| 1 | Log in → **Integrations** → **Platforms** → Zoom → **Connect** |
+| 2 | Sign in on Zoom → review scopes → **Authorize** |
+| 3 | Confirm **Connected** → initial sync runs |
+| Manage | **Open configuration** on the Zoom card |
+| Remove | **Disconnect** → confirm success toast |
+| Verify | Create/update meeting → confirm sync |
