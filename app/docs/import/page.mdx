@@ -29,7 +29,7 @@ Use import when you are **migrating** from another system, **syncing** periodic 
 
 Open **Settings → Data Management → Import Data** to start an import or review past runs.
 
-<img src="/docs/import/list-view.png" alt="File Imports list with Import Data button" className="mx-auto rounded-lg border border-gray-200 shadow-sm my-6" />
+<DocsVideo src="/docs/import/import-data.mp4" />
 
 ---
 
@@ -62,9 +62,7 @@ Import helps teams:
 
 ## 01. Import workflow
 
-The wizard moves through **Type → Upload → Map → Details**. Follow the steps below, or watch the full flow in the video.
-
-<DocsVideo src="/docs/import/import-data.mp4" />
+The wizard moves through **Type → Upload → Map → Details**. Follow the steps below—the video above walks through the full flow.
 
 ### Step 1 — Open Import Data
 
@@ -216,9 +214,26 @@ Values must use only **configured options**, typically separated as your import 
 
 Use accepted true/false values defined for your workspace.
 
+### Date format letters
+
+Notifyy pattern strings are **case-sensitive**. The most common mix-up is **MM** (month) vs **mm** (minutes):
+
+| Token | Meaning | Example in a value |
+|---|---|---|
+| **yyyy** | Four-digit year | `2024` |
+| **MM** | **Month** (two digits) | `01` = January, `12` = December |
+| **dd** | Day of month (two digits) | `15` |
+| **HH** | Hour, 24-hour clock (two digits) | `10` = 10:00 |
+| **mm** | **Minutes** (two digits) | `30` = 30 minutes past the hour |
+| **ss** | Seconds (two digits) | `00` |
+
+<TipBox>
+  **MM** = month · **mm** = minutes. In `yyyy-MM-dd`, **MM** is the month. In `HH:mm:ss`, **mm** is minutes—never the month. Using the wrong case (for example `HH:MM:ss`) will cause date or time values to fail validation on import.
+</TipBox>
+
 ### Dates
 
-Supported date formats include:
+Supported **date-only** formats use **MM** for month (not **mm**):
 
 | Format | Example |
 |---|---|
@@ -228,14 +243,13 @@ Supported date formats include:
 | dd/MM/yyyy | 15/01/2024 |
 | dd-MM-yyyy | 15-01-2024 |
 | dd.MM.yyyy | 15.01.2024 |
-| dd-MMM-yyyy | 15-Jan-2024 |
-| MMM dd, yyyy | Jan 15, 2024 |
 
 ### Date and time
 
+**Date and time** formats combine **MM** (month) in the date part with **mm** (minutes) in the time part:
+
 | Format | Example |
 |---|---|
-| ISO with offset (preferred) | 2024-01-15T10:30:00+05:30 |
 | yyyy-MM-dd'T'HH:mm:ss | 2024-01-15T10:30:00 |
 | yyyy-MM-dd HH:mm:ss | 2024-01-15 10:30:00 |
 | yyyy/MM/dd HH:mm:ss | 2024/01/15 10:30:00 |
