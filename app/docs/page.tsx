@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function DocsHomePage() {
   return (
-    <article className="doc-content max-w-3xl">
-      <p className="lead text-zinc-600 dark:text-zinc-400">
+    <article className="doc-content doc-prose-themed prose prose-slate max-w-[48rem]">
+      <p className="lead mb-6 text-[17px] leading-[1.75] text-slate-600 dark:text-slate-400">
         WhatsApp CRM and automation — setup, sending, and operations. Start with onboarding if this is your first workspace.
       </p>
 
@@ -23,9 +23,6 @@ export default function DocsHomePage() {
         <li>
           <Link href={docPaths["first-campaign"]}>{copy.nav.firstCampaign}</Link>
         </li>
-        <li>
-          <Link href="/docs/user-invite">{copy.nav.userInvite}</Link>
-        </li>
       </ul>
 
       <h2>{copy.sidebar.messaging}</h2>
@@ -38,9 +35,6 @@ export default function DocsHomePage() {
         </li>
         <li>
           <Link href="/docs/carousel">{copy.nav.carouselTemplates}</Link>
-        </li>
-        <li>
-          <Link href="/docs/catalog">{copy.nav.whatsappCatalog}</Link>
         </li>
       </ul>
 

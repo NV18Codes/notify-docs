@@ -61,7 +61,6 @@ export const SIDEBAR_BLOCKS: SidebarBlock[] = [
           { href: "/docs/first-campaign", labelKey: "firstCampaign", nested: true },
         ],
       },
-      { href: "/docs/user-invite", labelKey: "userInvite" },
     ],
   },
   {
@@ -75,7 +74,6 @@ export const SIDEBAR_BLOCKS: SidebarBlock[] = [
         href: "/docs/templates",
         items: [{ href: "/docs/carousel", labelKey: "carouselTemplates", nested: true }],
       },
-      { href: "/docs/catalog", labelKey: "whatsappCatalog" },
     ],
   },
   {

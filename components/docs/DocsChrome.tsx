@@ -84,7 +84,7 @@ export function DocsChrome({ children }: { children: ReactNode }) {
               </div>
             </div>
             <Navbar className="hidden lg:flex" />
-            <div className="mx-auto max-w-6xl px-4 py-2.5 dark:border-notifyy-borderDark lg:max-w-none lg:px-6">
+            <div className="mx-auto w-full max-w-[1280px] px-6 py-3 dark:border-notifyy-borderDark lg:px-10">
               {isDocsHome ? (
                 <h1 className="mb-2 text-3xl font-semibold tracking-tight text-notifyy-ink dark:text-slate-100">
                   Notifyy documentation
@@ -94,10 +94,10 @@ export function DocsChrome({ children }: { children: ReactNode }) {
             </div>
           </header>
 
-          <div className="mx-auto flex w-full max-w-6xl flex-1 justify-center gap-10 bg-white px-4 py-10 lg:max-w-none lg:px-8 dark:bg-notifyy-pageDark">
+          <div className="mx-auto flex w-full max-w-[1280px] flex-1 justify-center gap-8 bg-white px-6 py-8 lg:px-10 dark:bg-notifyy-pageDark">
             <main
               id="doc-article-main"
-              className="doc-content doc-prose-themed prose prose-slate mx-auto min-w-0 w-full max-w-3xl flex-1 space-y-10 text-[16px] leading-relaxed text-gray-700 prose-headings:scroll-mt-28 prose-p:leading-relaxed prose-p:text-gray-700 prose-li:leading-relaxed prose-hr:my-10 prose-hr:border-0 prose-hr:border-t prose-hr:border-gray-200/80 dark:text-slate-200 dark:prose-p:text-slate-300 dark:prose-hr:border-slate-700/80 prose-a:font-medium prose-a:text-primary prose-a:no-underline prose-a:transition-all prose-a:duration-200 prose-a:ease-in-out prose-a:hover:underline dark:prose-a:text-sky-400 dark:hover:prose-a:text-sky-300"
+              className="doc-content doc-prose-themed prose prose-slate mx-auto min-w-0 w-full max-w-[48rem] flex-1 prose-headings:scroll-mt-28 prose-p:my-4 prose-li:my-1 prose-ul:my-4 prose-ol:my-4 prose-hr:my-8 prose-hr:border-0 prose-hr:border-t prose-hr:border-gray-200/80 dark:prose-hr:border-slate-700/80 prose-a:font-medium prose-a:text-primary prose-a:no-underline prose-a:transition-all prose-a:duration-200 prose-a:ease-in-out prose-a:hover:underline dark:prose-a:text-sky-400 dark:hover:prose-a:text-sky-300"
             >
               {children}
               <DocPager />

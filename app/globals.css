@@ -53,26 +53,80 @@
 @layer utilities {
   .doc-content h1 {
     scroll-margin-top: 6rem;
-    @apply mb-4 text-3xl font-semibold text-notifyy-ink dark:text-slate-100;
+    @apply mb-5 text-4xl font-bold tracking-tight text-notifyy-ink dark:text-slate-100;
   }
   .doc-content h2 {
     scroll-margin-top: 6rem;
-    @apply mb-3 mt-10 text-xl font-semibold text-notifyy-ink dark:text-slate-100;
+    @apply mb-4 mt-12 border-b border-gray-200 pb-2.5 text-2xl font-bold text-notifyy-ink dark:border-slate-700/80 dark:text-slate-100;
   }
   .doc-content h3 {
     scroll-margin-top: 5rem;
-    @apply mb-2 mt-6 text-lg font-medium text-notifyy-ink dark:text-slate-200;
+    @apply mb-3 mt-8 text-xl font-semibold text-notifyy-ink dark:text-slate-100;
   }
 
-  /** Dark prose: readable body without harsh `prose-invert` white */
+  /** Gallabox-style prose: dark body text, black bullets, readable rhythm */
+  .doc-content.doc-prose-themed {
+    --tw-prose-body: #334155;
+    --tw-prose-headings: #0f172a;
+    --tw-prose-lead: #475569;
+    --tw-prose-links: #003d8a;
+    --tw-prose-bold: #0f172a;
+    --tw-prose-counters: #0f172a;
+    --tw-prose-bullets: #0f172a;
+    --tw-prose-hr: #e2e8f0;
+    --tw-prose-quotes: #334155;
+    --tw-prose-quote-borders: #e2e8f0;
+    --tw-prose-captions: #64748b;
+    --tw-prose-code: #0f172a;
+    --tw-prose-pre-code: #e2e8f0;
+    --tw-prose-pre-bg: #0f172a;
+    --tw-prose-th-borders: #e2e8f0;
+    --tw-prose-td-borders: #f1f5f9;
+    max-width: none;
+  }
+
+  .doc-content.doc-prose-themed p,
+  .doc-content.doc-prose-themed li {
+    @apply text-[17px] leading-[1.75] text-slate-700;
+  }
+
+  .doc-content.doc-prose-themed ul > li::marker,
+  .doc-content.doc-prose-themed ol > li::marker {
+    @apply text-notifyy-ink;
+  }
+
+  /** Minimal doc tables */
+  .doc-content table {
+    @apply my-6 w-full border-collapse overflow-hidden rounded-lg border border-gray-200 text-[15px] shadow-notifyy;
+  }
+  .doc-content thead {
+    @apply bg-slate-50 dark:bg-slate-800/50;
+  }
+  .doc-content th {
+    @apply border-b border-gray-200 px-4 py-2.5 text-left text-sm font-semibold text-notifyy-ink dark:border-slate-700 dark:text-slate-100;
+  }
+  .doc-content td {
+    @apply border-b border-gray-100 px-4 py-2.5 text-slate-700 dark:border-slate-800 dark:text-slate-300;
+  }
+  .doc-content tbody tr:last-child td {
+    @apply border-b-0;
+  }
+  .doc-content tbody tr:nth-child(even) {
+    @apply bg-slate-50/40 dark:bg-white/[0.02];
+  }
+  .doc-content tbody tr:hover {
+    @apply bg-primary/[0.03] dark:bg-sky-400/[0.04];
+  }
+
+  /** Dark prose overrides */
   .dark .doc-content.doc-prose-themed {
     --tw-prose-body: #c4cdd8;
     --tw-prose-headings: #f1f5f9;
     --tw-prose-lead: #94a3b8;
     --tw-prose-links: #7dd3fc;
     --tw-prose-bold: #f1f5f9;
-    --tw-prose-counters: #8b9cb8;
-    --tw-prose-bullets: #64748b;
+    --tw-prose-counters: #e2e8f0;
+    --tw-prose-bullets: #e2e8f0;
     --tw-prose-hr: #334155;
     --tw-prose-quotes: #cbd5e1;
     --tw-prose-quote-borders: #334155;
@@ -82,5 +136,15 @@
     --tw-prose-pre-bg: #0f172a;
     --tw-prose-th-borders: #334155;
     --tw-prose-td-borders: #1e293b;
+  }
+
+  .dark .doc-content.doc-prose-themed p,
+  .dark .doc-content.doc-prose-themed li {
+    @apply text-slate-300;
+  }
+
+  .dark .doc-content.doc-prose-themed ul > li::marker,
+  .dark .doc-content.doc-prose-themed ol > li::marker {
+    @apply text-slate-200;
   }
 }
