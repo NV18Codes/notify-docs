@@ -19,6 +19,21 @@ function titleForLabelKey(key: string): string {
   return nav[key] ?? key;
 }
 
+function SearchIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={cn("h-4 w-4 shrink-0", className)}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+      aria-hidden
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+  );
+}
+
 export function DocsSearchTrigger({ className }: { className?: string }) {
   return (
     <>
@@ -26,27 +41,26 @@ export function DocsSearchTrigger({ className }: { className?: string }) {
         type="button"
         onClick={() => dispatchOpenDocsSearch()}
         className={cn(
-          "inline-flex h-9 w-9 items-center justify-center rounded-md text-notifyy-muted transition-colors duration-200 ease-in-out hover:bg-gray-100 hover:text-notifyy-ink md:hidden dark:text-notifyy-mutedDark dark:hover:bg-white/[0.06] dark:hover:text-slate-200",
+          "inline-flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200/90 bg-white/80 text-notifyy-muted shadow-sm transition-colors duration-200 ease-in-out hover:border-gray-300 hover:bg-white hover:text-notifyy-ink md:hidden dark:border-notifyy-borderDark dark:bg-notifyy-surfaceDark/80 dark:text-notifyy-mutedDark dark:hover:border-slate-600 dark:hover:bg-notifyy-cardDark dark:hover:text-slate-200",
           className,
         )}
         aria-label="Search documentation"
       >
-        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
+        <SearchIcon />
       </button>
       <button
         type="button"
         onClick={() => dispatchOpenDocsSearch()}
         className={cn(
-          "hidden min-w-[170px] items-center justify-between gap-2 rounded-md px-2 py-1.5 text-sm text-notifyy-muted transition-colors duration-200 ease-in-out hover:bg-gray-100 hover:text-notifyy-ink md:inline-flex dark:text-notifyy-mutedDark dark:hover:bg-white/[0.06] dark:hover:text-slate-200",
+          "hidden min-w-[240px] items-center gap-2.5 rounded-lg border border-gray-200/90 bg-white/80 px-3 py-2 text-sm shadow-sm transition-colors duration-200 ease-in-out hover:border-gray-300 hover:bg-white md:inline-flex dark:border-notifyy-borderDark dark:bg-notifyy-surfaceDark/80 dark:hover:border-slate-600 dark:hover:bg-notifyy-cardDark",
           className,
         )}
         aria-label="Search documentation"
       >
-        <span>Search…</span>
-        <kbd className="rounded px-1 font-mono text-[10px] text-notifyy-muted dark:text-notifyy-mutedDark">
-          Cmd/Ctrl + K
+        <SearchIcon className="text-notifyy-muted dark:text-notifyy-mutedDark" />
+        <span className="flex-1 text-left text-notifyy-muted dark:text-notifyy-mutedDark">Search documentation…</span>
+        <kbd className="rounded border border-gray-200/80 bg-gray-50 px-1.5 py-0.5 font-mono text-[10px] text-notifyy-muted dark:border-notifyy-borderDark dark:bg-notifyy-pageDark dark:text-notifyy-mutedDark">
+          ⌘ K
         </kbd>
       </button>
     </>
@@ -140,13 +154,16 @@ export function DocsCommandPalette() {
         className="w-full max-w-lg overflow-hidden rounded-xl border border-gray-200/80 bg-white shadow-2xl transition-all duration-200 ease-in-out dark:border-notifyy-borderDark dark:bg-notifyy-cardDark dark:shadow-[0_24px_80px_rgba(0,0,0,0.45)]"
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <input
-          autoFocus
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search pages…"
-          className="w-full border-0 border-b border-gray-100 bg-transparent px-4 py-3 text-sm text-notifyy-ink outline-none placeholder:text-notifyy-muted dark:border-notifyy-borderDark dark:text-slate-100 dark:placeholder:text-notifyy-mutedDark"
-        />
+        <div className="relative border-b border-gray-100 dark:border-notifyy-borderDark">
+          <SearchIcon className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-notifyy-muted dark:text-notifyy-mutedDark" />
+          <input
+            autoFocus
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Search documentation…"
+            className="w-full border-0 bg-transparent py-3 pl-11 pr-4 text-sm text-notifyy-ink outline-none placeholder:text-notifyy-muted dark:text-slate-100 dark:placeholder:text-notifyy-mutedDark"
+          />
+        </div>
         <ul className="max-h-[min(50vh,360px)] overflow-y-auto py-2">
           {items.length === 0 ? (
             <li className="px-4 py-6 text-center text-sm text-notifyy-muted dark:text-notifyy-mutedDark">
